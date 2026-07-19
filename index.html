@@ -584,8 +584,8 @@ if(window.innerWidth>900){
   gsap.ticker.add(function(){
     dotX+=(mx-dotX)*.15;
     dotY+=(my-dotY)*.15;
-    gsap.set(dot,{x:dotX,y:dotY});
-    gsap.set(bubble,{x:mx,y:my-22});
+    dot.style.left=dotX+'px';dot.style.top=dotY+'px';
+    bubble.style.left=mx+'px';bubble.style.top=(my-22)+'px';
   });
   var hoverTargets=document.querySelectorAll('a,button,.project,.contact-item,.service-card,.showreel-section');
   hoverTargets.forEach(function(el){
