@@ -10,12 +10,14 @@ Portfolio profesional de Oscar Lugo (Highway43). Editor de video, creador de con
 ## Stack
 - HTML + CSS + vanilla JS
 - GitHub Pages + GitHub Actions
+- GSAP + ScrollTrigger + Lenis smooth scroll
 
-## Design Tokens
-- --bg: #0a0a0b
-- --text: #f5f5f0
-- --card: #141416
+## Design System (MONOLOG × IL CAPO)
+- --bg: #000000
+- --text: #F5F5F0
+- --accent: #D60001 (rojo)
 - --border: rgba(255,255,255,.06)
-- Font headings: Plus Jakarta Sans
-- Font body: DM Sans
-- Icons: Remix Icon
+- Font headings: Inter (uppercase, heavy)
+- Font mono: DM Mono (labels mono)
+- Custom cursor with bubble
+- Smooth scroll with Lenis
