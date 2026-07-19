@@ -40,7 +40,7 @@ a,button,.project,.contact-item,.service-card,.showreel-section{cursor:none}
 ::-webkit-scrollbar-thumb{background:var(--text3);border-radius:2px}
 
 /* ─── CUSTOM CURSOR ─── */
-@media(hover:hover)and(pointer:fine){
+@media (hover: hover) and (pointer: fine) {
   .cursor-wrap{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;mix-blend-mode:difference}
   .cursor-bubble{position:fixed;width:80px;height:44px;border-radius:6px;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;clip-path:inset(0 100% 0 0 round 6px);opacity:0;transform:translateX(0) scale(0.92);transition:clip-path .45s var(--ease-power),opacity .2s var(--ease-power),transform .45s var(--ease-power);font-family:var(--font-mono)}
   [data-cursor="active"] .cursor-bubble{clip-path:inset(0 0 0 0 round 6px);opacity:1;transform:translateX(0) scale(1)}
@@ -48,7 +48,7 @@ a,button,.project,.contact-item,.service-card,.showreel-section{cursor:none}
   .cursor-dot{position:fixed;width:6px;height:6px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s}
   .cursor-dot.is-lg{width:40px;height:40px;background:rgba(255,255,255,.08);backdrop-filter:blur(4px)}
 }
-@media(hover:none),(pointer:coarse){body{cursor:auto}a,button,.project,.contact-item,.service-card,.showreel-section{cursor:auto}}
+@media (hover: none), (pointer: coarse) { body { cursor: auto } a,button,.project,.contact-item,.service-card,.showreel-section { cursor: auto } }
 
 /* ─── NAV ─── */
 nav{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 48px);max-width:1100px}
