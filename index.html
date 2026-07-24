@@ -94,7 +94,7 @@ nav{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:100;widt
 .hero-actions .btn-outline:hover{color:#fff;border-color:var(--accent)}
 .hero-actions .btn-outline span{position:relative;z-index:1}
 .hero-right{position:relative;z-index:0;overflow:hidden}
-.hero-visual{position:absolute;inset:0;background:linear-gradient(180deg,rgba(214,0,1,.35) 0%,rgba(214,0,1,.06) 50%,transparent 100%),repeating-linear-gradient(45deg,transparent,transparent 28px,rgba(214,0,1,.04) 28px,rgba(214,0,1,.04) 29px);display:flex;align-items:center;justify-content:center}
+.hero-visual{position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(214,0,1,.12) 0%,rgba(214,0,1,.03) 40%,transparent 70%),linear-gradient(180deg,rgba(214,0,1,.2) 0%,transparent 60%);display:flex;align-items:center;justify-content:center}
 .hero-visual::before{content:'43';font-family:var(--font-display);font-size:clamp(120px,18vw,280px);font-weight:900;color:rgba(255,255,255,.02);letter-spacing:-.06em;line-height:1;user-select:none;transform:rotate(-12deg)}
 .hero-visual-line{position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--accent-dim),transparent);transform-origin:top}
 .hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--text3);font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:300;font-family:var(--font-mono);z-index:2}
@@ -131,9 +131,8 @@ nav{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:100;widt
 .section-header h2 .red{color:var(--accent)}
 .section-header p{color:var(--text2);max-width:440px;font-size:14px;line-height:1.8;font-weight:300}
 .section-header::after{content:'';display:block;width:60px;height:3px;background:var(--accent);margin-top:24px}
-.section-divider{width:100%;height:60px;position:relative;overflow:hidden;background:transparent}
-.section-divider::before{content:'';position:absolute;inset:0;background:var(--accent);clip-path:polygon(0 0,100% 35%,100% 50%,0 20%);opacity:.08}
-.section-divider::after{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent,var(--accent-dim),var(--accent),var(--accent-dim),transparent);opacity:.5}
+.section-divider{width:100%;height:40px;position:relative;overflow:hidden;background:transparent;border:none;outline:none}
+.section-divider::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(214,0,1,.4),rgba(214,0,1,.6),rgba(214,0,1,.4),transparent)}
 
 /* ─── PROJECTS — GRID ─── */
 .section-projects{padding:140px 0;overflow:hidden;position:relative}
@@ -285,6 +284,9 @@ footer::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1
 [data-reveal].is-visible{opacity:1;transform:translateY(0)}
 [data-reveal-scale]{opacity:0;transform:scale(.92);transition:opacity 1s var(--ease-power),transform 1s var(--ease-power)}
 [data-reveal-scale].is-visible{opacity:1;transform:scale(1)}
+
+/* ─── SECTION DIVIDER — CLEAN ─── */
+.section-divider{width:100%;height:40px;position:relative;overflow:hidden;background:transparent;border:none;outline:none}
 </style>
 </head>
 <body>
@@ -528,7 +530,6 @@ if(window.innerWidth>900){
   lenis = new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},wheelMultiplier:1,smoothWheel:true});
   lenis.on('scroll',ScrollTrigger.update);
   gsap.ticker.add(function(t){lenis.raf(t*1000)});
-  gsap.ticker.lagSmoothing(0);
 }
 
 // ─── CUSTOM CURSOR ───
@@ -575,8 +576,9 @@ ScrollTrigger.create({
   trigger:'.timeline-wrap',
   start:'top 40%',
   end:'bottom 20%',
+  invalidateOnRefresh:true,
   onEnter:function(){
-    gsap.to('#timelineFill',{scaleY:1,duration:2.5,ease:'power3.out',transformOrigin:'top'});
+    gsap.to('#timelineFill',{scaleY:1,duration:2.5,ease:'power3.out',clearProps:'transformOrigin'});
   },
   once:true
 });
@@ -659,7 +661,6 @@ window.addEventListener('scroll',function(){
 window.addEventListener('load',function(){
   if(lenis)lenis.raf(0);
   ScrollTrigger.refresh();
-  gsap.to('.hero-right',{opacity:1});
 });
 </script>
 </body>
