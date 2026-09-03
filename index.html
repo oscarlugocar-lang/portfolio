@@ -1,18 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Oscar Lugo — Video Editor</title>
-<meta name="description" content="Portfolio de Oscar Lugo. Editor de video, creador de contenido y diseñador visual en Bogotá, Colombia.">
-<meta property="og:title" content="Oscar Lugo — Video Editor">
-<meta property="og:description" content="+4 a&ntilde;os editando video para marcas, agencias y proyectos educativos.">
+<title>Oscar Lugo — Editor de Video | Reels, Branding y Contenido para Marcas en Colombia</title>
+<meta name="description" content="Editor de video en Bogotá para marcas y creadores. Reels que retienen y venden, identidad visual y packs mensuales. +4 años, 30+ proyectos. Respuesta en <24h. Highway 43 / Dreamscape.">
+<meta property="og:title" content="Oscar Lugo — Editor de Video para Marcas y Creadores">
+<meta property="og:description" content="Reels, anuncios y contenido que convierte visitas en clientes. Edición Premiere + After Effects + IA. Bogotá, Colombia. Disponible freelance.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://oscarlugocar-lang.github.io/portfolio/">
 <meta property="og:image" content="https://oscarlugocar-lang.github.io/portfolio/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://oscarlugocar-lang.github.io/portfolio/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Oscar Lugo","alternateName":"Highway43","description":"Editor de video y creador de contenido en Bogotá, Colombia. +4 años transformando ideas en piezas visuales.","url":"https://oscarlugocar-lang.github.io/portfolio/","knowsAbout":"Video Editing, Motion Graphics, Content Creation","worksFor":{"@type":"Organization","name":"Dreamscape Productions","url":"https://oscarlugocar-lang.github.io/portfolio/"},"contactPoint":{"@type":"ContactPoint","telephone":"+57-301-182-2651","contactType":"freelance","email":"latamdreamscape@gmail.com"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Oscar Lugo","alternateName":"Highway43","jobTitle":"Editor de Video","description":"Editor de video en Bogotá para marcas y creadores. Reels, branding y contenido mensual. +4 años, 30+ proyectos.","url":"https://oscarlugocar-lang.github.io/portfolio/","image":"https://oscarlugocar-lang.github.io/portfolio/og-image.jpg","knowsAbout":["Video Editing","Reels","Short-form Video","Motion Graphics","Branding"],"worksFor":{"@type":"Organization","name":"Highway 43 / Dreamscape","url":"https://oscarlugocar-lang.github.io/portfolio/"},"address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressCountry":"CO"},"contactPoint":{"@type":"ContactPoint","telephone":"+57-301-182-2651","contactType":"freelance","email":"latamdreamscape@gmail.com","availableLanguage":["es","en"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Oscar Lugo — Portfolio","url":"https://oscarlugocar-lang.github.io/portfolio/","potentialAction":{"@type":"SearchAction","target":"https://oscarlugocar-lang.github.io/portfolio/recursos/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⏺</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,8 +35,12 @@
   --ease-power:cubic-bezier(0.16,1,0.3,1);
 }
 html{scroll-behavior:auto;-webkit-font-smoothing:antialiased}
-body{font-family:var(--font-display);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7;cursor:none}
-a,button,.project,.contact-item,.service-card,.showreel-section{cursor:none}
+body{font-family:var(--font-display);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7}
+/* Cursor custom SOLO en desktop con hover fino, y se oculta al salir de la ventana para no bloquear el navegador */
+@media (hover: hover) and (pointer: fine) {
+  html.js-ready body{cursor:none}
+  html.js-ready a, html.js-ready button, html.js-ready .project-card, html.js-ready .contact-item, html.js-ready .service-card{cursor:none}
+}
 ::selection{background:var(--accent);color:#fff}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-track{background:var(--bg)}
@@ -237,7 +242,9 @@ footer::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1
 .footer-right a:hover{color:var(--text)}
 .footer-time{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:2px}
 
-/* ─── RESPONSIVE ─── */
+/* ─── SHOWREEL CURATED RESPONSIVE ─── */
+@media(max-width:900px){ .showreel-grid{grid-template-columns:1fr!important} #proceso .section-inner>div{grid-template-columns:1fr!important} }
+html.js-ready .cursor-wrap{display:block}
 @media(max-width:900px){
   .hero-split{grid-template-columns:1fr}
   .hero-left{padding:140px 24px 100px}
@@ -301,10 +308,11 @@ footer::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1
   <div class="nav-inner">
     <a href="#" class="nav-logo">Oscar <span>Lugo</span></a>
     <div class="nav-links">
-      <a href="#showreel-link">Showreel<span class="nav-hover-line"></span></a>
+      <a href="#showreel">Showreel<span class="nav-hover-line"></span></a>
       <a href="#trabajos">Trabajos<span class="nav-hover-line"></span></a>
       <a href="#servicios">Servicios<span class="nav-hover-line"></span></a>
-      <a href="#about">Sobre m&iacute;<span class="nav-hover-line"></span></a>
+      <a href="sobre-mi.html">Sobre mí<span class="nav-hover-line"></span></a>
+      <a href="recursos/index.html">Recursos<span class="nav-hover-line"></span></a>
       <a href="#contacto" class="nav-cta">Contacto</a>
     </div>
     <button class="nav-hamburger" id="hamburger" aria-label="Men&uacute;">☰</button>
@@ -324,19 +332,30 @@ footer::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1
     <div class="hero-grain"></div>
     <div class="hero-split">
       <div class="hero-left">
-        <div class="hero-label" data-split>(Bogot&aacute;, Colombia)</div>
+        <div class="hero-label" data-split>Bogot&aacute;, Colombia — Remoto LATAM</div>
         <h1 id="heroTitle">
-          <span class="line"><span>Video que</span></span>
-          <span class="line"><span>conecta <span class="accent">marcas</span></span></span>
+          <span class="line"><span>Video que hace</span></span>
+          <span class="line"><span>crecer tu <span class="accent">marca</span></span></span>
         </h1>
-        <p>Editor de video y creador de contenido con +4 a&ntilde;os transformando ideas en piezas visuales que generan impacto real. Trabajo con <a href="#servicios" style="color:var(--accent);text-decoration:none;font-weight:500">Dreamscape</a>, fusionando edici&oacute;n profesional con inteligencia artificial para proyectos de mayor escala.</p>
+        <p>Editor de video para <strong style="color:var(--text);font-weight:500">marcas, creadores y negocios</strong> que necesitan Reels y contenido que retiene, genera alcance y ayuda a vender. <span style="color:var(--text2)">Premiere + After Effects + IA</span> con entrega rápida y narrativa estratégica. Highway 43 / Dreamscape.</p>
         <div class="hero-actions">
           <a href="#trabajos" class="btn btn-primary">Ver trabajos</a>
-          <a href="#contacto" class="btn btn-outline"><span>Contacto</span></a>
+          <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20tu%20portfolio%20y%20quiero%20cotizar" target="_blank" class="btn btn-outline"><span>WhatsApp directo</span></a>
+        </div>
+        <div class="hero-proof" style="margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3)">
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block"></span>Respuesta &lt;24h</span>
+          <span>• Entrega 48–72h</span>
+          <span>• 30+ proyectos</span>
         </div>
       </div>
       <div class="hero-right">
-        <div class="hero-visual"><div class="hero-visual-line"></div></div>
+        <div class="hero-visual">
+          <div class="hero-visual-line"></div>
+          <div class="hero-right-card" style="position:absolute;bottom:32px;left:32px;right:32px;background:var(--card);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:4px;padding:18px 20px;display:flex;justify-content:space-between;gap:16px;z-index:2;transition:all .5s var(--ease-power)" data-reveal>
+            <div><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--accent);margin-bottom:4px">HIGHWAY 43</div><div style="font-size:12px;color:var(--text2);line-height:1.5;font-weight:300">Edición precisa + storytelling que funciona, no solo que se ve bien.</div></div>
+            <div style="text-align:right;flex-shrink:0"><div style="font-size:22px;font-weight:700;letter-spacing:-.03em">4+<span style="font-size:10px;font-weight:300;color:var(--text3)"> AÑOS</span></div><div style="font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:1px">BOGOTÁ · REMOTO</div></div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="hero-scroll" aria-hidden="true">SCROLL<span class="hero-scroll-line"></span></div>
@@ -352,31 +371,44 @@ footer::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1
 
   <div class="section-divider" id="showreel-link"></div>
 
-  <section class="showreel-section" id="showreel" onclick="window.open('https://www.behance.net/gallery/246797387/Showreel-2026-Video-Editor-para-Marcas-y-Social-Media','_blank')">
-    <div class="showreel-bg"></div>
-    <div class="showreel-inner">
-      <div class="showreel-play-wrap">
-        <div class="showreel-play">▶</div>
-        <div class="showreel-play-ring"></div>
+  <section class="section section-projects" id="showreel" style="padding:100px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:linear-gradient(90deg,rgba(214,0,1,.04),transparent 50%,rgba(214,0,1,.03))">
+    <div class="section-inner" style="padding:0 24px">
+      <div class="section-header" data-reveal style="margin-bottom:32px">
+        <div class="section-label">Showreel — Selección curada</div>
+        <h2>3 piezas clave <span class="light">para empezar</span></h2>
+        <p>Showreel completo en edición. Mientras tanto, estas 3 piezas muestran el rango: ritmo, storytelling y sistema visual. Mismo estilo que el resto del portfolio.</p>
       </div>
-      <div class="showreel-text">
-        <div class="showreel-title">SHOWREEL <span>2026</span></div>
-        <div class="showreel-coming">COMING SOON</div>
+      <div class="projects-grid" data-reveal style="margin-top:0;grid-template-columns:repeat(3,1fr)">
+        <a href="https://www.behance.net/gallery/246797387/Showreel-2026-Video-Editor-para-Marcas-y-Social-Media" target="_blank" class="project-card" style="text-decoration:none;color:inherit">
+          <div class="project-thumb"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/6e67cc246797387.Y3JvcCw5MjAsNzIwLDAsMA.png" alt="Showreel 2026 - compilado de mejores trabajos" loading="lazy"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;box-shadow:0 8px 24px rgba(214,0,1,.4);z-index:1">▶</span></div>
+          <div class="project-card-body"><h4>Showreel 2026 · 60s</h4><span class="project-card-cat">Video · Compilado</span><div class="project-card-result">Compilado de ritmo y narrativa — apertura para clientes nuevos.</div></div>
+        </a>
+        <a href="https://www.behance.net/gallery/201723559/Reels-de-Alto-Impacto-Edicion-para-Instagram-y-TikTok" target="_blank" class="project-card" style="text-decoration:none;color:inherit">
+          <div class="project-thumb"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/b52bc2201723559.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png" alt="Reels de Alto Impacto - edición para Instagram y TikTok" loading="lazy"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;z-index:1">▶</span></div>
+          <div class="project-card-body"><h4>Reels Alto Impacto</h4><span class="project-card-cat">Video · Orgánico</span><div class="project-card-result">Ganchos 2s + subtítulos palabra por palabra. Formato replicable.</div></div>
+        </a>
+        <a href="https://www.behance.net/gallery/193273925/Diseno-para-Redes-Sociales-Piezas-Visuales-para-Marca" target="_blank" class="project-card" style="text-decoration:none;color:inherit">
+          <div class="project-thumb"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/ae9088193273925.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png" alt="Diseño para redes sociales - piezas visuales coordinadas" loading="lazy"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;z-index:1">▶</span></div>
+          <div class="project-card-body"><h4>Diseño Redes</h4><span class="project-card-cat">Diseño · Sistema</span><div class="project-card-result">Feed coordinado — carruseles y plantillas con sistema visual.</div></div>
+        </a>
       </div>
+      <div style="text-align:center;margin-top:20px"><a href="https://www.behance.net/highway43" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border:1px solid var(--border);border-radius:100px;color:var(--text2);text-decoration:none;font-size:10px;letter-spacing:1px;text-transform:uppercase">Ver todo en Behance →</a></div>
     </div>
-    <div class="showreel-line"></div>
   </section>
 
   <section class="section section-projects" id="trabajos">
     <div class="section-inner">
       <div class="section-header" data-reveal>
-        <div class="section-label">(Portfolio)</div>
+        <div class="section-label">(Portfolio — 6 seleccionados)</div>
         <h2>Proyectos <span class="light">seleccionados</span></h2>
-        <p>Una selecci&oacute;n de trabajos en edici&oacute;n de video, dise&ntilde;o visual y branding.</p>
+        <p>Trabajos con contexto: objetivo, rol y resultado. Cada uno se puede abrir como mini caso sin salir de la home.</p>
       </div>
     </div>
     <div class="projects-grid" id="projectsGrid"></div>
-    <div style="text-align:center;margin-top:32px"><a href="https://www.behance.net/highway43" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border:1px solid var(--border);border-radius:100px;color:var(--text2);text-decoration:none;font-size:10px;font-weight:400;letter-spacing:1px;text-transform:uppercase;transition:all .4s var(--ease-power)">Ver todos en Behance <span style="font-size:14px">→</span></a></div>
+    <div style="text-align:center;margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="https://www.behance.net/highway43" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border:1px solid var(--border);border-radius:100px;color:var(--text2);text-decoration:none;font-size:10px;font-weight:400;letter-spacing:1px;text-transform:uppercase;transition:all .4s var(--ease-power)">Ver todos en Behance <span style="font-size:14px">→</span></a>
+      <a href="#contacto" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--accent);color:#fff;border-radius:100px;text-decoration:none;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase">¿Proyecto similar? Hablemos</a>
+    </div>
   </section>
 
   <div class="section-divider"></div>
@@ -395,9 +427,10 @@ footer::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1
         <div class="service-item" data-service>
           <div class="service-spacer"></div>
           <div class="service-card">
-            <div class="service-num">01</div>
+            <div class="service-num">01 — REELS & SHORT-FORM</div>
             <h3>Edici&oacute;n de Reel</h3>
-            <p>Reels para Instagram y TikTok con ritmo, storytelling y tendencias. Optimizados para alcance org&aacute;nico.</p>
+            <p>Para marcas y creadores que necesitan retener y crecer en Instagram / TikTok. Ritmo, ganchos de 2s, subtítulos y storytelling con tendencias.</p>
+            <ul style="margin:0 0 16px 16px;font-size:12px;color:var(--text2);line-height:1.7;font-weight:300"><li>Qué incluye: corte, subtítulos dinámicos, portada, 1 revisión</li><li>Para quién: marcas, infoproductores, creators</li><li>Entrega: 48–72h · Formato 9:16 optimizado</li></ul>
             <span class="service-price">Desde $40 USD <span class="cop">/ $168,000 COP</span></span>
           </div>
           <div class="service-dot"></div>
@@ -406,9 +439,10 @@ footer::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1
         <div class="service-item" data-service>
           <div class="service-spacer"></div>
           <div class="service-card">
-            <div class="service-num">02</div>
+            <div class="service-num">02 — BRANDING</div>
             <h3>Identidad Visual</h3>
-            <p>Logotipos, paletas, tipograf&iacute;a &mdash; identidades completas que comunican la esencia de tu marca.</p>
+            <p>Logotipo, paleta, tipografía y sistema visual completo para que tu marca se vea coherente y memorable en todo punto de contacto.</p>
+            <ul style="margin:0 0 16px 16px;font-size:12px;color:var(--text2);line-height:1.7;font-weight:300"><li>Qué incluye: logo + variantes, paleta, tipografía, mini manual</li><li>Para quién: emprendimientos y marcas en relanzamiento</li><li>Entrega: 5–7 días · Archivos editables</li></ul>
             <span class="service-price">Desde $100 USD <span class="cop">/ $420,000 COP</span></span>
           </div>
           <div class="service-dot"></div>
@@ -417,9 +451,10 @@ footer::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1
         <div class="service-item" data-service>
           <div class="service-spacer"></div>
           <div class="service-card">
-            <div class="service-num">03</div>
+            <div class="service-num">03 — CONTENIDO MENSUAL</div>
             <h3>Pack Mensual Redes</h3>
-            <p>Contenido recurrente para redes sociales: reels, carruseles, historias y piezas gr&aacute;ficas coordinadas.</p>
+            <p>Contenido recurrente sin que tengas que perseguir a nadie. Reels + carruseles + historias con línea editorial coordinada.</p>
+            <ul style="margin:0 0 16px 16px;font-size:12px;color:var(--text2);line-height:1.7;font-weight:300"><li>Qué incluye: 8–12 piezas/mes, calendario, copies base</li><li>Para quién: negocios que quieren constancia</li><li>Plan: mensual, sin permanencia · Revisión semanal</li></ul>
             <span class="service-price">Desde $150 USD/mes <span class="cop">/ $630,000 COP/mes</span></span>
           </div>
           <div class="service-dot"></div>
@@ -434,11 +469,13 @@ footer::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1
     <div class="section-inner">
       <div class="about-grid">
         <div class="about-text" data-reveal>
-          <div class="about-label">(Sobre m&iacute;)</div>
+          <div class="about-label">(Sobre m&iacute; — Highway 43)</div>
           <h2>Oscar Lugo &mdash; <span class="light">Highway</span><span class="accent">43</span></h2>
-          <p>Desde 2018 vengo trabajando con marcas, agencias y proyectos educativos para crear piezas visuales que realmente conectan. Mi enfoque combina edici&oacute;n precisa con narrativa estrat&eacute;gica.</p>
-          <p>No se trata solo de que se vea bien &mdash; se trata de que <strong>funcione</strong>. Uso Premiere, After Effects y herramientas de IA para entregar resultados r&aacute;pidos sin sacrificar calidad.</p>
+          <p>Editor de video y creador de contenido en <strong>Bogotá, Colombia</strong> (remoto LATAM). Desde 2018 trabajo con <strong>marcas, agencias y proyectos educativos</strong> para crear piezas que no solo se ven bien, sino que <strong>funcionan</strong>: retienen, explican y ayudan a vender.</p>
+          <p>Mi enfoque es <strong>edición precisa + narrativa estratégica</strong>. Trabajo en <strong>Premiere + After Effects</strong> y uso <strong>IA</strong> para acelerar sin sacrificar criterio. Entregas en 48–72h, una revisión incluida y comunicación directa por WhatsApp.</p>
+          <p style="font-size:12px;color:var(--text3)">Clientes: emprendimientos, marcas personales y agencias que necesitan constancia en Reels sin perder calidad. Si buscas humo, no soy tu editor. Si buscas alguien que entienda tu negocio y te dé piezas listas para publicar, hablemos.</p>
           <div class="about-links">
+            <a href="sobre-mi.html">Sobre mí completo →</a>
             <a href="https://www.behance.net/highway43" target="_blank">Behance <span class="link-arrow">↗</span></a>
             <a href="https://www.linkedin.com/in/oscar-lugo-8984b21bb/" target="_blank">LinkedIn <span class="link-arrow">↗</span></a>
             <a href="mailto:latamdreamscape@gmail.com">Email <span class="link-arrow">↗</span></a>
@@ -465,56 +502,93 @@ footer::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1
       <div class="section-header" data-reveal>
         <div class="section-label">(Contacto)</div>
         <h2>Trabajemos <span class="light">juntos</span></h2>
-        <p>&iquest;Ten&eacute;s un proyecto en mente? Contame de qu&eacute; se trata y te armo una propuesta.</p>
+        <p>¿Tenés un proyecto en mente? Contame en 2 líneas qué necesitas y te armo una propuesta sin compromiso.</p>
       </div>
       <div class="contact-grid">
         <div class="contact-info" data-reveal>
           <h3><span>Conectemos</span></h3>
-          <p>Respondo en menos de 24 horas. Tambi&eacute;n pod&eacute;s escribirme directo a WhatsApp o email.</p>
+          <p>Respondo en <strong style="color:var(--text)">menos de 24 horas</strong>. Después de escribirme: te respondo con preguntas clave → propuesta + tiempos → agendamos call de 15 min si hace falta.</p>
           <div class="contact-list">
             <a href="mailto:latamdreamscape@gmail.com" class="contact-item"><span class="ci-icon">✉</span>latamdreamscape@gmail.com<span class="ci-arrow">→</span></a>
             <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20tu%20portfolio" target="_blank" class="contact-item"><span class="ci-icon">💬</span>+57 301 182 2651<span class="ci-arrow">→</span></a>
             <a href="https://www.linkedin.com/in/oscar-lugo-8984b21bb/" target="_blank" class="contact-item"><span class="ci-icon">in</span>LinkedIn<span class="ci-arrow">→</span></a>
             <a href="https://www.behance.net/highway43" target="_blank" class="contact-item"><span class="ci-icon">Be</span>Behance<span class="ci-arrow">→</span></a>
           </div>
+          <p style="font-size:11px;color:var(--text3);margin-top:16px;line-height:1.6">¿Prefieres WhatsApp? Es la vía más rápida. Menciona: tipo de proyecto + deadline.</p>
         </div>
-        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xjkyenov" method="POST" data-reveal>
-          <div class="form-head">Enviar mensaje</div>
-          <input type="text" name="name" placeholder="Tu nombre" required>
-          <input type="email" name="email" placeholder="Tu email" required>
-          <input type="text" name="project" placeholder="Tipo de proyecto (Reel / Branding / Pack redes)">
-          <textarea name="message" placeholder="Contame de qu&eacute; se trata tu proyecto..." required></textarea>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xjkyenov" method="POST" data-reveal novalidate>
+          <div class="form-head">Enviar mensaje — respuesta &lt;24h</div>
+          <label for="cf-name" style="position:absolute;left:-9999px">Tu nombre</label>
+          <input id="cf-name" type="text" name="name" placeholder="Tu nombre" required autocomplete="name">
+          <label for="cf-email" style="position:absolute;left:-9999px">Tu email</label>
+          <input id="cf-email" type="email" name="email" placeholder="Tu email" required autocomplete="email">
+          <label for="cf-project" style="position:absolute;left:-9999px">Tipo de proyecto</label>
+          <input id="cf-project" type="text" name="project" placeholder="Tipo de proyecto (Reel / Branding / Pack redes)" autocomplete="off">
+          <label for="cf-message" style="position:absolute;left:-9999px">Mensaje</label>
+          <textarea id="cf-message" name="message" placeholder="Contame en 2–3 líneas: qué necesitas, para qué plataforma y cuándo lo necesitas..." required></textarea>
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
           <button type="submit">Enviar mensaje</button>
-          <div id="form-feedback"></div>
+          <div id="form-feedback" role="status" aria-live="polite"></div>
+          <p style="font-size:10px;color:var(--text3);margin-top:4px">Al enviar aceptas ser contactado para responder a tu solicitud. Ver <a href="privacidad.html" style="color:var(--accent)">privacidad</a>.</p>
         </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO + FAQ — misma estética editorial, sin romper -->
+  <section class="section" id="proceso" style="padding:100px 24px;border-top:1px solid var(--border)">
+    <div class="section-inner" style="max-width:1100px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
+        <div data-reveal>
+          <div class="section-label" style="margin-bottom:12px">Proceso — 3 pasos</div>
+          <h3 style="font-family:var(--font-display);font-size:clamp(22px,2.5vw,32px);font-weight:600;letter-spacing:-.04em;text-transform:uppercase;margin-bottom:16px;line-height:1">Simple, rápido y <span style="color:var(--accent)">sin vueltas</span></h3>
+          <p style="color:var(--text2);font-size:13px;line-height:1.7;font-weight:300;margin-bottom:24px;max-width:440px">Mismo flujo que uso con todos los clientes. Sin reuniones eternas.</p>
+          <div style="display:flex;flex-direction:column;gap:1px;background:var(--border)">
+            <div style="display:flex;gap:16px;padding:18px 20px;background:var(--bg)"><span style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-family:var(--font-mono)">1</span><div><strong style="font-size:13px;letter-spacing:-.01em">Brief de 15 min</strong><p style="font-size:12px;color:var(--text2);margin:4px 0 0;font-weight:300">Objetivo, referentes y deadline. Te propongo ruta y precio cerrado.</p></div></div>
+            <div style="display:flex;gap:16px;padding:18px 20px;background:var(--bg)"><span style="width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-family:var(--font-mono)">2</span><div><strong style="font-size:13px;letter-spacing:-.01em">Edición</strong><p style="font-size:12px;color:var(--text2);margin:4px 0 0;font-weight:300">Corte, ritmo, subtítulos y color. Primera entrega en 48–72h.</p></div></div>
+            <div style="display:flex;gap:16px;padding:18px 20px;background:var(--bg)"><span style="width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-family:var(--font-mono)">3</span><div><strong style="font-size:13px;letter-spacing:-.01em">Entrega</strong><p style="font-size:12px;color:var(--text2);margin:4px 0 0;font-weight:300">Revisión incluida, archivos finales listos para publicar. Soporte por WhatsApp.</p></div></div>
+          </div>
+        </div>
+        <div data-reveal class="contact-form" style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:28px">
+          <div class="section-label" style="margin-bottom:12px">FAQ — Rápido</div>
+          <details style="padding:14px 0;border-bottom:1px solid var(--border)"><summary style="cursor:pointer;font-size:13px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)">¿Cuánto tardas? <span style="color:var(--accent);font-size:16px">+</span></summary><p style="font-size:12px;color:var(--text2);margin:10px 0 0;font-weight:300">Reels: 48–72h. Identidad: 5–7 días. Pack mensual: entregas semanales.</p></details>
+          <details style="padding:14px 0;border-bottom:1px solid var(--border)"><summary style="cursor:pointer;font-size:13px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)">¿Qué necesito enviarte? <span style="color:var(--accent);font-size:16px">+</span></summary><p style="font-size:12px;color:var(--text2);margin:10px 0 0;font-weight:300">Bruto en vertical/horizontal, logo si tienes, y 2–3 referentes.</p></details>
+          <details style="padding:14px 0;border-bottom:1px solid var(--border)"><summary style="cursor:pointer;font-size:13px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)">¿Incluye revisiones? <span style="color:var(--accent);font-size:16px">+</span></summary><p style="font-size:12px;color:var(--text2);margin:10px 0 0;font-weight:300">Sí, 1 revisión incluida por pieza. Extras se cotizan según alcance.</p></details>
+          <details style="padding:14px 0"><summary style="cursor:pointer;font-size:13px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)">¿Cómo pago? <span style="color:var(--accent);font-size:16px">+</span></summary><p style="font-size:12px;color:var(--text2);margin:10px 0 0;font-weight:300">50% al inicio, 50% al entregar. PayPal / Nequi / transferencia. Factura disponible.</p></details>
+        </div>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="footer-inner">
-    <div class="footer-left">
-      <span class="footer-brand">Oscar <span>Lugo</span> &mdash; Highway<span>43</span></span>
-      <span class="footer-mono">&copy; 2026 &middot; Bogot&aacute;, Colombia</span>
+  <div class="footer-inner" style="flex-direction:column;align-items:stretch;gap:32px">
+    <div style="display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr;gap:32px">
+      <div>
+        <span class="footer-brand">Oscar <span>Lugo</span> &mdash; Highway<span>43</span></span>
+        <p style="font-size:11px;color:var(--text3);line-height:1.6;margin-top:8px;max-width:280px">Editor de video en Bogotá. Reels, branding y contenido mensual para marcas y creadores. Parte de Dreamscape.</p>
+      </div>
+      <div><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--text);margin-bottom:12px">NAVEGACIÓN</div><div style="display:flex;flex-direction:column;gap:6px"><a href="#trabajos">Trabajos</a><a href="#servicios">Servicios</a><a href="sobre-mi.html">Sobre mí</a><a href="recursos/index.html">Recursos</a></div></div>
+      <div><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--text);margin-bottom:12px">LEGAL</div><div style="display:flex;flex-direction:column;gap:6px"><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a><a href="terminos.html">Términos</a><a href="#contacto">Contacto</a></div></div>
+      <div><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--text);margin-bottom:12px">CONECTA</div><div style="display:flex;flex-direction:column;gap:6px"><a href="https://www.behance.net/highway43" target="_blank">Behance</a><a href="https://www.linkedin.com/in/oscar-lugo-8984b21bb/" target="_blank">LinkedIn</a><a href="https://wa.me/573011822651" target="_blank">WhatsApp</a><a href="mailto:latamdreamscape@gmail.com">Email</a></div></div>
     </div>
-    <div class="footer-right">
-      <a href="https://www.behance.net/highway43" target="_blank">Behance</a>
-      <a href="https://www.linkedin.com/in/oscar-lugo-8984b21bb/" target="_blank">LinkedIn</a>
-      <a href="https://wa.me/573011822651" target="_blank">WhatsApp</a>
-      <a href="mailto:latamdreamscape@gmail.com">Email</a>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--border)">
+      <span class="footer-mono">&copy; 2026 Oscar Lugo — Highway 43 · Bogotá, Colombia</span>
+      <span style="font-family:var(--font-mono);font-size:10px;color:var(--text3)">Hecho con criterio, no con plantilla. · <a href="privacidad.html" style="color:var(--text3)">Privacidad</a></span>
     </div>
   </div>
 </footer>
 
 <script defer data-domain="oscarlugocar-lang.github.io/portfolio" src="https://plausible.io/js/script.js"></script>
 <script>
-// ─── PROJECTS — GRID ───
+// ─── PROJECTS — GRID (6 con micro-caso, conserva identidad + añade valor AdSense) ───
 const projects = [
-  { title:"Showreel 2026", cat:"Video", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/6e67cc246797387.Y3JvcCw5MjAsNzIwLDAsMA.png", url:"https://www.behance.net/gallery/246797387/Showreel-2026-Video-Editor-para-Marcas-y-Social-Media", result:"Showreel profesional compilando los mejores trabajos del a&ntilde;o" },
-  { title:"Reels de Alto Impacto", cat:"Video", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/b52bc2201723559.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/gallery/201723559/Reels-de-Alto-Impacto-Edicion-para-Instagram-y-TikTok", result:"Editorial de moda y lifestyle con alcance org&aacute;nico" },
-  { title:"Reel Publicitario", cat:"Video", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/d3dc17201723443.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/gallery/201723443/Reel-Publicitario-para-Redes-Sociales-Marca-y-Alcance", result:"Campa&ntilde;a para marca con enfoque en conversi&oacute;n" },
-  { title:"Dise&ntilde;o para Redes", cat:"Dise&ntilde;o", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/ae9088193273925.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/gallery/193273925/Diseno-para-Redes-Sociales-Piezas-Visuales-para-Marca", result:"Piezas visuales coordinadas para presencia de marca" },
+  { title:"Showreel 2026", cat:"Video · Compilado", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/6e67cc246797387.Y3JvcCw5MjAsNzIwLDAsMA.png", url:"https://www.behance.net/gallery/246797387/Showreel-2026-Video-Editor-para-Marcas-y-Social-Media", result:"<strong>Objetivo:</strong> mostrar rango en 60s. <strong>Rol:</strong> edición + ritmo. <strong>Resultado:</strong> reel de apertura para clientes nuevos." },
+  { title:"Reels de Alto Impacto", cat:"Video · TikTok / IG", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/b52bc2201723559.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/gallery/201723559/Reels-de-Alto-Impacto-Edicion-para-Instagram-y-TikTok", result:"<strong>Objetivo:</strong> alcance orgánico. <strong>Rol:</strong> ganchos 2s + subtítulos. <strong>Resultado:</strong> formato replicable para marca." },
+  { title:"Reel Publicitario", cat:"Video · Ads", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/d3dc17201723443.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/gallery/201723443/Reel-Publicitario-para-Redes-Sociales-Marca-y-Alcance", result:"<strong>Objetivo:</strong> conversión. <strong>Rol:</strong> guion + corte para paid. <strong>Resultado:</strong> pieza lista para Meta Ads." },
+  { title:"Diseño para Redes", cat:"Diseño · Sistema", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/ae9088193273925.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/gallery/193273925/Diseno-para-Redes-Sociales-Piezas-Visuales-para-Marca", result:"<strong>Objetivo:</strong> coherencia visual. <strong>Rol:</strong> carruseles + plantillas. <strong>Resultado:</strong> feed coordinado." },
+  { title:"Identidad Highway 43", cat:"Branding · Dirección", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/ae9088193273925.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/highway43", result:"<strong>Objetivo:</strong> marca personal sólida. <strong>Rol:</strong> logo + paleta + tipografía. <strong>Resultado:</strong> sistema Highway 43." },
+  { title:"Pack Contenido Mensual", cat:"Contenido · Retainer", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/b52bc2201723559.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/highway43", result:"<strong>Objetivo:</strong> constancia sin fricción. <strong>Rol:</strong> 8–12 piezas/mes. <strong>Resultado:</strong> calendario + copies base." },
 ];
 var grid=document.getElementById('projectsGrid');
 projects.forEach(function(p){
@@ -524,33 +598,41 @@ projects.forEach(function(p){
   grid.appendChild(el);
 });
 
-// ─── LENIS SMOOTH SCROLL ───
+// ─── LENIS SMOOTH SCROLL (más fluido, se desactiva si la página es corta) ───
 var lenis;
-if(window.innerWidth>900){
-  lenis = new Lenis({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t))},wheelMultiplier:1,smoothWheel:true});
+var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(window.innerWidth>900 && !prefersReduced && document.body.scrollHeight > window.innerHeight + 200){
+  lenis = new Lenis({duration:0.85,easing:function(t){return 1 - Math.pow(1-t,3)},wheelMultiplier:0.9,smoothWheel:true,lerp:0.08});
   lenis.on('scroll',ScrollTrigger.update);
   gsap.ticker.add(function(t){lenis.raf(t*1000)});
 }
 
-// ─── CUSTOM CURSOR ───
+// ─── CUSTOM CURSOR (fix: no bloquea salida del navegador, se oculta al salir) ───
 (function(){
-  if(window.innerWidth<=900)return;
+  if(window.innerWidth<=900 || window.matchMedia('(hover: none)').matches) return;
   var dot=document.getElementById('cursorDot');
   var bubble=document.getElementById('cursorBubble');
   var wrap=document.getElementById('cursorWrap');
-  var mx=0,my=0,dotX=0,dotY=0;
-  document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});
+  if(!dot||!wrap) return;
+  var mx=window.innerWidth/2,my=window.innerHeight/2,dotX=mx,dotY=my, isOutside=true;
+  function showCursor(){ dot.style.opacity='1'; bubble.style.opacity='1'; isOutside=false; }
+  function hideCursor(){ dot.style.opacity='0'; bubble.style.opacity='0'; wrap.removeAttribute('data-cursor'); dot.classList.remove('is-lg'); isOutside=true; }
+  document.addEventListener('mousemove',function(e){ mx=e.clientX;my=e.clientY; if(isOutside) showCursor(); });
+  document.addEventListener('mouseleave', hideCursor);
+  document.addEventListener('mouseenter', showCursor);
+  // Escape con teclado también restaura cursor nativo
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') hideCursor(); });
   gsap.ticker.add(function(){
-    dotX+=(mx-dotX)*.15;
-    dotY+=(my-dotY)*.15;
+    if(isOutside) return;
+    dotX+=(mx-dotX)*.18;
+    dotY+=(my-dotY)*.18;
     dot.style.left=dotX+'px';dot.style.top=dotY+'px';
     bubble.style.left=mx+'px';bubble.style.top=(my-22)+'px';
   });
-  var hoverTargets=document.querySelectorAll('a,button,.project-card,.contact-item,.service-card,.showreel-section');
+  var hoverTargets=document.querySelectorAll('a,button,.project-card,.contact-item,.service-card');
   hoverTargets.forEach(function(el){
     el.addEventListener('mouseenter',function(){
       if(el.classList.contains('project-card')){wrap.setAttribute('data-cursor','active')}
-      else if(el.classList.contains('showreel-section')){wrap.setAttribute('data-cursor','active');document.getElementById('cursorText').textContent='Watch'}
       else{dot.classList.add('is-lg')}
     });
     el.addEventListener('mouseleave',function(){
@@ -558,6 +640,8 @@ if(window.innerWidth>900){
       dot.classList.remove('is-lg');
     });
   });
+  // Inicialmente oculto hasta primer movimiento
+  hideCursor();
 })();
 
 // ─── GSAP — HERO ───
@@ -657,6 +741,7 @@ window.addEventListener('scroll',function(){
   navInner.style.borderColor=s>60?'rgba(214,0,1,.25)':'rgba(255,255,255,.06)';
 },{passive:true});
 
+document.documentElement.classList.add('js-ready');
 // ─── REFRESH ───
 window.addEventListener('load',function(){
   if(lenis)lenis.raf(0);
