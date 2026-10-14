@@ -3,13 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dreamscape Productions | Estudio Audiovisual & Edición</title>
+  <title>Dreamscape Productions | Estudio Audiovisual, Edición de Alto Impacto & Flujos IA</title>
+  <meta name="description" content="Estudio de postproducción audiovisual y edición de alto impacto liderado por Oscar Lugo. Reels de alta retención, comerciales cinematográficos y automatización con IA. Bogotá, Colombia." />
   
+  <!-- Open Graph / Redes Sociales -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://oscarlugocar-lang.github.io/portfolio/" />
+  <meta property="og:title" content="Dreamscape Productions | Estudio Audiovisual & Edición de Retención" />
+  <meta property="og:description" content="No solo editamos videos. Diseñamos retención cinematográfica y escalabilidad para marcas y creadores." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80" />
+  <meta name="twitter:card" content="summary_large_image" />
+
   <!-- Tailwind CSS & Google Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   
-  <!-- Three.js para fondo interactivo -->
+  <!-- Three.js para fondo interactivo cinemático -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
   <style>
@@ -26,11 +37,15 @@
       overflow-x: hidden;
     }
 
-    h1, h2, h3, .font-display {
+    h1, h2, h3, h4, .font-display {
       font-family: 'Syne', sans-serif;
     }
 
-    /* Grano cinematográfico sutil */
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Grano cinematográfico analógico */
     .film-grain {
       position: fixed;
       inset: 0;
@@ -40,10 +55,11 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
     }
 
-    /* Tarjetas Glassmorphism + Spotlight */
+    /* Bento Cards con Glassmorphism Obsidian */
     .bento-card {
-      background: rgba(18, 18, 24, 0.65);
-      backdrop-filter: blur(16px);
+      background: rgba(15, 15, 22, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid rgba(255, 255, 255, 0.08);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
@@ -51,24 +67,30 @@
     }
 
     .bento-card:hover {
-      border-color: rgba(139, 92, 246, 0.5);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.2);
+      border-color: rgba(139, 92, 246, 0.55);
+      transform: translateY(-5px);
+      box-shadow: 0 24px 50px -15px rgba(139, 92, 246, 0.25);
     }
 
-    /* Gradiente de texto */
+    /* Gradientes */
     .text-gradient {
-      background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #22d3ee 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 40%, #a78bfa 70%, #22d3ee 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    /* Botón de filtro activo */
+    .text-gradient-cyan {
+      background: linear-gradient(135deg, #22d3ee 0%, #38bdf8 50%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Botones de filtro activo */
     .filter-btn.active {
       background: linear-gradient(135deg, #8b5cf6, #6d28d9);
       color: white;
       border-color: transparent;
-      box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+      box-shadow: 0 0 24px rgba(139, 92, 246, 0.45);
     }
 
     #bg-canvas {
@@ -80,162 +102,493 @@
       z-index: 0;
       pointer-events: none;
     }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #08080b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(139, 92, 246, 0.3);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(139, 92, 246, 0.6);
+    }
   </style>
 </head>
-<body class="antialiased selection:bg-violet-500 selection:text-white">
+<body class="antialiased selection:bg-violet-500 selection:text-white relative">
 
   <!-- Capa de grano de cine y Canvas 3D -->
   <div class="film-grain"></div>
   <canvas id="bg-canvas"></canvas>
 
   <!-- NAVBAR -->
-  <header class="fixed top-0 w-full z-30 border-b border-white/5 bg-[#08080b]/80 backdrop-blur-md">
+  <header class="fixed top-0 w-full z-30 border-b border-white/5 bg-[#08080b]/80 backdrop-blur-xl transition-all duration-300" id="main-header">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="text-xl font-bold font-display tracking-wider flex items-center gap-2">
-        <span class="w-3 h-3 rounded-full bg-violet-500 animate-pulse"></span>
-        DREAMSCAPE
+      <a href="#" class="text-xl font-extrabold font-display tracking-wider flex items-center gap-2 group">
+        <span class="w-3 h-3 rounded-full bg-violet-500 group-hover:scale-125 transition-transform duration-300 shadow-[0_0_12px_#8b5cf6]"></span>
+        <span class="tracking-widest">DREAMSCAPE</span>
+        <span class="text-xs px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-zinc-400 font-mono-code font-normal hidden sm:inline-block">STUDIO</span>
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
-        <a href="#portfolio" class="hover:text-white transition">Portafolio</a>
-        <a href="#servicios" class="hover:text-white transition">Servicios</a>
-        <a href="#proceso" class="hover:text-white transition">Flujo de Trabajo</a>
+
+      <!-- Menú Desktop -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+        <a href="#portfolio" class="hover:text-white transition duration-200">Portafolio</a>
+        <a href="#servicios" class="hover:text-white transition duration-200">Servicios</a>
+        <a href="#proceso" class="hover:text-white transition duration-200">Metodología</a>
+        <a href="#metricas" class="hover:text-white transition duration-200">Resultados</a>
+        <a href="sobre-mi.html" class="hover:text-white transition duration-200">Sobre Mí</a>
+        <a href="recursos/" class="hover:text-white transition duration-200">Artículos</a>
       </nav>
-      <a href="#contacto" class="px-5 py-2.5 rounded-full text-sm font-medium bg-white text-black hover:bg-violet-400 hover:text-white transition duration-300">
-        Cotizar Proyecto
-      </a>
+
+      <div class="hidden md:flex items-center gap-4">
+        <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20tu%20portafolio%20en%20Dreamscape%20y%20quiero%20cotizar%20un%20proyecto" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           class="px-5 py-2.5 rounded-full text-xs font-semibold bg-white text-black hover:bg-violet-400 hover:text-white transition duration-300 shadow-md flex items-center gap-2">
+          <span>Cotizar por WhatsApp</span>
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.203c.043.071.043.418-.101.823z"/></svg>
+        </a>
+      </div>
+
+      <!-- Botón móvil hamburguesa -->
+      <button id="mobile-menu-btn" class="md:hidden text-zinc-300 hover:text-white p-2" aria-label="Abrir menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menú móvil desplegable -->
+    <div id="mobile-menu" class="hidden md:hidden bg-[#0c0c12]/95 border-b border-white/10 px-6 py-6 space-y-4">
+      <a href="#portfolio" class="block text-zinc-300 hover:text-white font-medium py-1">Portafolio</a>
+      <a href="#servicios" class="block text-zinc-300 hover:text-white font-medium py-1">Servicios</a>
+      <a href="#proceso" class="block text-zinc-300 hover:text-white font-medium py-1">Metodología</a>
+      <a href="#metricas" class="block text-zinc-300 hover:text-white font-medium py-1">Resultados</a>
+      <a href="sobre-mi.html" class="block text-zinc-300 hover:text-white font-medium py-1">Sobre Mí</a>
+      <a href="recursos/" class="block text-zinc-300 hover:text-white font-medium py-1">Artículos & Guías</a>
+      <div class="pt-4 border-t border-white/10">
+        <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20tu%20portafolio%20en%20Dreamscape%20y%20quiero%20cotizar%20un%20proyecto" 
+           target="_blank" 
+           class="block w-full text-center py-3 rounded-full text-xs font-semibold bg-violet-600 text-white">
+          Cotizar por WhatsApp →
+        </a>
+      </div>
     </div>
   </header>
 
   <!-- HERO SECTION -->
   <section class="relative z-10 pt-36 pb-20 px-6 max-w-7xl mx-auto text-center">
-    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-xs font-medium mb-6">
-      <span>✦ Producción Audiovisual, Edición de Alto Impacto & Automatización IA</span>
+    <!-- Tagline animado -->
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-xs font-medium mb-8">
+      <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span>
+      <span>Producción Audiovisual • Edición de Retención • Automatización IA</span>
     </div>
-    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.08] max-w-4xl mx-auto mb-6">
-      No solo editamos videos.<br />
+
+    <!-- Titular Principal -->
+    <h1 class="text-5xl sm:text-6xl md:text-8xl font-black tracking-tight leading-[1.05] max-w-5xl mx-auto mb-8">
+      No solo editamos video.<br />
       <span class="text-gradient">Diseñamos retención.</span>
     </h1>
-    <p class="text-zinc-400 max-w-2xl mx-auto text-lg mb-10">
-      Transformamos ideas en piezas audiovisuales cinematográficas, contenido vertical de alta conversión y flujos de media automatizados para marcas y creadores.
+
+    <p class="text-zinc-400 max-w-2xl mx-auto text-base sm:text-lg md:text-xl mb-12 font-normal leading-relaxed">
+      Convertimos ideas en contenido visual cinematográfico, piezas de 9:16 con más del <span class="text-white font-semibold">+65% de retención</span> y flujos automatizados de media para marcas que buscan dominar su nicho.
     </p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="#portfolio" class="px-8 py-4 rounded-full font-semibold bg-violet-600 hover:bg-violet-500 text-white shadow-lg shadow-violet-600/30 transition flex items-center gap-2">
-        Ver Portafolio
+
+    <!-- CTAs de Conversión -->
+    <div class="flex flex-wrap justify-center items-center gap-4 mb-16">
+      <a href="#portfolio" class="px-8 py-4 rounded-full font-bold bg-violet-600 hover:bg-violet-500 text-white shadow-xl shadow-violet-600/30 hover:shadow-violet-600/50 transition-all duration-300 flex items-center gap-2 transform hover:-translate-y-0.5">
+        <span>Explorar Trabajos</span>
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
       </a>
-      <button onclick="openModal('Showreel Dreamscape 2026', 'Resumen de nuestros mejores proyectos de edición, VFX, color grading y producción comercial.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'Showreel Completo • Dirección & Postproducción')" class="px-8 py-4 rounded-full font-semibold border border-white/15 bg-white/5 hover:bg-white/10 text-white transition flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-cyan-400"></span> Reproducir Showreel (0:55)
+      <button onclick="openModal('Showreel Dreamscape 2026', 'Compilación de proyectos destacados: dirección de arte, pacing dinámico, diseño sonoro multicanal, corrección de color y VFX generativo.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'Showreel Oficial • 4K HDR • Audio 5.1')" 
+              class="px-8 py-4 rounded-full font-semibold border border-white/15 bg-white/5 hover:bg-white/10 text-white transition-all duration-300 flex items-center gap-2.5 backdrop-blur-md">
+        <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse"></span>
+        <span>Ver Showreel (0:55)</span>
       </button>
+    </div>
+
+    <!-- Quick Stats en Hero -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto pt-6 border-t border-white/5 text-left">
+      <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+        <p class="text-2xl md:text-3xl font-extrabold text-white font-display">+4 Años</p>
+        <p class="text-xs text-zinc-500 uppercase tracking-wider mt-1">Experiencia en Post</p>
+      </div>
+      <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+        <p class="text-2xl md:text-3xl font-extrabold text-cyan-400 font-display">+65%</p>
+        <p class="text-xs text-zinc-500 uppercase tracking-wider mt-1">Retención Promedio</p>
+      </div>
+      <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+        <p class="text-2xl md:text-3xl font-extrabold text-violet-400 font-display">+30</p>
+        <p class="text-xs text-zinc-500 uppercase tracking-wider mt-1">Proyectos Entregados</p>
+      </div>
+      <div class="p-4 rounded-xl bg-white/[0.02] border border-white/5">
+        <p class="text-2xl md:text-3xl font-extrabold text-emerald-400 font-display">&lt;24h</p>
+        <p class="text-xs text-zinc-500 uppercase tracking-wider mt-1">Respuesta y Soporte</p>
+      </div>
     </div>
   </section>
 
-  <!-- SECCIÓN PORTAFOLIO (BENTO GRID) -->
-  <section id="portfolio" class="relative z-10 py-20 px-6 max-w-7xl mx-auto">
+  <!-- SECCIÓN PORTAFOLIO (BENTO GRID MEJORADO) -->
+  <section id="portfolio" class="relative z-10 py-24 px-6 max-w-7xl mx-auto">
     
     <!-- Encabezado y Filtros -->
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
       <div>
-        <p class="text-violet-400 text-sm font-semibold tracking-widest uppercase mb-2">Selección de Trabajos</p>
-        <h2 class="text-3xl md:text-5xl font-bold">Portafolio Destacado</h2>
+        <p class="text-violet-400 text-xs font-bold tracking-widest uppercase mb-2">Trabajo Seleccionado</p>
+        <h2 class="text-3xl md:text-5xl font-black">Casos Destacados</h2>
+        <p class="text-sm text-zinc-400 mt-2 max-w-md">Haz clic sobre cualquier proyecto para abrir la ficha técnica, desglose de herramientas y vista en alta resolución.</p>
       </div>
       
       <!-- Botones de Filtro -->
       <div class="flex flex-wrap gap-2" id="filter-container">
-        <button class="filter-btn active px-4 py-2 rounded-full text-xs font-medium border border-white/10 bg-white/5 text-zinc-300 transition" data-filter="all">Todos</button>
-        <button class="filter-btn px-4 py-2 rounded-full text-xs font-medium border border-white/10 bg-white/5 text-zinc-300 transition" data-filter="comercial">Comerciales & Marcas</button>
-        <button class="filter-btn px-4 py-2 rounded-full text-xs font-medium border border-white/10 bg-white/5 text-zinc-300 transition" data-filter="vertical">Reels / Short-Form (9:16)</button>
-        <button class="filter-btn px-4 py-2 rounded-full text-xs font-medium border border-white/10 bg-white/5 text-zinc-300 transition" data-filter="ai">VFX & Flujos IA</button>
+        <button class="filter-btn active px-4 py-2 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-zinc-300 transition" data-filter="all">Todos (6)</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-zinc-300 transition" data-filter="comercial">Comerciales & Marcas</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-zinc-300 transition" data-filter="vertical">Reels / 9:16 Virales</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-zinc-300 transition" data-filter="ai">VFX & Flujos IA</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-xs font-semibold border border-white/10 bg-white/5 text-zinc-300 transition" data-filter="longform">YouTube / Docs</button>
       </div>
     </div>
 
     <!-- BENTO GRID -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]" id="portfolio-grid">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[280px]" id="portfolio-grid">
 
-      <!-- ITEM 1: Destacado Principal (Ocupa 2 columnas en Desktop) -->
+      <!-- ITEM 1: Destacado Principal (2 cols) -->
       <article class="bento-card rounded-2xl md:col-span-2 group cursor-pointer" data-category="comercial"
-               onclick="openModal('Campaña Comercial Cyberpunk', 'Edición rítmica, diseño sonoro inmersivo y etalonaje (Color Grading) para lanzamiento de producto tecnológico. +62% de retención promedio.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'Color Grading • Sound Design • Edición')">
-        <video class="w-full h-full object-cover opacity-65 group-hover:opacity-100 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80">
+               onclick="openModal('Lanzamiento Disruptivo de Producto Tech', 'Montaje con sincronización rítmica precisa, etalonaje (Color Grading en DaVinci Resolve) y micro-diseño sonoro para captar la atención de inversores y consumidores en los primeros 3 segundos.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'Comercial Tech • Color Grading • SFX • +68% Retención')">
+        <video class="w-full h-full object-cover opacity-60 group-hover:opacity-95 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80">
           <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-6 flex flex-col justify-end">
-          <div class="flex gap-2 mb-2">
-            <span class="px-2.5 py-1 text-[11px] font-medium bg-violet-600/80 text-white rounded-md backdrop-blur-sm">Spot Comercial</span>
-            <span class="px-2.5 py-1 text-[11px] font-medium bg-white/10 text-zinc-200 rounded-md backdrop-blur-sm">Color Grading + SFX</span>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent p-6 sm:p-8 flex flex-col justify-end">
+          <div class="flex flex-wrap gap-2 mb-2">
+            <span class="px-2.5 py-1 text-[11px] font-semibold bg-violet-600/90 text-white rounded-md backdrop-blur-sm">Spot Comercial</span>
+            <span class="px-2.5 py-1 text-[11px] font-semibold bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 rounded-md backdrop-blur-sm">DaVinci Color</span>
           </div>
-          <h3 class="text-2xl font-bold text-white group-hover:text-violet-300 transition">Campaña Lanzamiento Tech</h3>
-          <p class="text-xs text-zinc-300 mt-1 line-clamp-1">Narrativa dinámica y diseño sonoro envolvente (+62% retención en los primeros 5s).</p>
+          <h3 class="text-2xl sm:text-3xl font-extrabold text-white group-hover:text-violet-300 transition">Lanzamiento Disruptivo Tech</h3>
+          <p class="text-xs sm:text-sm text-zinc-300 mt-1 line-clamp-1">Narrativa cinematográfica envolvente diseñada para maximizar conversión y recordación de marca.</p>
         </div>
       </article>
 
-      <!-- ITEM 2: Formato Vertical 9:16 (Ocupa 2 filas de alto) -->
+      <!-- ITEM 2: Formato Vertical 9:16 (2 filas de alto) -->
       <article class="bento-card rounded-2xl md:row-span-2 group cursor-pointer" data-category="vertical"
-               onclick="openModal('Reels Virales de Alta Retención', 'Edición dinámica con subtítulos animados, efectos visuales y ganchos visuales cada 2.5 segundos para maximizar alcance orgánico.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'Short-Form • Motion Graphics • Retención')">
-        <video class="w-full h-full object-cover opacity-65 group-hover:opacity-100 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80">
+               onclick="openModal('Reels de Retención Extrema (Formato 9:16)', 'Estructura psicológica de ganchos (Hooks) cada 2.5 segundos, subtítulos animados estilo kinetic typography, SFX diegéticos y zoom-ins rítmicos que evitan el scroll del usuario.', 'https://www.w3schools.com/html/mov_bbb.mp4', '9:16 Vertical • Hooks Psicológicos • Kinetic Captions • TikTok/Reels')">
+        <video class="w-full h-full object-cover opacity-60 group-hover:opacity-95 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80">
           <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
-          <div class="flex gap-2 mb-2">
-            <span class="px-2.5 py-1 text-[11px] font-medium bg-cyan-500/80 text-black font-semibold rounded-md">9:16 Vertical</span>
-            <span class="px-2.5 py-1 text-[11px] font-medium bg-white/10 text-zinc-200 rounded-md">Motion Captions</span>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent p-6 sm:p-8 flex flex-col justify-end">
+          <div class="flex flex-wrap gap-2 mb-2">
+            <span class="px-2.5 py-1 text-[11px] font-bold bg-cyan-500/90 text-black rounded-md">9:16 Vertical</span>
+            <span class="px-2.5 py-1 text-[11px] font-medium bg-white/10 text-zinc-200 rounded-md">Virales</span>
           </div>
-          <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition">Pack Reels & TikTok High-Retention</h3>
-          <p class="text-xs text-zinc-300 mt-1">Edición de ritmo rápido pensada para creadores y marcas personales.</p>
+          <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-cyan-300 transition">Packs Reels High-Retention</h3>
+          <p class="text-xs text-zinc-300 mt-1">Edición vertical dinámica creada para coaches, marcas personales y e-commerce.</p>
         </div>
       </article>
 
       <!-- ITEM 3: VFX & IA -->
       <article class="bento-card rounded-2xl group cursor-pointer" data-category="ai"
-               onclick="openModal('Pipeline Automatizado & Generación IA', 'Integración de visuales generativos, rotoscopia avanzada y automatización de contenido para escalar canales digitales.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'VFX • IA Generativa • Automatización')">
-        <video class="w-full h-full object-cover opacity-65 group-hover:opacity-100 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80">
+               onclick="openModal('Visuales Generativos & Compositing IA', 'Creación de fondos surreales, b-roll estilizado y transiciones imposibles integrando herramientas generativas avanzadas con After Effects y Mocha Pro.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'VFX Generativo • Rotoscopia IA • After Effects • Compositing')">
+        <video class="w-full h-full object-cover opacity-60 group-hover:opacity-95 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80">
           <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-6 flex flex-col justify-end">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent p-6 flex flex-col justify-end">
           <div class="flex gap-2 mb-2">
-            <span class="px-2.5 py-1 text-[11px] font-medium bg-fuchsia-600/80 text-white rounded-md">AI Workflow & VFX</span>
+            <span class="px-2.5 py-1 text-[11px] font-semibold bg-fuchsia-600/80 text-white rounded-md">AI Workflow</span>
           </div>
-          <h3 class="text-xl font-bold text-white group-hover:text-fuchsia-300 transition">Visuales Generativos & VFX</h3>
-          <p class="text-xs text-zinc-300 mt-1">Estética surrealista y flujos híbridos de postproducción.</p>
+          <h3 class="text-lg sm:text-xl font-bold text-white group-hover:text-fuchsia-300 transition">Visuales Híbridos & VFX</h3>
+          <p class="text-xs text-zinc-300 mt-1 line-clamp-1">Estética futurista y transiciones con pipelines de IA.</p>
         </div>
       </article>
 
       <!-- ITEM 4: YouTube / Documental -->
-      <article class="bento-card rounded-2xl group cursor-pointer" data-category="comercial"
-               onclick="openModal('Storytelling Documental para YouTube', 'Construcción narrativa tipo mini-documental con pacing cinematográfico, mapas animados y mezcla de audio profesional.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'Storytelling • YouTube Long-Form • Pacing')">
-        <video class="w-full h-full object-cover opacity-65 group-hover:opacity-100 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80">
+      <article class="bento-card rounded-2xl group cursor-pointer" data-category="longform"
+               onclick="openModal('Storytelling Documental para YouTube', 'Edición de formato extendido (10-25 min) manteniendo el AVD (Average View Duration) por encima de la media de la industria. Mapas 3D animados, soundscape orquestado y cortes narrativos estratégicos.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'YouTube Long-Form • Retención AVD • Motion Graphics • Soundscape')">
+        <video class="w-full h-full object-cover opacity-60 group-hover:opacity-95 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80">
           <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
         </video>
-        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-6 flex flex-col justify-end">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent p-6 flex flex-col justify-end">
           <div class="flex gap-2 mb-2">
-            <span class="px-2.5 py-1 text-[11px] font-medium bg-white/15 text-white rounded-md">Documental / YouTube</span>
+            <span class="px-2.5 py-1 text-[11px] font-semibold bg-emerald-600/80 text-white rounded-md">YouTube Pacing</span>
           </div>
-          <h3 class="text-xl font-bold text-white group-hover:text-violet-300 transition">Narrativa Documental & Pacing</h3>
-          <p class="text-xs text-zinc-300 mt-1">Edición de formato largo diseñada para mantener el AVD alto.</p>
+          <h3 class="text-lg sm:text-xl font-bold text-white group-hover:text-emerald-300 transition">Narrativa Documental</h3>
+          <p class="text-xs text-zinc-300 mt-1 line-clamp-1">Estructura cinematográfica pensada para retención sostenida.</p>
+        </div>
+      </article>
+
+      <!-- ITEM 5: Branding & Identidad de Marca -->
+      <article class="bento-card rounded-2xl group cursor-pointer" data-category="comercial"
+               onclick="openModal('Branding Audiovisual & Motion Guidelines', 'Desarrollo de intros animadas, lower thirds, paletas de etalonaje y transiciones patentadas para unificar la identidad de marca en todos sus canales.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'Motion Branding • Identidad Visual • Guidelines • Premiere Pro')">
+        <video class="w-full h-full object-cover opacity-60 group-hover:opacity-95 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=800&q=80">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent p-6 flex flex-col justify-end">
+          <div class="flex gap-2 mb-2">
+            <span class="px-2.5 py-1 text-[11px] font-semibold bg-amber-600/80 text-white rounded-md">Branding</span>
+          </div>
+          <h3 class="text-lg sm:text-xl font-bold text-white group-hover:text-amber-300 transition">Motion Identity & Intros</h3>
+          <p class="text-xs text-zinc-300 mt-1 line-clamp-1">Identidad visual en movimiento coherente en cada entrega.</p>
+        </div>
+      </article>
+
+      <!-- ITEM 6: Campaña Anuncios UGC / High-Converting -->
+      <article class="bento-card rounded-2xl md:col-span-2 group cursor-pointer" data-category="vertical"
+               onclick="openModal('Anuncios High-Converting de E-commerce', 'Variantes A/B de primeros 3 segundos (Hooks) probadas con paid media para reducir el CAC (Costo por Adquisición) y escalar el ROAS de campañas en Meta y TikTok Ads.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'Paid Ads • Pruebas A/B • ROAS Boost • Meta & TikTok Ads')">
+        <video class="w-full h-full object-cover opacity-60 group-hover:opacity-95 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent p-6 sm:p-8 flex flex-col justify-end">
+          <div class="flex gap-2 mb-2">
+            <span class="px-2.5 py-1 text-[11px] font-semibold bg-rose-600/80 text-white rounded-md">Performance Ads</span>
+            <span class="px-2.5 py-1 text-[11px] font-semibold bg-white/10 text-zinc-200 rounded-md">UGC Dinámico</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-white group-hover:text-rose-300 transition">Ads de Alto Retorno (ROAS)</h3>
+          <p class="text-xs sm:text-sm text-zinc-300 mt-1 line-clamp-1">Estructura publicitaria pensada exclusivamente para conversión directa.</p>
         </div>
       </article>
 
     </div>
   </section>
 
+  <!-- SECCIÓN SERVICIOS -->
+  <section id="servicios" class="relative z-10 py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">Soluciones de Postproducción</p>
+      <h2 class="text-3xl md:text-5xl font-black mb-4">Servicios Diseñados para Escalar</h2>
+      <p class="text-zinc-400 text-base">Un flujo de trabajo riguroso que une técnica cinematográfica, psicología de atención y herramientas de vanguardia.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Servicio 1 -->
+      <div class="p-8 rounded-2xl bento-card">
+        <div class="w-12 h-12 rounded-xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center text-violet-400 mb-6">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">Reels & Short-Form Virales</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed mb-6">Montajes verticales de 30 a 60s con ganchos psicológicos, kinetic captions, B-roll contextual y ritmo calibrado para evitar el swipe away.</p>
+        <ul class="text-xs text-zinc-300 space-y-2 border-t border-white/5 pt-4">
+          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Hooks en los primeros 3 segundos</li>
+          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Subtítulos animados dinámicos</li>
+          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> SFX y diseño sonoro envolvente</li>
+        </ul>
+      </div>
+
+      <!-- Servicio 2 -->
+      <div class="p-8 rounded-2xl bento-card">
+        <div class="w-12 h-12 rounded-xl bg-cyan-600/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-6">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">Color Grading & Finishing</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed mb-6">Corrección y etalonaje en DaVinci Resolve para darle a tu metraje el look cinematográfico que separa a un video amateur de una producción de marca premium.</p>
+        <ul class="text-xs text-zinc-300 space-y-2 border-t border-white/5 pt-4">
+          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Gestión de color ACES / Rec.709</li>
+          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Textura y grano analógico 35mm</li>
+          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Consistencia cromática total</li>
+        </ul>
+      </div>
+
+      <!-- Servicio 3 -->
+      <div class="p-8 rounded-2xl bento-card">
+        <div class="w-12 h-12 rounded-xl bg-fuchsia-600/20 border border-fuchsia-500/30 flex items-center justify-center text-fuchsia-400 mb-6">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-3">VFX & Automatización IA</h3>
+        <p class="text-sm text-zinc-400 leading-relaxed mb-6">Aceleración de flujos mediante rotoscopia con IA, generación de B-roll surrealista y pipelines programáticos para publicar a gran escala sin perder calidad.</p>
+        <ul class="text-xs text-zinc-300 space-y-2 border-t border-white/5 pt-4">
+          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Rotoscopia y segmentación IA</li>
+          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Adaptación multiformato (16:9, 9:16, 1:1)</li>
+          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Render acelerado</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Banner Packs Mensuales -->
+    <div class="mt-12 p-8 md:p-10 rounded-2xl bento-card border border-violet-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-violet-600/30 text-violet-300 border border-violet-500/40">Para Creadores y Marcas en Crecimiento</span>
+        <h3 class="text-2xl md:text-3xl font-extrabold text-white mt-3">Packs de Edición Mensual Recurrente</h3>
+        <p class="text-zinc-400 text-sm max-w-xl mt-2">Delega toda tu postproducción. Entregas semanales garantizadas, canal de comunicación directo por Slack/WhatsApp y revisiones ilimitadas.</p>
+      </div>
+      <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20me%20interesa%20conocer%20los%20Packs%20Mensuales%20de%20Edición" 
+         target="_blank"
+         class="px-8 py-4 rounded-full font-bold bg-white text-black hover:bg-violet-400 hover:text-white transition duration-300 whitespace-nowrap text-sm shadow-lg">
+        Consultar Cupos Disponibles →
+      </a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN PROCESO / METODOLOGÍA -->
+  <section id="proceso" class="relative z-10 py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <p class="text-violet-400 text-xs font-bold tracking-widest uppercase mb-3">Flujo de Trabajo</p>
+      <h2 class="text-3xl md:text-5xl font-black mb-4">De Material Crudo a Pieza Maestra</h2>
+      <p class="text-zinc-400 text-base">Un proceso claro y transparente donde nunca pierdes el control creativo de tu proyecto.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+      <!-- Paso 1 -->
+      <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5 relative">
+        <span class="text-4xl font-extrabold text-violet-500/30 font-display">01</span>
+        <h4 class="text-lg font-bold text-white mt-2 mb-2">Ingest & Pacing</h4>
+        <p class="text-xs text-zinc-400 leading-relaxed">Recepción de material en Google Drive / Frame.io. Selección del A-roll más potente y estructuración de los ganchos de retención.</p>
+      </div>
+
+      <!-- Paso 2 -->
+      <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5 relative">
+        <span class="text-4xl font-extrabold text-cyan-500/30 font-display">02</span>
+        <h4 class="text-lg font-bold text-white mt-2 mb-2">Montaje & Estilo</h4>
+        <p class="text-xs text-zinc-400 leading-relaxed">Corte rítmico, selección de B-roll, transiciones invisibles y subtítulos animados adaptados a la identidad gráfica de tu marca.</p>
+      </div>
+
+      <!-- Paso 3 -->
+      <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5 relative">
+        <span class="text-4xl font-extrabold text-fuchsia-500/30 font-display">03</span>
+        <h4 class="text-lg font-bold text-white mt-2 mb-2">Color & Sound Design</h4>
+        <p class="text-xs text-zinc-400 leading-relaxed">Etalonaje para unificar tonos de piel y atmósfera, sumado a una mezcla de SFX, foley y ecualización de voz profesional.</p>
+      </div>
+
+      <!-- Paso 4 -->
+      <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5 relative">
+        <span class="text-4xl font-extrabold text-emerald-500/30 font-display">04</span>
+        <h4 class="text-lg font-bold text-white mt-2 mb-2">Entrega & Feedback</h4>
+        <p class="text-xs text-zinc-400 leading-relaxed">Revisión precisa segundo a segundo con Frame.io. Ajustes rápidos y exportación final en codecs optimizados para cada red.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN RESULTADOS / MÉTRICAS -->
+  <section id="metricas" class="relative z-10 py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-cyan-400 text-xs font-bold tracking-widest uppercase mb-3">Impacto Medible</p>
+        <h2 class="text-3xl md:text-5xl font-black mb-6 leading-tight">No editamos a ciegas.<br /><span class="text-gradient">Editamos para métricas.</span></h2>
+        <p class="text-zinc-400 text-base leading-relaxed mb-8">
+          En el mercado actual, un video bonito que no retiene es un costo, no una inversión. Nuestro enfoque combina dirección de arte con análisis de retención para garantizar que tus videos conviertan atención en comunidad y ventas.
+        </p>
+        
+        <div class="space-y-4">
+          <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-between">
+            <span class="text-sm font-medium text-zinc-300">Retención de los primeros 3 segundos</span>
+            <span class="text-lg font-bold text-cyan-400 font-mono-code">+78%</span>
+          </div>
+          <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-between">
+            <span class="text-sm font-medium text-zinc-300">Tiempo de entrega de primer corte</span>
+            <span class="text-lg font-bold text-violet-400 font-mono-code">24 - 48h</span>
+          </div>
+          <div class="p-4 rounded-xl bg-white/[0.03] border border-white/10 flex items-center justify-between">
+            <span class="text-sm font-medium text-zinc-300">Satisfacción en revisiones</span>
+            <span class="text-lg font-bold text-emerald-400 font-mono-code">98.5%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonio / Social Proof Card -->
+      <div class="p-8 sm:p-10 rounded-3xl bento-card border border-white/10 relative">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-violet-600 to-cyan-400 flex items-center justify-center font-bold text-xl text-white">
+            OL
+          </div>
+          <div>
+            <h4 class="text-lg font-bold text-white">Oscar Lugo</h4>
+            <p class="text-xs text-zinc-400">Lead Editor & Fundador de Dreamscape</p>
+          </div>
+        </div>
+        <p class="text-zinc-300 text-base sm:text-lg italic leading-relaxed mb-6">
+          "Cada frame cuenta. Mi compromiso es que tu contenido compita visualmente con los mejores creadores del mundo, sin excusas técnicas y con una narrativa sólida que haga que tu audiencia se quede hasta el final."
+        </p>
+        <div class="flex items-center justify-between pt-6 border-t border-white/10 text-xs text-zinc-400">
+          <span>Bogotá, Colombia • Para el mundo</span>
+          <span class="text-emerald-400 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> Cupos Abiertos
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CONTACTO / COTIZADOR -->
+  <section id="contacto" class="relative z-10 py-24 px-6 max-w-7xl mx-auto border-t border-white/5">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-xs font-semibold mb-6">
+        <span>✦ Empecemos a trabajar juntos</span>
+      </div>
+      <h2 class="text-4xl sm:text-6xl font-black mb-6">¿Listo para elevar tu contenido audiovisual?</h2>
+      <p class="text-zinc-400 text-base sm:text-lg mb-12 max-w-2xl mx-auto">
+        Escríbeme por WhatsApp para recibir una cotización personalizada en menos de 24 horas o agenda una llamada rápida de alineación.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-4 mb-16">
+        <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20tu%20portafolio%20en%20Dreamscape%20y%20quiero%20cotizar%20un%20proyecto" 
+           target="_blank"
+           class="px-10 py-5 rounded-full font-bold bg-violet-600 hover:bg-violet-500 text-white text-base shadow-xl shadow-violet-600/40 hover:shadow-violet-600/60 transition-all duration-300 flex items-center gap-3 transform hover:-translate-y-1">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.299.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.203c.043.071.043.418-.101.823z"/></svg>
+          <span>Escribir por WhatsApp</span>
+        </a>
+        <a href="mailto:latamdreamscape@gmail.com?subject=Cotización%20Proyecto%20Audiovisual%20-%20Dreamscape" 
+           class="px-10 py-5 rounded-full font-semibold border border-white/20 bg-white/5 hover:bg-white/10 text-white text-base transition duration-300 flex items-center gap-3">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+          <span>latamdreamscape@gmail.com</span>
+        </a>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-white/[0.02] border border-white/5 text-xs text-zinc-400 flex flex-wrap justify-center items-center gap-6">
+        <span>📍 Bogotá, Colombia</span>
+        <span>•</span>
+        <span>⚡ Respuesta promedio: &lt; 2 horas</span>
+        <span>•</span>
+        <span>🤝 Acuerdos de Confidencialidad (NDA) disponibles</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="relative z-10 border-t border-white/5 py-12 px-6 bg-[#060608]">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 text-xs text-zinc-500">
+      <div class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span>
+        <span class="font-display font-bold text-zinc-300 text-sm tracking-wider">DREAMSCAPE PRODUCTIONS</span>
+        <span>© 2026 Oscar Lugo</span>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6">
+        <a href="sobre-mi.html" class="hover:text-zinc-300 transition">Sobre Mí</a>
+        <a href="recursos/" class="hover:text-zinc-300 transition">Recursos</a>
+        <a href="privacidad.html" class="hover:text-zinc-300 transition">Privacidad</a>
+        <a href="terminos.html" class="hover:text-zinc-300 transition">Términos</a>
+        <a href="cookies.html" class="hover:text-zinc-300 transition">Cookies</a>
+      </div>
+
+      <div class="flex items-center gap-4 text-zinc-400">
+        <a href="https://github.com/oscarlugocar-lang" target="_blank" rel="noopener" class="hover:text-white transition">GitHub</a>
+        <a href="https://wa.me/573011822651" target="_blank" rel="noopener" class="hover:text-white transition">WhatsApp</a>
+      </div>
+    </div>
+  </footer>
+
   <!-- MODAL CINEMATOGRÁFICO PARA REPRODUCIR PROYECTOS -->
-  <div id="video-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-xl p-4">
-    <div class="relative w-full max-w-5xl rounded-2xl bg-zinc-900 border border-white/10 overflow-hidden grid grid-cols-1 lg:grid-cols-3 shadow-2xl">
+  <div id="video-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/95 backdrop-blur-2xl p-4 sm:p-6">
+    <div class="relative w-full max-w-5xl rounded-3xl bg-zinc-950 border border-white/10 overflow-hidden grid grid-cols-1 lg:grid-cols-3 shadow-[0_0_80px_rgba(139,92,246,0.3)]">
       <!-- Reproductor -->
-      <div class="lg:col-span-2 bg-black flex items-center justify-center aspect-video">
+      <div class="lg:col-span-2 bg-black flex items-center justify-center aspect-video relative">
         <video id="modal-video" class="w-full h-full" controls playsinline></video>
       </div>
       <!-- Ficha Técnica y Conversión -->
-      <div class="p-6 flex flex-col justify-between">
+      <div class="p-6 sm:p-8 flex flex-col justify-between bg-zinc-900/60 backdrop-blur-md">
         <div>
           <div class="flex justify-between items-start mb-4">
-            <span id="modal-tags" class="text-xs font-semibold text-violet-400 uppercase tracking-wider"></span>
-            <button onclick="closeModal()" class="text-zinc-400 hover:text-white text-xl leading-none">&times;</button>
+            <span id="modal-tags" class="text-[11px] font-bold text-violet-400 uppercase tracking-widest"></span>
+            <button onclick="closeModal()" class="text-zinc-400 hover:text-white text-2xl leading-none p-1 transition">&times;</button>
           </div>
-          <h3 id="modal-title" class="text-2xl font-bold mb-3"></h3>
-          <p id="modal-desc" class="text-sm text-zinc-400 leading-relaxed"></p>
+          <h3 id="modal-title" class="text-2xl sm:text-3xl font-extrabold mb-3 text-white"></h3>
+          <p id="modal-desc" class="text-xs sm:text-sm text-zinc-400 leading-relaxed"></p>
         </div>
         <div class="mt-8 pt-6 border-t border-white/10">
-          <p class="text-xs text-zinc-400 mb-3">¿Buscas este nivel de acabado para tu próximo proyecto?</p>
-          <a href="#contacto" onclick="closeModal()" class="block w-full text-center py-3 rounded-xl font-semibold bg-violet-600 hover:bg-violet-500 text-white transition">
+          <p class="text-xs text-zinc-400 mb-3">¿Buscas este nivel de acabado para tu marca?</p>
+          <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20un%20proyecto%20en%20tu%20portafolio%20y%20quiero%20cotizar%20algo%20similar" 
+             target="_blank"
+             class="block w-full text-center py-3.5 rounded-xl font-bold bg-violet-600 hover:bg-violet-500 text-white text-sm transition shadow-lg shadow-violet-600/30">
             Cotizar un video similar →
           </a>
         </div>
@@ -243,9 +596,21 @@
     </div>
   </div>
 
-  <!-- SCRIPTS: Hover Preview, Filtros, Modal y Fondo 3D -->
+  <!-- SCRIPTS: Hover Preview, Filtros, Modal, Menú Móvil y Fondo 3D Three.js -->
   <script>
-    // 1. Reproducción automática al pasar el mouse (Hover Preview)
+    // 1. Menú Móvil
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (menuBtn && mobileMenu) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+      mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+      });
+    }
+
+    // 2. Reproducción al hover (Hover Preview)
     document.querySelectorAll('.bento-card').forEach(card => {
       const video = card.querySelector('video');
       card.addEventListener('mouseenter', () => video && video.play().catch(() => {}));
@@ -257,7 +622,7 @@
       });
     });
 
-    // 2. Filtros dinámicos sin recargar página
+    // 3. Filtros dinámicos sin recargar página
     const filterBtns = document.querySelectorAll('.filter-btn');
     const cards = document.querySelectorAll('.bento-card');
 
@@ -269,7 +634,7 @@
 
         cards.forEach(card => {
           if (filter === 'all' || card.dataset.category === filter) {
-            card.style.display = 'block';
+            card.style.display = '';
           } else {
             card.style.display = 'none';
           }
@@ -277,7 +642,7 @@
       });
     });
 
-    // 3. Control del Modal Cinematográfico
+    // 4. Control del Modal Cinematográfico
     const modal = document.getElementById('video-modal');
     const modalVideo = document.getElementById('modal-video');
 
@@ -298,29 +663,59 @@
       modal.classList.remove('flex');
     }
 
-    // 4. Fondo de partículas sutiles con Three.js
+    // Cerrar modal con tecla Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+
+    // Cerrar modal al hacer clic en el backdrop exterior
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+
+    // 5. Fondo interactivo de partículas con Three.js
     const canvas = document.getElementById('bg-canvas');
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     const particlesGeometry = new THREE.BufferGeometry();
-    const count = 350;
+    const count = 450;
     const positions = new Float32Array(count * 3);
     for (let i = 0; i < count * 3; i++) {
-      positions[i] = (Math.random() - 0.5) * 15;
+      positions[i] = (Math.random() - 0.5) * 16;
     }
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    const particlesMaterial = new THREE.PointsMaterial({ size: 0.025, color: 0x8b5cf6, transparent: true, opacity: 0.5 });
+    const particlesMaterial = new THREE.PointsMaterial({ 
+      size: 0.03, 
+      color: 0x8b5cf6, 
+      transparent: true, 
+      opacity: 0.55 
+    });
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
     camera.position.z = 5;
+
+    // Movimiento suave con mouse
+    let mouseX = 0;
+    let mouseY = 0;
+    window.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 0.4;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 0.4;
+    });
 
     function animate() {
       requestAnimationFrame(animate);
       particlesMesh.rotation.y += 0.0006;
       particlesMesh.rotation.x += 0.0003;
+      camera.position.x += (mouseX - camera.position.x) * 0.03;
+      camera.position.y += (-mouseY - camera.position.y) * 0.03;
       renderer.render(scene, camera);
     }
     animate();
