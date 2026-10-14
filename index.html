@@ -1,752 +1,335 @@
-﻿<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Oscar Lugo — Editor de Video | Reels, Branding y Contenido para Marcas en Colombia</title>
-<meta name="description" content="Editor de video en Bogotá para marcas y creadores. Reels que retienen y venden, identidad visual y packs mensuales. +4 años, 30+ proyectos. Respuesta en <24h. Highway 43 / Dreamscape.">
-<meta property="og:title" content="Oscar Lugo — Editor de Video para Marcas y Creadores">
-<meta property="og:description" content="Reels, anuncios y contenido que convierte visitas en clientes. Edición Premiere + After Effects + IA. Bogotá, Colombia. Disponible freelance.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://oscarlugocar-lang.github.io/portfolio/">
-<meta property="og:image" content="https://oscarlugocar-lang.github.io/portfolio/og-image.jpg">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="canonical" href="https://oscarlugocar-lang.github.io/portfolio/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Oscar Lugo","alternateName":"Highway43","jobTitle":"Editor de Video","description":"Editor de video en Bogotá para marcas y creadores. Reels, branding y contenido mensual. +4 años, 30+ proyectos.","url":"https://oscarlugocar-lang.github.io/portfolio/","image":"https://oscarlugocar-lang.github.io/portfolio/og-image.jpg","knowsAbout":["Video Editing","Reels","Short-form Video","Motion Graphics","Branding"],"worksFor":{"@type":"Organization","name":"Highway 43 / Dreamscape","url":"https://oscarlugocar-lang.github.io/portfolio/"},"address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressCountry":"CO"},"contactPoint":{"@type":"ContactPoint","telephone":"+57-301-182-2651","contactType":"freelance","email":"latamdreamscape@gmail.com","availableLanguage":["es","en"]}}</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Oscar Lugo — Portfolio","url":"https://oscarlugocar-lang.github.io/portfolio/","potentialAction":{"@type":"SearchAction","target":"https://oscarlugocar-lang.github.io/portfolio/recursos/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⏺</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-<script>gsap.registerPlugin(ScrollTrigger)</script>
-<style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#000000;--bg2:#0A0A0A;--card:rgba(255,255,255,.02);
-  --text:#F5F5F0;--text2:rgba(245,245,240,.55);--text3:rgba(245,245,240,.25);
-  --border:rgba(255,255,255,.06);--border-hover:rgba(255,255,255,.15);
-  --accent:#D60001;--accent-dim:rgba(214,0,1,.15);
-  --accent-mid:rgba(214,0,1,.5);
-  --font-display:'Inter',sans-serif;
-  --font-mono:'DM Mono',monospace;
-  --ease-power:cubic-bezier(0.16,1,0.3,1);
-}
-html{scroll-behavior:auto;-webkit-font-smoothing:antialiased}
-body{font-family:var(--font-display);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7}
-/* Cursor custom SOLO en desktop con hover fino, y se oculta al salir de la ventana para no bloquear el navegador */
-@media (hover: hover) and (pointer: fine) {
-  html.js-ready body{cursor:none}
-  html.js-ready a, html.js-ready button, html.js-ready .project-card, html.js-ready .contact-item, html.js-ready .service-card{cursor:none}
-}
-::selection{background:var(--accent);color:#fff}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--text3);border-radius:2px}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dreamscape Productions | Estudio Audiovisual & Edición</title>
+  
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Three.js para fondo interactivo -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-/* ─── CUSTOM CURSOR ─── */
-@media (hover: hover) and (pointer: fine) {
-  .cursor-wrap{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;mix-blend-mode:difference}
-  .cursor-bubble{position:fixed;width:80px;height:44px;border-radius:6px;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;clip-path:inset(0 100% 0 0 round 6px);opacity:0;transform:translateX(0) scale(0.92);transition:clip-path .45s var(--ease-power),opacity .2s var(--ease-power),transform .45s var(--ease-power);font-family:var(--font-mono)}
-  [data-cursor="active"] .cursor-bubble{clip-path:inset(0 0 0 0 round 6px);opacity:1;transform:translateX(0) scale(1)}
-  [data-cursor="active-edge"] .cursor-bubble{clip-path:inset(0 0 0 0 round 6px);opacity:1;transform:translateX(-100%) scale(1)}
-  .cursor-dot{position:fixed;width:6px;height:6px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s}
-  .cursor-dot.is-lg{width:40px;height:40px;background:rgba(255,255,255,.08);backdrop-filter:blur(4px)}
-}
-@media (hover: none), (pointer: coarse) { body { cursor: auto } a,button,.project,.contact-item,.service-card,.showreel-section { cursor: auto } }
+  <style>
+    :root {
+      --bg-obsidian: #08080b;
+      --accent-purple: #8b5cf6;
+      --accent-cyan: #06b6d4;
+    }
 
-/* ─── NAV ─── */
-nav{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 48px);max-width:1100px}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0 6px 0 20px;height:48px;background:rgba(0,0,0,.8);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);border:1px solid var(--border);border-radius:100px;transition:border-color .4s}
-.nav-logo{font-family:var(--font-display);font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--text);text-decoration:none}
-.nav-logo span{color:var(--accent)}
-.nav-links{display:flex;align-items:center;gap:2px}
-.nav-links a{padding:6px 14px;font-size:11px;color:var(--text2);text-decoration:none;border-radius:100px;transition:all .4s var(--ease-power);font-weight:400;letter-spacing:.5px;text-transform:uppercase;position:relative;overflow:hidden}
-.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.03)}
-.nav-links a .nav-hover-line{position:absolute;bottom:4px;left:14px;right:14px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease-power)}
-.nav-links a:hover .nav-hover-line{transform:scaleX(1)}
-.nav-cta{padding:6px 18px!important;background:var(--accent);color:#fff!important;border-radius:100px;font-size:11px;font-weight:600!important;margin-left:4px;text-transform:uppercase;letter-spacing:.5px;border:1px solid var(--accent);transition:all .4s var(--ease-power)!important}
-.nav-cta:hover{opacity:.85!important;background:var(--accent)!important}
-.nav-cta .nav-hover-line{display:none}
-.nav-hamburger{display:none;background:none;border:none;color:var(--text);font-size:18px;cursor:pointer;padding:6px 10px}
-.mobile-overlay{position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.98);backdrop-filter:blur(48px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .6s var(--ease-power)}
-.mobile-overlay.open{opacity:1;pointer-events:auto}
-.mobile-overlay a{font-family:var(--font-display);font-size:22px;color:var(--text2);text-decoration:none;transition:color .3s;font-weight:300;letter-spacing:2px;text-transform:uppercase}
-.mobile-overlay a:hover{color:var(--text)}
-.mobile-overlay .nav-cta{font-size:14px;padding:12px 32px!important;margin-left:0}
+    body {
+      background-color: var(--bg-obsidian);
+      color: #f4f4f6;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
 
-/* ─── HERO — SPLIT ─── */
-.hero{position:relative;overflow:hidden}
-.hero-grain{position:absolute;inset:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;pointer-events:none;z-index:1}
-.hero-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:100dvh}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:140px 60px 100px 48px;position:relative;z-index:2}
-.hero-left::after{content:'';position:absolute;right:-2px;top:80px;bottom:80px;width:3px;background:linear-gradient(to bottom,var(--accent),var(--accent-dim),transparent);z-index:3}
-.hero-label{font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:6px;margin-bottom:28px;text-transform:uppercase;opacity:.7}
-.hero-left h1{font-family:var(--font-display);font-size:clamp(48px,10vw,140px);font-weight:700;letter-spacing:-.07em;line-height:.85;margin-bottom:28px;text-transform:uppercase}
-.hero-left h1 .line{display:block;overflow:hidden}
-.hero-left h1 .line span{display:block}
-.hero-left h1 .accent{color:var(--accent);font-weight:800;font-size:1.1em}
-.hero-left p{font-size:clamp(14px,1vw,17px);color:var(--text2);max-width:440px;line-height:1.7;font-weight:300;margin-bottom:36px}
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-.hero-actions .btn{padding:14px 32px;border-radius:100px;font-size:11px;font-weight:600;text-decoration:none;transition:all .6s var(--ease-power);border:1px solid transparent;letter-spacing:1.5px;text-transform:uppercase}
-.hero-actions .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 30px rgba(214,0,1,.25)}
-.hero-actions .btn-primary:hover{opacity:.85;box-shadow:0 0 50px rgba(214,0,1,.35)}
-.hero-actions .btn-outline{background:transparent;color:var(--text2);border-color:var(--border);position:relative;overflow:hidden}
-.hero-actions .btn-outline::before{content:'';position:absolute;inset:0;background:var(--accent);transform:translateX(-100%);transition:transform .6s var(--ease-power)}
-.hero-actions .btn-outline:hover::before{transform:translateX(0)}
-.hero-actions .btn-outline:hover{color:#fff;border-color:var(--accent)}
-.hero-actions .btn-outline span{position:relative;z-index:1}
-.hero-right{position:relative;z-index:0;overflow:hidden}
-.hero-visual{position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(214,0,1,.12) 0%,rgba(214,0,1,.03) 40%,transparent 70%),linear-gradient(180deg,rgba(214,0,1,.2) 0%,transparent 60%);display:flex;align-items:center;justify-content:center}
-.hero-visual::before{content:'43';font-family:var(--font-display);font-size:clamp(120px,18vw,280px);font-weight:900;color:rgba(255,255,255,.02);letter-spacing:-.06em;line-height:1;user-select:none;transform:rotate(-12deg)}
-.hero-visual-line{position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--accent-dim),transparent);transform-origin:top}
-.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--text3);font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:300;font-family:var(--font-mono);z-index:2}
-.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--accent),transparent)}
-.hero-marquee{position:absolute;bottom:0;left:0;right:0;overflow:hidden;padding:10px 0;border-top:1px solid var(--border);opacity:.3;z-index:2}
-.hero-marquee-inner{display:flex;white-space:nowrap;animation:marquee 50s linear infinite;font-family:var(--font-display);font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--text3);font-weight:300}
-.hero-marquee-inner span{padding:0 28px}
-@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    h1, h2, h3, .font-display {
+      font-family: 'Syne', sans-serif;
+    }
 
-/* ─── SHOWREEL ─── */
-.showreel-section{position:relative;overflow:hidden;cursor:pointer;height:280px;display:flex;align-items:center;justify-content:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.showreel-section:hover .showreel-play{transform:translate(-50%,-50%) scale(1.06)}
-.showreel-section:hover .showreel-play-ring{opacity:1;transform:translate(-50%,-50%) scale(1.15)}
-.showreel-bg{position:absolute;inset:0;background:linear-gradient(90deg,rgba(214,0,1,.12) 0%,transparent 30%,transparent 70%,rgba(214,0,1,.08) 100%);pointer-events:none;z-index:0}
-.showreel-bg::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 24px,rgba(214,0,1,.03) 24px,rgba(214,0,1,.03) 25px)}
-.showreel-inner{position:relative;z-index:1;display:flex;align-items:center;gap:40px}
-.showreel-play-wrap{position:relative;width:80px;height:80px;flex-shrink:0}
-.showreel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:var(--accent);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;transition:transform .5s var(--ease-power);box-shadow:0 0 0 0 rgba(214,0,1,.6);animation:pulse-play 2.5s ease-in-out infinite}
-.showreel-play-ring{position:absolute;top:50%;left:50%;width:80px;height:80px;border-radius:50%;border:1px solid var(--accent);opacity:.4;transform:translate(-50%,-50%) scale(1);transition:all .5s var(--ease-power)}
-@keyframes pulse-play{0%,100%{box-shadow:0 0 0 0 rgba(214,0,1,.6)}50%{box-shadow:0 0 0 24px rgba(214,0,1,0)}}
-.showreel-text{display:flex;flex-direction:column;gap:4px}
-.showreel-title{font-family:var(--font-display);font-size:clamp(28px,4vw,56px);font-weight:700;letter-spacing:-.04em;text-transform:uppercase;line-height:.9;color:var(--text)}
-.showreel-title span{color:var(--accent)}
-.showreel-coming{font-family:var(--font-mono);font-size:clamp(11px,1vw,13px);color:var(--text3);letter-spacing:8px;text-transform:uppercase;font-weight:300}
-.showreel-line{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent 80%);z-index:1}
+    /* Grano cinematográfico sutil */
+    .film-grain {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 40;
+      opacity: 0.035;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
 
-/* ─── SECTIONS ─── */
-.section{padding:140px 24px;position:relative}
-.section-inner{max-width:1100px;margin:0 auto}
-.section-header{margin-bottom:64px;max-width:600px}
-.section-label{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:5px;margin-bottom:18px;text-transform:uppercase;opacity:.6}
-.section-header h2{font-family:var(--font-display);font-size:clamp(32px,4.5vw,72px);font-weight:600;letter-spacing:-.04em;line-height:1;margin-bottom:18px;text-transform:uppercase}
-.section-header h2 .light{font-weight:200}
-.section-header h2 .red{color:var(--accent)}
-.section-header p{color:var(--text2);max-width:440px;font-size:14px;line-height:1.8;font-weight:300}
-.section-header::after{content:'';display:block;width:60px;height:3px;background:var(--accent);margin-top:24px}
-.section-divider{width:100%;height:40px;position:relative;overflow:hidden;background:transparent;border:none;outline:none}
-.section-divider::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(214,0,1,.4),rgba(214,0,1,.6),rgba(214,0,1,.4),transparent)}
+    /* Tarjetas Glassmorphism + Spotlight */
+    .bento-card {
+      background: rgba(18, 18, 24, 0.65);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
 
-/* ─── PROJECTS — GRID ─── */
-.section-projects{padding:140px 0;overflow:hidden;position:relative}
-.section-projects .section-inner{padding:0 24px}
-.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:48px;max-width:900px;margin-left:auto;margin-right:auto}
-.project-card{position:relative;overflow:hidden;cursor:pointer;background:var(--card);border:1px solid var(--border);border-radius:4px;transition:all .5s var(--ease-power);display:flex;flex-direction:column}
-.project-card:hover{background:var(--bg2);border-color:var(--accent-dim);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
-.project-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height .6s var(--ease-power);z-index:2}
-.project-card:hover::before{height:100%}
-.project-thumb{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden}
-.project-thumb img{width:100%;height:100%;object-fit:cover;opacity:.55;transition:opacity .8s var(--ease-power),transform 1.4s var(--ease-power)}
-.project-card:hover .project-thumb img{opacity:.7;transform:scale(1.06)}
-.project-card-body{position:relative;z-index:1;padding:24px}
-.project-card-body h4{font-family:var(--font-display);font-size:15px;font-weight:500;margin-bottom:4px;text-transform:uppercase;letter-spacing:.3px;transition:color .4s var(--ease-power)}
-.project-card:hover .project-card-body h4{color:var(--accent)}
-.project-card-cat{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;opacity:.7}
-.project-card-result{font-size:12px;color:var(--text2);line-height:1.5;margin-top:10px;font-weight:300;padding-top:10px;border-top:1px solid var(--border)}
+    .bento-card:hover {
+      border-color: rgba(139, 92, 246, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px -15px rgba(139, 92, 246, 0.2);
+    }
 
-/* ─── SERVICES — TIMELINE ─── */
-.timeline-wrap{position:relative;max-width:900px;margin:0 auto;padding:20px 0}
-.timeline-line-main{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--accent-dim);transform:translateX(-50%);z-index:0}
-.timeline-line-fill{position:absolute;left:50%;top:0;width:2px;background:var(--accent);transform:translateX(-50%) scaleY(0);transform-origin:top;z-index:1;box-shadow:0 0 12px rgba(214,0,1,.3)}
-.service-item{display:flex;align-items:flex-start;margin-bottom:80px;position:relative;z-index:2}
-.service-item:last-child{margin-bottom:0}
-.service-item:nth-child(odd){flex-direction:row}
-.service-item:nth-child(even){flex-direction:row-reverse}
-.service-item .service-spacer{width:50%;flex-shrink:0}
-.service-card{width:calc(50% - 36px);padding:36px 40px;background:var(--card);border:1px solid var(--border);border-radius:4px;position:relative;transition:all .5s var(--ease-power)}
-.service-card:hover{background:var(--bg2);border-color:var(--accent-dim)}
-.service-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height .6s var(--ease-power)}
-.service-card:hover::before{height:100%}
-.service-item:nth-child(even) .service-card::before{left:auto;right:0}
-.service-dot{position:absolute;left:50%;top:32px;width:14px;height:14px;background:var(--accent);border-radius:50%;transform:translateX(-50%);z-index:3;border:2px solid var(--bg);box-shadow:0 0 0 2px var(--accent-dim);transition:box-shadow .4s var(--ease-power)}
-.service-card:hover+.service-dot,.service-item:hover .service-dot{box-shadow:0 0 0 4px var(--accent-dim),0 0 20px rgba(214,0,1,.3)}
-.service-num{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:3px;margin-bottom:18px;opacity:.7}
-.service-card h3{font-family:var(--font-display);font-size:18px;font-weight:500;margin-bottom:12px;letter-spacing:-.01em;text-transform:uppercase}
-.service-card p{font-size:13px;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:20px}
-.service-price{font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:1px;font-weight:400;display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}
-.service-price .cop{font-size:9px;color:var(--text3);letter-spacing:.5px;font-weight:300}
-.service-price::before{content:'—';color:var(--text3);font-size:9px}
+    /* Gradiente de texto */
+    .text-gradient {
+      background: linear-gradient(135deg, #ffffff 0%, #a78bfa 50%, #22d3ee 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-/* ─── ABOUT — DRAMATIC ─── */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative}
-.about-text .about-label{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:4px;margin-bottom:20px;text-transform:uppercase;opacity:.6}
-.about-text h2{font-family:var(--font-display);font-size:clamp(28px,3vw,44px);font-weight:500;letter-spacing:-.03em;line-height:1.06;margin-bottom:20px;text-transform:uppercase}
-.about-text h2 .light{font-weight:200}
-.about-text h2 .accent{color:var(--accent);font-weight:600}
-.about-text p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:16px;font-weight:300;max-width:480px}
-.about-text p strong{color:var(--text)}
-.about-links{display:flex;gap:10px;margin-top:32px;flex-wrap:wrap}
-.about-links a{display:flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid var(--border);border-radius:100px;font-size:11px;color:var(--text2);text-decoration:none;transition:all .4s var(--ease-power);letter-spacing:.5px;text-transform:uppercase;font-weight:400}
-.about-links a:hover{border-color:var(--accent-dim);color:var(--text);background:rgba(214,0,1,.04)}
-.about-links a .link-arrow{transition:transform .3s var(--ease-power)}
-.about-links a:hover .link-arrow{transform:translate(2px,-2px)}
-.about-visual{position:relative;min-height:400px}
-.about-mega{position:absolute;font-size:clamp(160px,18vw,320px);font-weight:900;color:rgba(214,0,1,.06);line-height:1;top:-40px;right:-20px;pointer-events:none;z-index:0;letter-spacing:-.06em;user-select:none}
-.about-mega-stroke{position:absolute;font-size:clamp(160px,18vw,320px);font-weight:900;color:transparent;-webkit-text-stroke:2px rgba(214,0,1,.08);line-height:1;top:-20px;right:10px;pointer-events:none;z-index:0;letter-spacing:-.06em;user-select:none}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);position:relative;z-index:1}
-.stat{padding:40px 28px;background:var(--bg);text-align:center;transition:all .5s var(--ease-power);position:relative}
-.stat:hover{background:var(--card)}
-.stat:hover .stat-num{color:var(--accent)}
-.stat-num{font-family:var(--font-display);font-size:clamp(32px,3vw,44px);font-weight:700;letter-spacing:-.03em;margin-bottom:6px;color:var(--text);line-height:1;transition:color .4s var(--ease-power)}
-.stat-label{font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;font-weight:300}
+    /* Botón de filtro activo */
+    .filter-btn.active {
+      background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+    }
 
-/* ─── CONTACT — EDITORIAL ─── */
-.contact-section{border-top:1px solid var(--border);position:relative}
-.contact-section::before{content:'';position:absolute;top:-1px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent 70%)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.contact-info h3{font-family:var(--font-display);font-size:20px;font-weight:500;margin-bottom:16px;text-transform:uppercase;letter-spacing:-.01em}
-.contact-info h3 span{color:var(--accent)}
-.contact-info p{color:var(--text2);font-size:14px;line-height:1.7;font-weight:300;margin-bottom:32px;max-width:380px}
-.contact-list{display:flex;flex-direction:column;gap:6px}
-.contact-item{display:flex;align-items:center;gap:14px;padding:14px 20px;border:1px solid var(--border);border-radius:4px;text-decoration:none;color:var(--text);transition:all .4s var(--ease-power);font-size:13px;position:relative;overflow:hidden}
-.contact-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);transform:scaleY(0);transition:transform .5s var(--ease-power)}
-.contact-item:hover::before{transform:scaleY(1)}
-.contact-item:hover{border-color:var(--border-hover);background:var(--card);transform:translateX(4px)}
-.contact-item .ci-icon{font-size:14px;color:var(--text2);width:20px;flex-shrink:0}
-.contact-item .ci-arrow{margin-left:auto;font-size:11px;color:var(--text3);transition:transform .3s var(--ease-power)}
-.contact-item:hover .ci-arrow{transform:translateX(4px);color:var(--accent)}
-.contact-form{display:flex;flex-direction:column;gap:10px}
-.contact-form .form-head{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:4px;text-transform:uppercase;margin-bottom:4px;opacity:.6}
-.contact-form input,.contact-form textarea{padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:2px;color:var(--text);font-size:13px;outline:none;transition:all .4s var(--ease-power);font-family:var(--font-display);font-weight:300}
-.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent-dim);background:rgba(214,0,1,.03);box-shadow:0 0 20px rgba(214,0,1,.05)}
-.contact-form textarea{resize:vertical;min-height:120px}
-.contact-form button{padding:16px 32px;background:var(--accent);color:#fff;border:none;border-radius:2px;font-size:11px;font-weight:600;cursor:pointer;transition:all .4s var(--ease-power);font-family:var(--font-display);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
-.contact-form button:hover{opacity:.9;box-shadow:0 0 30px rgba(214,0,1,.25)}
-.contact-form button:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
-#form-feedback{font-size:12px;padding:10px 0;display:none;font-weight:300;font-family:var(--font-mono);letter-spacing:0}
-
-/* ─── FOOTER ─── */
-footer{padding:48px 24px;border-top:1px solid var(--border);position:relative}
-footer::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1px;background:var(--accent);opacity:.4}
-.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.footer-left{display:flex;flex-direction:column;gap:6px}
-.footer-brand{font-family:var(--font-display);font-size:14px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text)}
-.footer-brand span{color:var(--accent)}
-.footer-mono{font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase}
-.footer-right{display:flex;gap:16px;flex-wrap:wrap}
-.footer-right a{color:var(--text2);font-size:11px;text-decoration:none;transition:color .4s var(--ease-power);letter-spacing:1px;text-transform:uppercase;font-weight:400;position:relative}
-.footer-right a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transition:transform .4s var(--ease-power)}
-.footer-right a:hover::after{transform:scaleX(1)}
-.footer-right a:hover{color:var(--text)}
-.footer-time{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:2px}
-
-/* ─── SHOWREEL CURATED RESPONSIVE ─── */
-@media(max-width:900px){ .showreel-grid{grid-template-columns:1fr!important} #proceso .section-inner>div{grid-template-columns:1fr!important} }
-html.js-ready .cursor-wrap{display:block}
-@media(max-width:900px){
-  .hero-split{grid-template-columns:1fr}
-  .hero-left{padding:140px 24px 100px}
-  .hero-left::after{display:none}
-  .hero-right{display:none}
-  .services-grid{grid-template-columns:1fr}
-  .projects-grid{grid-template-columns:1fr 1fr}
-  .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
-  .about-visual{min-height:auto}
-  .about-mega,.about-mega-stroke{font-size:120px;top:-10px}
-  .timeline-line-main,.timeline-line-fill,.service-dot{display:none}
-  .service-item{flex-direction:column!important;margin-bottom:40px}
-  .service-item .service-spacer{display:none}
-  .service-card{width:100%}
-  .nav-links a:not(.nav-cta){display:none}
-  .cursor-wrap{display:none!important}
-  body{cursor:auto}
-  .showreel-inner{gap:24px}
-}
-@media(max-width:640px){
-  .section{padding:80px 16px}
-  .section-projects{padding:80px 0 0}
-  .section-projects .section-inner{padding:0 16px}
-  .hero-left{padding:120px 16px 80px}
-  .hero-left h1{font-size:34px}
-  .projects-grid{grid-template-columns:1fr}
-  .service-card{padding:28px 24px}
-  nav{top:16px;width:calc(100% - 32px)}
-  .nav-links a.nav-cta{display:none}
-  .nav-hamburger{display:block}
-  .stats{grid-template-columns:1fr 1fr}
-  .footer-inner{flex-direction:column;align-items:flex-start}
-  .stat{padding:28px 20px}
-  .stat-num{font-size:30px}
-  .showreel-section{height:200px}
-  .showreel-play{width:48px;height:48px;font-size:16px}
-  .showreel-play-wrap{width:60px;height:60px}
-  .showreel-play-ring{width:60px;height:60px}
-  .about-mega,.about-mega-stroke{font-size:80px;top:0}
-}
-
-/* ─── REVEAL UTILITY ─── */
-[data-reveal]{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease-power),transform 1s var(--ease-power)}
-[data-reveal].is-visible{opacity:1;transform:translateY(0)}
-[data-reveal-scale]{opacity:0;transform:scale(.92);transition:opacity 1s var(--ease-power),transform 1s var(--ease-power)}
-[data-reveal-scale].is-visible{opacity:1;transform:scale(1)}
-
-/* ─── SECTION DIVIDER — CLEAN ─── */
-.section-divider{width:100%;height:40px;position:relative;overflow:hidden;background:transparent;border:none;outline:none}
-</style>
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
 </head>
-<body>
-<div class="cursor-wrap" id="cursorWrap" aria-hidden="true">
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-bubble" id="cursorBubble"><span id="cursorText">View</span></div>
-</div>
+<body class="antialiased selection:bg-violet-500 selection:text-white">
 
-<a href="#main" class="skip-link" style="position:absolute;top:-100px;left:16px;z-index:1000;padding:10px 18px;background:var(--text);color:var(--bg);border-radius:4px;font-weight:500;font-size:12px;text-decoration:none">Ir al contenido</a>
+  <!-- Capa de grano de cine y Canvas 3D -->
+  <div class="film-grain"></div>
+  <canvas id="bg-canvas"></canvas>
 
-<nav role="navigation" aria-label="Navegaci&oacute;n principal">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">Oscar <span>Lugo</span></a>
-    <div class="nav-links">
-      <a href="#showreel">Showreel<span class="nav-hover-line"></span></a>
-      <a href="#trabajos">Trabajos<span class="nav-hover-line"></span></a>
-      <a href="#servicios">Servicios<span class="nav-hover-line"></span></a>
-      <a href="sobre-mi.html">Sobre mí<span class="nav-hover-line"></span></a>
-      <a href="recursos/index.html">Recursos<span class="nav-hover-line"></span></a>
-      <a href="#contacto" class="nav-cta">Contacto</a>
+  <!-- NAVBAR -->
+  <header class="fixed top-0 w-full z-30 border-b border-white/5 bg-[#08080b]/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="#" class="text-xl font-bold font-display tracking-wider flex items-center gap-2">
+        <span class="w-3 h-3 rounded-full bg-violet-500 animate-pulse"></span>
+        DREAMSCAPE
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm text-zinc-400">
+        <a href="#portfolio" class="hover:text-white transition">Portafolio</a>
+        <a href="#servicios" class="hover:text-white transition">Servicios</a>
+        <a href="#proceso" class="hover:text-white transition">Flujo de Trabajo</a>
+      </nav>
+      <a href="#contacto" class="px-5 py-2.5 rounded-full text-sm font-medium bg-white text-black hover:bg-violet-400 hover:text-white transition duration-300">
+        Cotizar Proyecto
+      </a>
     </div>
-    <button class="nav-hamburger" id="hamburger" aria-label="Men&uacute;">☰</button>
-  </div>
-</nav>
+  </header>
 
-<div class="mobile-overlay" id="mobileOverlay">
-  <a href="#showreel-link">Showreel</a>
-  <a href="#trabajos">Trabajos</a>
-  <a href="#servicios">Servicios</a>
-  <a href="#about">Sobre m&iacute;</a>
-  <a href="#contacto" class="nav-cta">Contacto</a>
-</div>
-
-<main id="main">
-  <section class="hero" id="hero">
-    <div class="hero-grain"></div>
-    <div class="hero-split">
-      <div class="hero-left">
-        <div class="hero-label" data-split>Bogot&aacute;, Colombia — Remoto LATAM</div>
-        <h1 id="heroTitle">
-          <span class="line"><span>Video que hace</span></span>
-          <span class="line"><span>crecer tu <span class="accent">marca</span></span></span>
-        </h1>
-        <p>Editor de video para <strong style="color:var(--text);font-weight:500">marcas, creadores y negocios</strong> que necesitan Reels y contenido que retiene, genera alcance y ayuda a vender. <span style="color:var(--text2)">Premiere + After Effects + IA</span> con entrega rápida y narrativa estratégica. Highway 43 / Dreamscape.</p>
-        <div class="hero-actions">
-          <a href="#trabajos" class="btn btn-primary">Ver trabajos</a>
-          <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20tu%20portfolio%20y%20quiero%20cotizar" target="_blank" class="btn btn-outline"><span>WhatsApp directo</span></a>
-        </div>
-        <div class="hero-proof" style="margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3)">
-          <span style="display:flex;align-items:center;gap:6px"><span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block"></span>Respuesta &lt;24h</span>
-          <span>• Entrega 48–72h</span>
-          <span>• 30+ proyectos</span>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-visual">
-          <div class="hero-visual-line"></div>
-          <div class="hero-right-card" style="position:absolute;bottom:32px;left:32px;right:32px;background:var(--card);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:4px;padding:18px 20px;display:flex;justify-content:space-between;gap:16px;z-index:2;transition:all .5s var(--ease-power)" data-reveal>
-            <div><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--accent);margin-bottom:4px">HIGHWAY 43</div><div style="font-size:12px;color:var(--text2);line-height:1.5;font-weight:300">Edición precisa + storytelling que funciona, no solo que se ve bien.</div></div>
-            <div style="text-align:right;flex-shrink:0"><div style="font-size:22px;font-weight:700;letter-spacing:-.03em">4+<span style="font-size:10px;font-weight:300;color:var(--text3)"> AÑOS</span></div><div style="font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:1px">BOGOTÁ · REMOTO</div></div>
-          </div>
-        </div>
-      </div>
+  <!-- HERO SECTION -->
+  <section class="relative z-10 pt-36 pb-20 px-6 max-w-7xl mx-auto text-center">
+    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-xs font-medium mb-6">
+      <span>✦ Producción Audiovisual, Edición de Alto Impacto & Automatización IA</span>
     </div>
-    <div class="hero-scroll" aria-hidden="true">SCROLL<span class="hero-scroll-line"></span></div>
-    <div class="hero-marquee" aria-hidden="true">
-      <div class="hero-marquee-inner">
-        <span>Video Editor — Bogot&aacute;, Colombia — Disponible para freelance</span>
-        <span>Video Editor — Bogot&aacute;, Colombia — Disponible para freelance</span>
-        <span>Video Editor — Bogot&aacute;, Colombia — Disponible para freelance</span>
-        <span>Video Editor — Bogot&aacute;, Colombia — Disponible para freelance</span>
-      </div>
+    <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.08] max-w-4xl mx-auto mb-6">
+      No solo editamos videos.<br />
+      <span class="text-gradient">Diseñamos retención.</span>
+    </h1>
+    <p class="text-zinc-400 max-w-2xl mx-auto text-lg mb-10">
+      Transformamos ideas en piezas audiovisuales cinematográficas, contenido vertical de alta conversión y flujos de media automatizados para marcas y creadores.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="#portfolio" class="px-8 py-4 rounded-full font-semibold bg-violet-600 hover:bg-violet-500 text-white shadow-lg shadow-violet-600/30 transition flex items-center gap-2">
+        Ver Portafolio
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </a>
+      <button onclick="openModal('Showreel Dreamscape 2026', 'Resumen de nuestros mejores proyectos de edición, VFX, color grading y producción comercial.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'Showreel Completo • Dirección & Postproducción')" class="px-8 py-4 rounded-full font-semibold border border-white/15 bg-white/5 hover:bg-white/10 text-white transition flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-cyan-400"></span> Reproducir Showreel (0:55)
+      </button>
     </div>
   </section>
 
-  <div class="section-divider" id="showreel-link"></div>
-
-  <section class="section section-projects" id="showreel" style="padding:100px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:linear-gradient(90deg,rgba(214,0,1,.04),transparent 50%,rgba(214,0,1,.03))">
-    <div class="section-inner" style="padding:0 24px">
-      <div class="section-header" data-reveal style="margin-bottom:32px">
-        <div class="section-label">Showreel — Selección curada</div>
-        <h2>3 piezas clave <span class="light">para empezar</span></h2>
-        <p>Showreel completo en edición. Mientras tanto, estas 3 piezas muestran el rango: ritmo, storytelling y sistema visual. Mismo estilo que el resto del portfolio.</p>
-      </div>
-      <div class="projects-grid" data-reveal style="margin-top:0;grid-template-columns:repeat(3,1fr)">
-        <a href="https://www.behance.net/gallery/246797387/Showreel-2026-Video-Editor-para-Marcas-y-Social-Media" target="_blank" class="project-card" style="text-decoration:none;color:inherit">
-          <div class="project-thumb"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/6e67cc246797387.Y3JvcCw5MjAsNzIwLDAsMA.png" alt="Showreel 2026 - compilado de mejores trabajos" loading="lazy"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;box-shadow:0 8px 24px rgba(214,0,1,.4);z-index:1">▶</span></div>
-          <div class="project-card-body"><h4>Showreel 2026 · 60s</h4><span class="project-card-cat">Video · Compilado</span><div class="project-card-result">Compilado de ritmo y narrativa — apertura para clientes nuevos.</div></div>
-        </a>
-        <a href="https://www.behance.net/gallery/201723559/Reels-de-Alto-Impacto-Edicion-para-Instagram-y-TikTok" target="_blank" class="project-card" style="text-decoration:none;color:inherit">
-          <div class="project-thumb"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/b52bc2201723559.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png" alt="Reels de Alto Impacto - edición para Instagram y TikTok" loading="lazy"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;z-index:1">▶</span></div>
-          <div class="project-card-body"><h4>Reels Alto Impacto</h4><span class="project-card-cat">Video · Orgánico</span><div class="project-card-result">Ganchos 2s + subtítulos palabra por palabra. Formato replicable.</div></div>
-        </a>
-        <a href="https://www.behance.net/gallery/193273925/Diseno-para-Redes-Sociales-Piezas-Visuales-para-Marca" target="_blank" class="project-card" style="text-decoration:none;color:inherit">
-          <div class="project-thumb"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/ae9088193273925.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png" alt="Diseño para redes sociales - piezas visuales coordinadas" loading="lazy"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;z-index:1">▶</span></div>
-          <div class="project-card-body"><h4>Diseño Redes</h4><span class="project-card-cat">Diseño · Sistema</span><div class="project-card-result">Feed coordinado — carruseles y plantillas con sistema visual.</div></div>
-        </a>
-      </div>
-      <div style="text-align:center;margin-top:20px"><a href="https://www.behance.net/highway43" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border:1px solid var(--border);border-radius:100px;color:var(--text2);text-decoration:none;font-size:10px;letter-spacing:1px;text-transform:uppercase">Ver todo en Behance →</a></div>
-    </div>
-  </section>
-
-  <section class="section section-projects" id="trabajos">
-    <div class="section-inner">
-      <div class="section-header" data-reveal>
-        <div class="section-label">(Portfolio — 6 seleccionados)</div>
-        <h2>Proyectos <span class="light">seleccionados</span></h2>
-        <p>Trabajos con contexto: objetivo, rol y resultado. Cada uno se puede abrir como mini caso sin salir de la home.</p>
-      </div>
-    </div>
-    <div class="projects-grid" id="projectsGrid"></div>
-    <div style="text-align:center;margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a href="https://www.behance.net/highway43" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border:1px solid var(--border);border-radius:100px;color:var(--text2);text-decoration:none;font-size:10px;font-weight:400;letter-spacing:1px;text-transform:uppercase;transition:all .4s var(--ease-power)">Ver todos en Behance <span style="font-size:14px">→</span></a>
-      <a href="#contacto" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--accent);color:#fff;border-radius:100px;text-decoration:none;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase">¿Proyecto similar? Hablemos</a>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <section class="section" id="servicios">
-    <div class="section-inner">
-      <div class="section-header" data-reveal>
-        <div class="section-label">(Servicios)</div>
-        <h2>Lo que puedo hacer <span class="light">por tu marca</span></h2>
-        <p>Desde un reel viral hasta una identidad visual completa.</p>
-      </div>
-      <div class="timeline-wrap">
-        <div class="timeline-line-main"></div>
-        <div class="timeline-line-fill" id="timelineFill"></div>
-
-        <div class="service-item" data-service>
-          <div class="service-spacer"></div>
-          <div class="service-card">
-            <div class="service-num">01 — REELS & SHORT-FORM</div>
-            <h3>Edici&oacute;n de Reel</h3>
-            <p>Para marcas y creadores que necesitan retener y crecer en Instagram / TikTok. Ritmo, ganchos de 2s, subtítulos y storytelling con tendencias.</p>
-            <ul style="margin:0 0 16px 16px;font-size:12px;color:var(--text2);line-height:1.7;font-weight:300"><li>Qué incluye: corte, subtítulos dinámicos, portada, 1 revisión</li><li>Para quién: marcas, infoproductores, creators</li><li>Entrega: 48–72h · Formato 9:16 optimizado</li></ul>
-            <span class="service-price">Desde $40 USD <span class="cop">/ $168,000 COP</span></span>
-          </div>
-          <div class="service-dot"></div>
-        </div>
-
-        <div class="service-item" data-service>
-          <div class="service-spacer"></div>
-          <div class="service-card">
-            <div class="service-num">02 — BRANDING</div>
-            <h3>Identidad Visual</h3>
-            <p>Logotipo, paleta, tipografía y sistema visual completo para que tu marca se vea coherente y memorable en todo punto de contacto.</p>
-            <ul style="margin:0 0 16px 16px;font-size:12px;color:var(--text2);line-height:1.7;font-weight:300"><li>Qué incluye: logo + variantes, paleta, tipografía, mini manual</li><li>Para quién: emprendimientos y marcas en relanzamiento</li><li>Entrega: 5–7 días · Archivos editables</li></ul>
-            <span class="service-price">Desde $100 USD <span class="cop">/ $420,000 COP</span></span>
-          </div>
-          <div class="service-dot"></div>
-        </div>
-
-        <div class="service-item" data-service>
-          <div class="service-spacer"></div>
-          <div class="service-card">
-            <div class="service-num">03 — CONTENIDO MENSUAL</div>
-            <h3>Pack Mensual Redes</h3>
-            <p>Contenido recurrente sin que tengas que perseguir a nadie. Reels + carruseles + historias con línea editorial coordinada.</p>
-            <ul style="margin:0 0 16px 16px;font-size:12px;color:var(--text2);line-height:1.7;font-weight:300"><li>Qué incluye: 8–12 piezas/mes, calendario, copies base</li><li>Para quién: negocios que quieren constancia</li><li>Plan: mensual, sin permanencia · Revisión semanal</li></ul>
-            <span class="service-price">Desde $150 USD/mes <span class="cop">/ $630,000 COP/mes</span></span>
-          </div>
-          <div class="service-dot"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <section class="section" id="about">
-    <div class="section-inner">
-      <div class="about-grid">
-        <div class="about-text" data-reveal>
-          <div class="about-label">(Sobre m&iacute; — Highway 43)</div>
-          <h2>Oscar Lugo &mdash; <span class="light">Highway</span><span class="accent">43</span></h2>
-          <p>Editor de video y creador de contenido en <strong>Bogotá, Colombia</strong> (remoto LATAM). Desde 2018 trabajo con <strong>marcas, agencias y proyectos educativos</strong> para crear piezas que no solo se ven bien, sino que <strong>funcionan</strong>: retienen, explican y ayudan a vender.</p>
-          <p>Mi enfoque es <strong>edición precisa + narrativa estratégica</strong>. Trabajo en <strong>Premiere + After Effects</strong> y uso <strong>IA</strong> para acelerar sin sacrificar criterio. Entregas en 48–72h, una revisión incluida y comunicación directa por WhatsApp.</p>
-          <p style="font-size:12px;color:var(--text3)">Clientes: emprendimientos, marcas personales y agencias que necesitan constancia en Reels sin perder calidad. Si buscas humo, no soy tu editor. Si buscas alguien que entienda tu negocio y te dé piezas listas para publicar, hablemos.</p>
-          <div class="about-links">
-            <a href="sobre-mi.html">Sobre mí completo →</a>
-            <a href="https://www.behance.net/highway43" target="_blank">Behance <span class="link-arrow">↗</span></a>
-            <a href="https://www.linkedin.com/in/oscar-lugo-8984b21bb/" target="_blank">LinkedIn <span class="link-arrow">↗</span></a>
-            <a href="mailto:latamdreamscape@gmail.com">Email <span class="link-arrow">↗</span></a>
-          </div>
-        </div>
-        <div class="about-visual" data-reveal>
-          <div class="about-mega">43</div>
-          <div class="about-mega-stroke">43</div>
-          <div class="stats">
-            <div class="stat"><div class="stat-num">4+</div><div class="stat-label">A&ntilde;os</div></div>
-            <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Proyectos</div></div>
-            <div class="stat"><div class="stat-num">12</div><div class="stat-label">En Behance</div></div>
-            <div class="stat"><div class="stat-num">S&iacute;</div><div class="stat-label">Freelance</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <section class="section contact-section" id="contacto">
-    <div class="section-inner">
-      <div class="section-header" data-reveal>
-        <div class="section-label">(Contacto)</div>
-        <h2>Trabajemos <span class="light">juntos</span></h2>
-        <p>¿Tenés un proyecto en mente? Contame en 2 líneas qué necesitas y te armo una propuesta sin compromiso.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info" data-reveal>
-          <h3><span>Conectemos</span></h3>
-          <p>Respondo en <strong style="color:var(--text)">menos de 24 horas</strong>. Después de escribirme: te respondo con preguntas clave → propuesta + tiempos → agendamos call de 15 min si hace falta.</p>
-          <div class="contact-list">
-            <a href="mailto:latamdreamscape@gmail.com" class="contact-item"><span class="ci-icon">✉</span>latamdreamscape@gmail.com<span class="ci-arrow">→</span></a>
-            <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20tu%20portfolio" target="_blank" class="contact-item"><span class="ci-icon">💬</span>+57 301 182 2651<span class="ci-arrow">→</span></a>
-            <a href="https://www.linkedin.com/in/oscar-lugo-8984b21bb/" target="_blank" class="contact-item"><span class="ci-icon">in</span>LinkedIn<span class="ci-arrow">→</span></a>
-            <a href="https://www.behance.net/highway43" target="_blank" class="contact-item"><span class="ci-icon">Be</span>Behance<span class="ci-arrow">→</span></a>
-          </div>
-          <p style="font-size:11px;color:var(--text3);margin-top:16px;line-height:1.6">¿Prefieres WhatsApp? Es la vía más rápida. Menciona: tipo de proyecto + deadline.</p>
-        </div>
-        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xjkyenov" method="POST" data-reveal novalidate>
-          <div class="form-head">Enviar mensaje — respuesta &lt;24h</div>
-          <label for="cf-name" style="position:absolute;left:-9999px">Tu nombre</label>
-          <input id="cf-name" type="text" name="name" placeholder="Tu nombre" required autocomplete="name">
-          <label for="cf-email" style="position:absolute;left:-9999px">Tu email</label>
-          <input id="cf-email" type="email" name="email" placeholder="Tu email" required autocomplete="email">
-          <label for="cf-project" style="position:absolute;left:-9999px">Tipo de proyecto</label>
-          <input id="cf-project" type="text" name="project" placeholder="Tipo de proyecto (Reel / Branding / Pack redes)" autocomplete="off">
-          <label for="cf-message" style="position:absolute;left:-9999px">Mensaje</label>
-          <textarea id="cf-message" name="message" placeholder="Contame en 2–3 líneas: qué necesitas, para qué plataforma y cuándo lo necesitas..." required></textarea>
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
-          <button type="submit">Enviar mensaje</button>
-          <div id="form-feedback" role="status" aria-live="polite"></div>
-          <p style="font-size:10px;color:var(--text3);margin-top:4px">Al enviar aceptas ser contactado para responder a tu solicitud. Ver <a href="privacidad.html" style="color:var(--accent)">privacidad</a>.</p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESO + FAQ — misma estética editorial, sin romper -->
-  <section class="section" id="proceso" style="padding:100px 24px;border-top:1px solid var(--border)">
-    <div class="section-inner" style="max-width:1100px;margin:0 auto">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
-        <div data-reveal>
-          <div class="section-label" style="margin-bottom:12px">Proceso — 3 pasos</div>
-          <h3 style="font-family:var(--font-display);font-size:clamp(22px,2.5vw,32px);font-weight:600;letter-spacing:-.04em;text-transform:uppercase;margin-bottom:16px;line-height:1">Simple, rápido y <span style="color:var(--accent)">sin vueltas</span></h3>
-          <p style="color:var(--text2);font-size:13px;line-height:1.7;font-weight:300;margin-bottom:24px;max-width:440px">Mismo flujo que uso con todos los clientes. Sin reuniones eternas.</p>
-          <div style="display:flex;flex-direction:column;gap:1px;background:var(--border)">
-            <div style="display:flex;gap:16px;padding:18px 20px;background:var(--bg)"><span style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-family:var(--font-mono)">1</span><div><strong style="font-size:13px;letter-spacing:-.01em">Brief de 15 min</strong><p style="font-size:12px;color:var(--text2);margin:4px 0 0;font-weight:300">Objetivo, referentes y deadline. Te propongo ruta y precio cerrado.</p></div></div>
-            <div style="display:flex;gap:16px;padding:18px 20px;background:var(--bg)"><span style="width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-family:var(--font-mono)">2</span><div><strong style="font-size:13px;letter-spacing:-.01em">Edición</strong><p style="font-size:12px;color:var(--text2);margin:4px 0 0;font-weight:300">Corte, ritmo, subtítulos y color. Primera entrega en 48–72h.</p></div></div>
-            <div style="display:flex;gap:16px;padding:18px 20px;background:var(--bg)"><span style="width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-family:var(--font-mono)">3</span><div><strong style="font-size:13px;letter-spacing:-.01em">Entrega</strong><p style="font-size:12px;color:var(--text2);margin:4px 0 0;font-weight:300">Revisión incluida, archivos finales listos para publicar. Soporte por WhatsApp.</p></div></div>
-          </div>
-        </div>
-        <div data-reveal class="contact-form" style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:28px">
-          <div class="section-label" style="margin-bottom:12px">FAQ — Rápido</div>
-          <details style="padding:14px 0;border-bottom:1px solid var(--border)"><summary style="cursor:pointer;font-size:13px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)">¿Cuánto tardas? <span style="color:var(--accent);font-size:16px">+</span></summary><p style="font-size:12px;color:var(--text2);margin:10px 0 0;font-weight:300">Reels: 48–72h. Identidad: 5–7 días. Pack mensual: entregas semanales.</p></details>
-          <details style="padding:14px 0;border-bottom:1px solid var(--border)"><summary style="cursor:pointer;font-size:13px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)">¿Qué necesito enviarte? <span style="color:var(--accent);font-size:16px">+</span></summary><p style="font-size:12px;color:var(--text2);margin:10px 0 0;font-weight:300">Bruto en vertical/horizontal, logo si tienes, y 2–3 referentes.</p></details>
-          <details style="padding:14px 0;border-bottom:1px solid var(--border)"><summary style="cursor:pointer;font-size:13px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)">¿Incluye revisiones? <span style="color:var(--accent);font-size:16px">+</span></summary><p style="font-size:12px;color:var(--text2);margin:10px 0 0;font-weight:300">Sí, 1 revisión incluida por pieza. Extras se cotizan según alcance.</p></details>
-          <details style="padding:14px 0"><summary style="cursor:pointer;font-size:13px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)">¿Cómo pago? <span style="color:var(--accent);font-size:16px">+</span></summary><p style="font-size:12px;color:var(--text2);margin:10px 0 0;font-weight:300">50% al inicio, 50% al entregar. PayPal / Nequi / transferencia. Factura disponible.</p></details>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="footer-inner" style="flex-direction:column;align-items:stretch;gap:32px">
-    <div style="display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr;gap:32px">
+  <!-- SECCIÓN PORTAFOLIO (BENTO GRID) -->
+  <section id="portfolio" class="relative z-10 py-20 px-6 max-w-7xl mx-auto">
+    
+    <!-- Encabezado y Filtros -->
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
       <div>
-        <span class="footer-brand">Oscar <span>Lugo</span> &mdash; Highway<span>43</span></span>
-        <p style="font-size:11px;color:var(--text3);line-height:1.6;margin-top:8px;max-width:280px">Editor de video en Bogotá. Reels, branding y contenido mensual para marcas y creadores. Parte de Dreamscape.</p>
+        <p class="text-violet-400 text-sm font-semibold tracking-widest uppercase mb-2">Selección de Trabajos</p>
+        <h2 class="text-3xl md:text-5xl font-bold">Portafolio Destacado</h2>
       </div>
-      <div><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--text);margin-bottom:12px">NAVEGACIÓN</div><div style="display:flex;flex-direction:column;gap:6px"><a href="#trabajos">Trabajos</a><a href="#servicios">Servicios</a><a href="sobre-mi.html">Sobre mí</a><a href="recursos/index.html">Recursos</a></div></div>
-      <div><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--text);margin-bottom:12px">LEGAL</div><div style="display:flex;flex-direction:column;gap:6px"><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a><a href="terminos.html">Términos</a><a href="#contacto">Contacto</a></div></div>
-      <div><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--text);margin-bottom:12px">CONECTA</div><div style="display:flex;flex-direction:column;gap:6px"><a href="https://www.behance.net/highway43" target="_blank">Behance</a><a href="https://www.linkedin.com/in/oscar-lugo-8984b21bb/" target="_blank">LinkedIn</a><a href="https://wa.me/573011822651" target="_blank">WhatsApp</a><a href="mailto:latamdreamscape@gmail.com">Email</a></div></div>
+      
+      <!-- Botones de Filtro -->
+      <div class="flex flex-wrap gap-2" id="filter-container">
+        <button class="filter-btn active px-4 py-2 rounded-full text-xs font-medium border border-white/10 bg-white/5 text-zinc-300 transition" data-filter="all">Todos</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-xs font-medium border border-white/10 bg-white/5 text-zinc-300 transition" data-filter="comercial">Comerciales & Marcas</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-xs font-medium border border-white/10 bg-white/5 text-zinc-300 transition" data-filter="vertical">Reels / Short-Form (9:16)</button>
+        <button class="filter-btn px-4 py-2 rounded-full text-xs font-medium border border-white/10 bg-white/5 text-zinc-300 transition" data-filter="ai">VFX & Flujos IA</button>
+      </div>
     </div>
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--border)">
-      <span class="footer-mono">&copy; 2026 Oscar Lugo — Highway 43 · Bogotá, Colombia</span>
-      <span style="font-family:var(--font-mono);font-size:10px;color:var(--text3)">Hecho con criterio, no con plantilla. · <a href="privacidad.html" style="color:var(--text3)">Privacidad</a></span>
+
+    <!-- BENTO GRID -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]" id="portfolio-grid">
+
+      <!-- ITEM 1: Destacado Principal (Ocupa 2 columnas en Desktop) -->
+      <article class="bento-card rounded-2xl md:col-span-2 group cursor-pointer" data-category="comercial"
+               onclick="openModal('Campaña Comercial Cyberpunk', 'Edición rítmica, diseño sonoro inmersivo y etalonaje (Color Grading) para lanzamiento de producto tecnológico. +62% de retención promedio.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'Color Grading • Sound Design • Edición')">
+        <video class="w-full h-full object-cover opacity-65 group-hover:opacity-100 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1536240478700-b869070f9279?auto=format&fit=crop&w=1200&q=80">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-6 flex flex-col justify-end">
+          <div class="flex gap-2 mb-2">
+            <span class="px-2.5 py-1 text-[11px] font-medium bg-violet-600/80 text-white rounded-md backdrop-blur-sm">Spot Comercial</span>
+            <span class="px-2.5 py-1 text-[11px] font-medium bg-white/10 text-zinc-200 rounded-md backdrop-blur-sm">Color Grading + SFX</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white group-hover:text-violet-300 transition">Campaña Lanzamiento Tech</h3>
+          <p class="text-xs text-zinc-300 mt-1 line-clamp-1">Narrativa dinámica y diseño sonoro envolvente (+62% retención en los primeros 5s).</p>
+        </div>
+      </article>
+
+      <!-- ITEM 2: Formato Vertical 9:16 (Ocupa 2 filas de alto) -->
+      <article class="bento-card rounded-2xl md:row-span-2 group cursor-pointer" data-category="vertical"
+               onclick="openModal('Reels Virales de Alta Retención', 'Edición dinámica con subtítulos animados, efectos visuales y ganchos visuales cada 2.5 segundos para maximizar alcance orgánico.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'Short-Form • Motion Graphics • Retención')">
+        <video class="w-full h-full object-cover opacity-65 group-hover:opacity-100 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent p-6 flex flex-col justify-end">
+          <div class="flex gap-2 mb-2">
+            <span class="px-2.5 py-1 text-[11px] font-medium bg-cyan-500/80 text-black font-semibold rounded-md">9:16 Vertical</span>
+            <span class="px-2.5 py-1 text-[11px] font-medium bg-white/10 text-zinc-200 rounded-md">Motion Captions</span>
+          </div>
+          <h3 class="text-xl font-bold text-white group-hover:text-cyan-300 transition">Pack Reels & TikTok High-Retention</h3>
+          <p class="text-xs text-zinc-300 mt-1">Edición de ritmo rápido pensada para creadores y marcas personales.</p>
+        </div>
+      </article>
+
+      <!-- ITEM 3: VFX & IA -->
+      <article class="bento-card rounded-2xl group cursor-pointer" data-category="ai"
+               onclick="openModal('Pipeline Automatizado & Generación IA', 'Integración de visuales generativos, rotoscopia avanzada y automatización de contenido para escalar canales digitales.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'VFX • IA Generativa • Automatización')">
+        <video class="w-full h-full object-cover opacity-65 group-hover:opacity-100 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-6 flex flex-col justify-end">
+          <div class="flex gap-2 mb-2">
+            <span class="px-2.5 py-1 text-[11px] font-medium bg-fuchsia-600/80 text-white rounded-md">AI Workflow & VFX</span>
+          </div>
+          <h3 class="text-xl font-bold text-white group-hover:text-fuchsia-300 transition">Visuales Generativos & VFX</h3>
+          <p class="text-xs text-zinc-300 mt-1">Estética surrealista y flujos híbridos de postproducción.</p>
+        </div>
+      </article>
+
+      <!-- ITEM 4: YouTube / Documental -->
+      <article class="bento-card rounded-2xl group cursor-pointer" data-category="comercial"
+               onclick="openModal('Storytelling Documental para YouTube', 'Construcción narrativa tipo mini-documental con pacing cinematográfico, mapas animados y mezcla de audio profesional.', 'https://www.w3schools.com/html/mov_bbb.mp4', 'Storytelling • YouTube Long-Form • Pacing')">
+        <video class="w-full h-full object-cover opacity-65 group-hover:opacity-100 group-hover:scale-105 transition duration-700" muted loop playsinline preload="metadata" poster="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=800&q=80">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-6 flex flex-col justify-end">
+          <div class="flex gap-2 mb-2">
+            <span class="px-2.5 py-1 text-[11px] font-medium bg-white/15 text-white rounded-md">Documental / YouTube</span>
+          </div>
+          <h3 class="text-xl font-bold text-white group-hover:text-violet-300 transition">Narrativa Documental & Pacing</h3>
+          <p class="text-xs text-zinc-300 mt-1">Edición de formato largo diseñada para mantener el AVD alto.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- MODAL CINEMATOGRÁFICO PARA REPRODUCIR PROYECTOS -->
+  <div id="video-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-xl p-4">
+    <div class="relative w-full max-w-5xl rounded-2xl bg-zinc-900 border border-white/10 overflow-hidden grid grid-cols-1 lg:grid-cols-3 shadow-2xl">
+      <!-- Reproductor -->
+      <div class="lg:col-span-2 bg-black flex items-center justify-center aspect-video">
+        <video id="modal-video" class="w-full h-full" controls playsinline></video>
+      </div>
+      <!-- Ficha Técnica y Conversión -->
+      <div class="p-6 flex flex-col justify-between">
+        <div>
+          <div class="flex justify-between items-start mb-4">
+            <span id="modal-tags" class="text-xs font-semibold text-violet-400 uppercase tracking-wider"></span>
+            <button onclick="closeModal()" class="text-zinc-400 hover:text-white text-xl leading-none">&times;</button>
+          </div>
+          <h3 id="modal-title" class="text-2xl font-bold mb-3"></h3>
+          <p id="modal-desc" class="text-sm text-zinc-400 leading-relaxed"></p>
+        </div>
+        <div class="mt-8 pt-6 border-t border-white/10">
+          <p class="text-xs text-zinc-400 mb-3">¿Buscas este nivel de acabado para tu próximo proyecto?</p>
+          <a href="#contacto" onclick="closeModal()" class="block w-full text-center py-3 rounded-xl font-semibold bg-violet-600 hover:bg-violet-500 text-white transition">
+            Cotizar un video similar →
+          </a>
+        </div>
+      </div>
     </div>
   </div>
-</footer>
 
-<script defer data-domain="oscarlugocar-lang.github.io/portfolio" src="https://plausible.io/js/script.js"></script>
-<script>
-// ─── PROJECTS — GRID (6 con micro-caso, conserva identidad + añade valor AdSense) ───
-const projects = [
-  { title:"Showreel 2026", cat:"Video · Compilado", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/6e67cc246797387.Y3JvcCw5MjAsNzIwLDAsMA.png", url:"https://www.behance.net/gallery/246797387/Showreel-2026-Video-Editor-para-Marcas-y-Social-Media", result:"<strong>Objetivo:</strong> mostrar rango en 60s. <strong>Rol:</strong> edición + ritmo. <strong>Resultado:</strong> reel de apertura para clientes nuevos." },
-  { title:"Reels de Alto Impacto", cat:"Video · TikTok / IG", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/b52bc2201723559.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/gallery/201723559/Reels-de-Alto-Impacto-Edicion-para-Instagram-y-TikTok", result:"<strong>Objetivo:</strong> alcance orgánico. <strong>Rol:</strong> ganchos 2s + subtítulos. <strong>Resultado:</strong> formato replicable para marca." },
-  { title:"Reel Publicitario", cat:"Video · Ads", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/d3dc17201723443.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/gallery/201723443/Reel-Publicitario-para-Redes-Sociales-Marca-y-Alcance", result:"<strong>Objetivo:</strong> conversión. <strong>Rol:</strong> guion + corte para paid. <strong>Resultado:</strong> pieza lista para Meta Ads." },
-  { title:"Diseño para Redes", cat:"Diseño · Sistema", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/ae9088193273925.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/gallery/193273925/Diseno-para-Redes-Sociales-Piezas-Visuales-para-Marca", result:"<strong>Objetivo:</strong> coherencia visual. <strong>Rol:</strong> carruseles + plantillas. <strong>Resultado:</strong> feed coordinado." },
-  { title:"Identidad Highway 43", cat:"Branding · Dirección", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/ae9088193273925.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/highway43", result:"<strong>Objetivo:</strong> marca personal sólida. <strong>Rol:</strong> logo + paleta + tipografía. <strong>Resultado:</strong> sistema Highway 43." },
-  { title:"Pack Contenido Mensual", cat:"Contenido · Retainer", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/b52bc2201723559.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/highway43", result:"<strong>Objetivo:</strong> constancia sin fricción. <strong>Rol:</strong> 8–12 piezas/mes. <strong>Resultado:</strong> calendario + copies base." },
-];
-var grid=document.getElementById('projectsGrid');
-projects.forEach(function(p){
-  var el=document.createElement('div');el.className='project-card';
-  el.innerHTML='<div class="project-thumb"><img src="'+p.img+'" alt="'+p.title+'" loading="lazy"></div><div class="project-card-body"><h4>'+p.title+'</h4><span class="project-card-cat">'+p.cat+'</span><div class="project-card-result">'+p.result+'</div></div>';
-  el.addEventListener('click',function(){window.open(p.url,'_blank')});
-  grid.appendChild(el);
-});
-
-// ─── LENIS SMOOTH SCROLL (más fluido, se desactiva si la página es corta) ───
-var lenis;
-var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(window.innerWidth>900 && !prefersReduced && document.body.scrollHeight > window.innerHeight + 200){
-  lenis = new Lenis({duration:0.85,easing:function(t){return 1 - Math.pow(1-t,3)},wheelMultiplier:0.9,smoothWheel:true,lerp:0.08});
-  lenis.on('scroll',ScrollTrigger.update);
-  gsap.ticker.add(function(t){lenis.raf(t*1000)});
-}
-
-// ─── CUSTOM CURSOR (fix: no bloquea salida del navegador, se oculta al salir) ───
-(function(){
-  if(window.innerWidth<=900 || window.matchMedia('(hover: none)').matches) return;
-  var dot=document.getElementById('cursorDot');
-  var bubble=document.getElementById('cursorBubble');
-  var wrap=document.getElementById('cursorWrap');
-  if(!dot||!wrap) return;
-  var mx=window.innerWidth/2,my=window.innerHeight/2,dotX=mx,dotY=my, isOutside=true;
-  function showCursor(){ dot.style.opacity='1'; bubble.style.opacity='1'; isOutside=false; }
-  function hideCursor(){ dot.style.opacity='0'; bubble.style.opacity='0'; wrap.removeAttribute('data-cursor'); dot.classList.remove('is-lg'); isOutside=true; }
-  document.addEventListener('mousemove',function(e){ mx=e.clientX;my=e.clientY; if(isOutside) showCursor(); });
-  document.addEventListener('mouseleave', hideCursor);
-  document.addEventListener('mouseenter', showCursor);
-  // Escape con teclado también restaura cursor nativo
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape') hideCursor(); });
-  gsap.ticker.add(function(){
-    if(isOutside) return;
-    dotX+=(mx-dotX)*.18;
-    dotY+=(my-dotY)*.18;
-    dot.style.left=dotX+'px';dot.style.top=dotY+'px';
-    bubble.style.left=mx+'px';bubble.style.top=(my-22)+'px';
-  });
-  var hoverTargets=document.querySelectorAll('a,button,.project-card,.contact-item,.service-card');
-  hoverTargets.forEach(function(el){
-    el.addEventListener('mouseenter',function(){
-      if(el.classList.contains('project-card')){wrap.setAttribute('data-cursor','active')}
-      else{dot.classList.add('is-lg')}
+  <!-- SCRIPTS: Hover Preview, Filtros, Modal y Fondo 3D -->
+  <script>
+    // 1. Reproducción automática al pasar el mouse (Hover Preview)
+    document.querySelectorAll('.bento-card').forEach(card => {
+      const video = card.querySelector('video');
+      card.addEventListener('mouseenter', () => video && video.play().catch(() => {}));
+      card.addEventListener('mouseleave', () => {
+        if (video) {
+          video.pause();
+          video.currentTime = 0;
+        }
+      });
     });
-    el.addEventListener('mouseleave',function(){
-      wrap.removeAttribute('data-cursor');
-      dot.classList.remove('is-lg');
+
+    // 2. Filtros dinámicos sin recargar página
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.bento-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
     });
-  });
-  // Inicialmente oculto hasta primer movimiento
-  hideCursor();
-})();
 
-// ─── GSAP — HERO ───
-var heroTimeline=gsap.timeline();
-heroTimeline
-  .from('.hero-left h1 .line span',{y:'110%',opacity:0,duration:1.4,stagger:0.14,ease:'power3.out',delay:0.2})
-  .from('.hero-label',{opacity:0,y:16,duration:.8,ease:'power2.out'},'-=0.8')
-  .from('.hero-left p',{opacity:0,y:20,duration:.8,ease:'power2.out'},'-=0.5')
-  .from('.hero-actions',{opacity:0,y:20,duration:.8,ease:'power2.out'},'-=0.4')
-  .from('.hero-scroll',{opacity:0,duration:.8,ease:'power2.out'},'-=0.3')
-  .from('.hero-right',{opacity:0,x:80,duration:1.4,ease:'power3.out',delay:0.1},'-=1')
-  .from('.hero-visual-line',{scaleY:0,duration:1,ease:'power3.out'},'-=0.6');
+    // 3. Control del Modal Cinematográfico
+    const modal = document.getElementById('video-modal');
+    const modalVideo = document.getElementById('modal-video');
 
-// ─── GSAP — TIMELINE ───
-ScrollTrigger.create({
-  trigger:'.timeline-wrap',
-  start:'top 40%',
-  end:'bottom 20%',
-  invalidateOnRefresh:true,
-  onEnter:function(){
-    gsap.to('#timelineFill',{scaleY:1,duration:2.5,ease:'power3.out',clearProps:'transformOrigin'});
-  },
-  once:true
-});
-var serviceCards=document.querySelectorAll('[data-service]');
-serviceCards.forEach(function(el,i){
-  ScrollTrigger.create({
-    trigger:el,
-    start:'top 75%',
-    onEnter:function(){
-      var dir=i%2===0?-60:60;
-      gsap.fromTo(el.querySelector('.service-card'),{opacity:0,x:dir},{opacity:1,x:0,duration:1.2,ease:'power3.out'});
-      gsap.fromTo(el.querySelector('.service-dot'),{scale:0,opacity:0},{scale:1,opacity:1,duration:.6,ease:'back.out(2)',delay:.6});
-    },
-    once:true
-  });
-});
+    function openModal(title, desc, videoSrc, tags) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-desc').textContent = desc;
+      document.getElementById('modal-tags').textContent = tags;
+      modalVideo.src = videoSrc;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      modalVideo.play().catch(() => {});
+    }
 
-// ─── GSAP — SCROLL REVEALS ───
-gsap.utils.toArray('[data-reveal]').forEach(function(el){
-  ScrollTrigger.create({
-    trigger:el,
-    start:'top 85%',
-    onEnter:function(){el.classList.add('is-visible')},
-    once:true
-  });
-});
-gsap.utils.toArray('[data-reveal-scale]').forEach(function(el){
-  ScrollTrigger.create({
-    trigger:el,
-    start:'top 85%',
-    onEnter:function(){el.classList.add('is-visible')},
-    once:true
-  });
-});
+    function closeModal() {
+      modalVideo.pause();
+      modalVideo.src = '';
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
 
-// ─── MOBILE NAV ───
-var hamburger=document.getElementById('hamburger');
-var overlay=document.getElementById('mobileOverlay');
-hamburger.addEventListener('click',function(){
-  overlay.classList.toggle('open');
-  hamburger.textContent=overlay.classList.contains('open')?'✕':'☰';
-});
-overlay.querySelectorAll('a').forEach(function(a){
-  a.addEventListener('click',function(){
-    overlay.classList.remove('open');
-    hamburger.textContent='☰';
-  });
-});
+    // 4. Fondo de partículas sutiles con Three.js
+    const canvas = document.getElementById('bg-canvas');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
-// ─── CONTACT FORM ───
-document.getElementById('contactForm').addEventListener('submit',async function(e){
-  e.preventDefault();
-  var fb=document.getElementById('form-feedback');
-  var btn=this.querySelector('button');
-  btn.disabled=true;
-  btn.textContent='Enviando...';
-  try{
-    var r=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{Accept:'application/json'}});
-    if(r.ok){
-      fb.style.display='block';fb.style.color='var(--text)';
-      fb.textContent='✓ Mensaje enviado. Te respondo pronto.';
-      this.reset();
-    }else throw Error();
-  }catch{
-    fb.style.display='block';fb.style.color='var(--text3)';
-    fb.textContent='✗ Error. Escribime directo a WhatsApp.';
-  }finally{
-    btn.disabled=false;btn.textContent='Enviar mensaje';
-  }
-});
+    const particlesGeometry = new THREE.BufferGeometry();
+    const count = 350;
+    const positions = new Float32Array(count * 3);
+    for (let i = 0; i < count * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 15;
+    }
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const particlesMaterial = new THREE.PointsMaterial({ size: 0.025, color: 0x8b5cf6, transparent: true, opacity: 0.5 });
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+    camera.position.z = 5;
 
-// ─── NAV SCROLL ───
-var navInner=document.querySelector('.nav-inner');
-window.addEventListener('scroll',function(){
-  var s=window.scrollY;
-  navInner.style.borderColor=s>60?'rgba(214,0,1,.25)':'rgba(255,255,255,.06)';
-},{passive:true});
+    function animate() {
+      requestAnimationFrame(animate);
+      particlesMesh.rotation.y += 0.0006;
+      particlesMesh.rotation.x += 0.0003;
+      renderer.render(scene, camera);
+    }
+    animate();
 
-document.documentElement.classList.add('js-ready');
-// ─── REFRESH ───
-window.addEventListener('load',function(){
-  if(lenis)lenis.raf(0);
-  ScrollTrigger.refresh();
-});
-</script>
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
 </body>
 </html>
