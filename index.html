@@ -1,581 +1,752 @@
-<!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+﻿<!DOCTYPE html>
+<html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dreamscape Productions | Portafolio Audiovisual — Oscar Lugo</title>
-  <meta name="description" content="Portafolio de postproducción audiovisual y edición de alto impacto por Oscar Lugo. Reels de alta retención, spots comerciales y proyectos destacados de Behance (@highway43)." />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Oscar Lugo — Editor de Video | Reels, Branding y Contenido para Marcas en Colombia</title>
+<meta name="description" content="Editor de video en Bogotá para marcas y creadores. Reels que retienen y venden, identidad visual y packs mensuales. +4 años, 30+ proyectos. Respuesta en <24h. Highway 43 / Dreamscape.">
+<meta property="og:title" content="Oscar Lugo — Editor de Video para Marcas y Creadores">
+<meta property="og:description" content="Reels, anuncios y contenido que convierte visitas en clientes. Edición Premiere + After Effects + IA. Bogotá, Colombia. Disponible freelance.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oscarlugocar-lang.github.io/portfolio/">
+<meta property="og:image" content="https://oscarlugocar-lang.github.io/portfolio/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://oscarlugocar-lang.github.io/portfolio/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Oscar Lugo","alternateName":"Highway43","jobTitle":"Editor de Video","description":"Editor de video en Bogotá para marcas y creadores. Reels, branding y contenido mensual. +4 años, 30+ proyectos.","url":"https://oscarlugocar-lang.github.io/portfolio/","image":"https://oscarlugocar-lang.github.io/portfolio/og-image.jpg","knowsAbout":["Video Editing","Reels","Short-form Video","Motion Graphics","Branding"],"worksFor":{"@type":"Organization","name":"Highway 43 / Dreamscape","url":"https://oscarlugocar-lang.github.io/portfolio/"},"address":{"@type":"PostalAddress","addressLocality":"Bogotá","addressCountry":"CO"},"contactPoint":{"@type":"ContactPoint","telephone":"+57-301-182-2651","contactType":"freelance","email":"latamdreamscape@gmail.com","availableLanguage":["es","en"]}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"Oscar Lugo — Portfolio","url":"https://oscarlugocar-lang.github.io/portfolio/","potentialAction":{"@type":"SearchAction","target":"https://oscarlugocar-lang.github.io/portfolio/recursos/?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='28' font-size='28'>⏺</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script>gsap.registerPlugin(ScrollTrigger)</script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#000000;--bg2:#0A0A0A;--card:rgba(255,255,255,.02);
+  --text:#F5F5F0;--text2:rgba(245,245,240,.55);--text3:rgba(245,245,240,.25);
+  --border:rgba(255,255,255,.06);--border-hover:rgba(255,255,255,.15);
+  --accent:#D60001;--accent-dim:rgba(214,0,1,.15);
+  --accent-mid:rgba(214,0,1,.5);
+  --font-display:'Inter',sans-serif;
+  --font-mono:'DM Mono',monospace;
+  --ease-power:cubic-bezier(0.16,1,0.3,1);
+}
+html{scroll-behavior:auto;-webkit-font-smoothing:antialiased}
+body{font-family:var(--font-display);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.7}
+/* Cursor custom SOLO en desktop con hover fino, y se oculta al salir de la ventana para no bloquear el navegador */
+@media (hover: hover) and (pointer: fine) {
+  html.js-ready body{cursor:none}
+  html.js-ready a, html.js-ready button, html.js-ready .project-card, html.js-ready .contact-item, html.js-ready .service-card{cursor:none}
+}
+::selection{background:var(--accent);color:#fff}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--text3);border-radius:2px}
 
-  <!-- Open Graph / Meta -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://oscarlugocar-lang.github.io/portfolio/" />
-  <meta property="og:title" content="Dreamscape Productions | Portafolio Audiovisual — Oscar Lugo" />
-  <meta property="og:description" content="Transformamos ideas en videos que retienen y venden. Especialistas en reels 9:16, comercial y acabado cinematográfico." />
-  <meta property="og:image" content="https://mir-s3-cdn-cf.behance.net/projects/max_808/6e67cc246797387.Y3JvcCw5MjAsNzIwLDAsMA.png" />
-  <meta name="twitter:card" content="summary_large_image" />
+/* ─── CUSTOM CURSOR ─── */
+@media (hover: hover) and (pointer: fine) {
+  .cursor-wrap{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;mix-blend-mode:difference}
+  .cursor-bubble{position:fixed;width:80px;height:44px;border-radius:6px;background:#fff;color:#000;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;clip-path:inset(0 100% 0 0 round 6px);opacity:0;transform:translateX(0) scale(0.92);transition:clip-path .45s var(--ease-power),opacity .2s var(--ease-power),transform .45s var(--ease-power);font-family:var(--font-mono)}
+  [data-cursor="active"] .cursor-bubble{clip-path:inset(0 0 0 0 round 6px);opacity:1;transform:translateX(0) scale(1)}
+  [data-cursor="active-edge"] .cursor-bubble{clip-path:inset(0 0 0 0 round 6px);opacity:1;transform:translateX(-100%) scale(1)}
+  .cursor-dot{position:fixed;width:6px;height:6px;border-radius:50%;background:#fff;transform:translate(-50%,-50%);transition:width .3s,height .3s,background .3s}
+  .cursor-dot.is-lg{width:40px;height:40px;background:rgba(255,255,255,.08);backdrop-filter:blur(4px)}
+}
+@media (hover: none), (pointer: coarse) { body { cursor: auto } a,button,.project,.contact-item,.service-card,.showreel-section { cursor: auto } }
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+/* ─── NAV ─── */
+nav{position:fixed;top:24px;left:50%;transform:translateX(-50%);z-index:100;width:calc(100% - 48px);max-width:1100px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0 6px 0 20px;height:48px;background:rgba(0,0,0,.8);backdrop-filter:blur(32px);-webkit-backdrop-filter:blur(32px);border:1px solid var(--border);border-radius:100px;transition:border-color .4s}
+.nav-logo{font-family:var(--font-display);font-weight:600;font-size:13px;letter-spacing:.02em;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-links a{padding:6px 14px;font-size:11px;color:var(--text2);text-decoration:none;border-radius:100px;transition:all .4s var(--ease-power);font-weight:400;letter-spacing:.5px;text-transform:uppercase;position:relative;overflow:hidden}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.03)}
+.nav-links a .nav-hover-line{position:absolute;bottom:4px;left:14px;right:14px;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease-power)}
+.nav-links a:hover .nav-hover-line{transform:scaleX(1)}
+.nav-cta{padding:6px 18px!important;background:var(--accent);color:#fff!important;border-radius:100px;font-size:11px;font-weight:600!important;margin-left:4px;text-transform:uppercase;letter-spacing:.5px;border:1px solid var(--accent);transition:all .4s var(--ease-power)!important}
+.nav-cta:hover{opacity:.85!important;background:var(--accent)!important}
+.nav-cta .nav-hover-line{display:none}
+.nav-hamburger{display:none;background:none;border:none;color:var(--text);font-size:18px;cursor:pointer;padding:6px 10px}
+.mobile-overlay{position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.98);backdrop-filter:blur(48px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .6s var(--ease-power)}
+.mobile-overlay.open{opacity:1;pointer-events:auto}
+.mobile-overlay a{font-family:var(--font-display);font-size:22px;color:var(--text2);text-decoration:none;transition:color .3s;font-weight:300;letter-spacing:2px;text-transform:uppercase}
+.mobile-overlay a:hover{color:var(--text)}
+.mobile-overlay .nav-cta{font-size:14px;padding:12px 32px!important;margin-left:0}
 
-  <!-- Tipografías limpias y modernas (Plus Jakarta Sans + Space Grotesk) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+/* ─── HERO — SPLIT ─── */
+.hero{position:relative;overflow:hidden}
+.hero-grain{position:absolute;inset:0;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;pointer-events:none;z-index:1}
+.hero-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);min-height:100dvh}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:140px 60px 100px 48px;position:relative;z-index:2}
+.hero-left::after{content:'';position:absolute;right:-2px;top:80px;bottom:80px;width:3px;background:linear-gradient(to bottom,var(--accent),var(--accent-dim),transparent);z-index:3}
+.hero-label{font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:6px;margin-bottom:28px;text-transform:uppercase;opacity:.7}
+.hero-left h1{font-family:var(--font-display);font-size:clamp(48px,10vw,140px);font-weight:700;letter-spacing:-.07em;line-height:.85;margin-bottom:28px;text-transform:uppercase}
+.hero-left h1 .line{display:block;overflow:hidden}
+.hero-left h1 .line span{display:block}
+.hero-left h1 .accent{color:var(--accent);font-weight:800;font-size:1.1em}
+.hero-left p{font-size:clamp(14px,1vw,17px);color:var(--text2);max-width:440px;line-height:1.7;font-weight:300;margin-bottom:36px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-actions .btn{padding:14px 32px;border-radius:100px;font-size:11px;font-weight:600;text-decoration:none;transition:all .6s var(--ease-power);border:1px solid transparent;letter-spacing:1.5px;text-transform:uppercase}
+.hero-actions .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 0 30px rgba(214,0,1,.25)}
+.hero-actions .btn-primary:hover{opacity:.85;box-shadow:0 0 50px rgba(214,0,1,.35)}
+.hero-actions .btn-outline{background:transparent;color:var(--text2);border-color:var(--border);position:relative;overflow:hidden}
+.hero-actions .btn-outline::before{content:'';position:absolute;inset:0;background:var(--accent);transform:translateX(-100%);transition:transform .6s var(--ease-power)}
+.hero-actions .btn-outline:hover::before{transform:translateX(0)}
+.hero-actions .btn-outline:hover{color:#fff;border-color:var(--accent)}
+.hero-actions .btn-outline span{position:relative;z-index:1}
+.hero-right{position:relative;z-index:0;overflow:hidden}
+.hero-visual{position:absolute;inset:0;background:radial-gradient(ellipse at 60% 40%,rgba(214,0,1,.12) 0%,rgba(214,0,1,.03) 40%,transparent 70%),linear-gradient(180deg,rgba(214,0,1,.2) 0%,transparent 60%);display:flex;align-items:center;justify-content:center}
+.hero-visual::before{content:'43';font-family:var(--font-display);font-size:clamp(120px,18vw,280px);font-weight:900;color:rgba(255,255,255,.02);letter-spacing:-.06em;line-height:1;user-select:none;transform:rotate(-12deg)}
+.hero-visual-line{position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--accent-dim),transparent);transform-origin:top}
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--text3);font-size:9px;letter-spacing:4px;text-transform:uppercase;font-weight:300;font-family:var(--font-mono);z-index:2}
+.hero-scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--accent),transparent)}
+.hero-marquee{position:absolute;bottom:0;left:0;right:0;overflow:hidden;padding:10px 0;border-top:1px solid var(--border);opacity:.3;z-index:2}
+.hero-marquee-inner{display:flex;white-space:nowrap;animation:marquee 50s linear infinite;font-family:var(--font-display);font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--text3);font-weight:300}
+.hero-marquee-inner span{padding:0 28px}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
-  <style>
-    :root {
-      --bg-main: #070709;
-      --bg-card: #101016;
-      --accent: #7c3aed;
-      --accent-light: #a78bfa;
-    }
+/* ─── SHOWREEL ─── */
+.showreel-section{position:relative;overflow:hidden;cursor:pointer;height:280px;display:flex;align-items:center;justify-content:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.showreel-section:hover .showreel-play{transform:translate(-50%,-50%) scale(1.06)}
+.showreel-section:hover .showreel-play-ring{opacity:1;transform:translate(-50%,-50%) scale(1.15)}
+.showreel-bg{position:absolute;inset:0;background:linear-gradient(90deg,rgba(214,0,1,.12) 0%,transparent 30%,transparent 70%,rgba(214,0,1,.08) 100%);pointer-events:none;z-index:0}
+.showreel-bg::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(-45deg,transparent,transparent 24px,rgba(214,0,1,.03) 24px,rgba(214,0,1,.03) 25px)}
+.showreel-inner{position:relative;z-index:1;display:flex;align-items:center;gap:40px}
+.showreel-play-wrap{position:relative;width:80px;height:80px;flex-shrink:0}
+.showreel-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;background:var(--accent);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;transition:transform .5s var(--ease-power);box-shadow:0 0 0 0 rgba(214,0,1,.6);animation:pulse-play 2.5s ease-in-out infinite}
+.showreel-play-ring{position:absolute;top:50%;left:50%;width:80px;height:80px;border-radius:50%;border:1px solid var(--accent);opacity:.4;transform:translate(-50%,-50%) scale(1);transition:all .5s var(--ease-power)}
+@keyframes pulse-play{0%,100%{box-shadow:0 0 0 0 rgba(214,0,1,.6)}50%{box-shadow:0 0 0 24px rgba(214,0,1,0)}}
+.showreel-text{display:flex;flex-direction:column;gap:4px}
+.showreel-title{font-family:var(--font-display);font-size:clamp(28px,4vw,56px);font-weight:700;letter-spacing:-.04em;text-transform:uppercase;line-height:.9;color:var(--text)}
+.showreel-title span{color:var(--accent)}
+.showreel-coming{font-family:var(--font-mono);font-size:clamp(11px,1vw,13px);color:var(--text3);letter-spacing:8px;text-transform:uppercase;font-weight:300}
+.showreel-line{position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent 80%);z-index:1}
 
-    body {
-      background-color: var(--bg-main);
-      color: #f3f4f6;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      overflow-x: hidden;
-    }
+/* ─── SECTIONS ─── */
+.section{padding:140px 24px;position:relative}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-header{margin-bottom:64px;max-width:600px}
+.section-label{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:5px;margin-bottom:18px;text-transform:uppercase;opacity:.6}
+.section-header h2{font-family:var(--font-display);font-size:clamp(32px,4.5vw,72px);font-weight:600;letter-spacing:-.04em;line-height:1;margin-bottom:18px;text-transform:uppercase}
+.section-header h2 .light{font-weight:200}
+.section-header h2 .red{color:var(--accent)}
+.section-header p{color:var(--text2);max-width:440px;font-size:14px;line-height:1.8;font-weight:300}
+.section-header::after{content:'';display:block;width:60px;height:3px;background:var(--accent);margin-top:24px}
+.section-divider{width:100%;height:40px;position:relative;overflow:hidden;background:transparent;border:none;outline:none}
+.section-divider::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(214,0,1,.4),rgba(214,0,1,.6),rgba(214,0,1,.4),transparent)}
 
-    .font-display {
-      font-family: 'Space Grotesk', sans-serif;
-    }
+/* ─── PROJECTS — GRID ─── */
+.section-projects{padding:140px 0;overflow:hidden;position:relative}
+.section-projects .section-inner{padding:0 24px}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:48px;max-width:900px;margin-left:auto;margin-right:auto}
+.project-card{position:relative;overflow:hidden;cursor:pointer;background:var(--card);border:1px solid var(--border);border-radius:4px;transition:all .5s var(--ease-power);display:flex;flex-direction:column}
+.project-card:hover{background:var(--bg2);border-color:var(--accent-dim);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.project-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height .6s var(--ease-power);z-index:2}
+.project-card:hover::before{height:100%}
+.project-thumb{position:relative;width:100%;aspect-ratio:16/9;overflow:hidden}
+.project-thumb img{width:100%;height:100%;object-fit:cover;opacity:.55;transition:opacity .8s var(--ease-power),transform 1.4s var(--ease-power)}
+.project-card:hover .project-thumb img{opacity:.7;transform:scale(1.06)}
+.project-card-body{position:relative;z-index:1;padding:24px}
+.project-card-body h4{font-family:var(--font-display);font-size:15px;font-weight:500;margin-bottom:4px;text-transform:uppercase;letter-spacing:.3px;transition:color .4s var(--ease-power)}
+.project-card:hover .project-card-body h4{color:var(--accent)}
+.project-card-cat{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:2px;text-transform:uppercase;opacity:.7}
+.project-card-result{font-size:12px;color:var(--text2);line-height:1.5;margin-top:10px;font-weight:300;padding-top:10px;border-top:1px solid var(--border)}
 
-    /* Resplandor ambiental suave */
-    .ambient-glow {
-      position: fixed;
-      width: 650px;
-      height: 650px;
-      border-radius: 9999px;
-      background: radial-gradient(circle, rgba(124, 58, 237, 0.14) 0%, rgba(6, 182, 212, 0.05) 45%, transparent 70%);
-      filter: blur(80px);
-      pointer-events: none;
-      z-index: 0;
-    }
+/* ─── SERVICES — TIMELINE ─── */
+.timeline-wrap{position:relative;max-width:900px;margin:0 auto;padding:20px 0}
+.timeline-line-main{position:absolute;left:50%;top:0;bottom:0;width:2px;background:var(--accent-dim);transform:translateX(-50%);z-index:0}
+.timeline-line-fill{position:absolute;left:50%;top:0;width:2px;background:var(--accent);transform:translateX(-50%) scaleY(0);transform-origin:top;z-index:1;box-shadow:0 0 12px rgba(214,0,1,.3)}
+.service-item{display:flex;align-items:flex-start;margin-bottom:80px;position:relative;z-index:2}
+.service-item:last-child{margin-bottom:0}
+.service-item:nth-child(odd){flex-direction:row}
+.service-item:nth-child(even){flex-direction:row-reverse}
+.service-item .service-spacer{width:50%;flex-shrink:0}
+.service-card{width:calc(50% - 36px);padding:36px 40px;background:var(--card);border:1px solid var(--border);border-radius:4px;position:relative;transition:all .5s var(--ease-power)}
+.service-card:hover{background:var(--bg2);border-color:var(--accent-dim)}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--accent);transition:height .6s var(--ease-power)}
+.service-card:hover::before{height:100%}
+.service-item:nth-child(even) .service-card::before{left:auto;right:0}
+.service-dot{position:absolute;left:50%;top:32px;width:14px;height:14px;background:var(--accent);border-radius:50%;transform:translateX(-50%);z-index:3;border:2px solid var(--bg);box-shadow:0 0 0 2px var(--accent-dim);transition:box-shadow .4s var(--ease-power)}
+.service-card:hover+.service-dot,.service-item:hover .service-dot{box-shadow:0 0 0 4px var(--accent-dim),0 0 20px rgba(214,0,1,.3)}
+.service-num{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:3px;margin-bottom:18px;opacity:.7}
+.service-card h3{font-family:var(--font-display);font-size:18px;font-weight:500;margin-bottom:12px;letter-spacing:-.01em;text-transform:uppercase}
+.service-card p{font-size:13px;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:20px}
+.service-price{font-family:var(--font-mono);font-size:11px;color:var(--accent);letter-spacing:1px;font-weight:400;display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap}
+.service-price .cop{font-size:9px;color:var(--text3);letter-spacing:.5px;font-weight:300}
+.service-price::before{content:'—';color:var(--text3);font-size:9px}
 
-    /* Tarjetas limpias con borde sutil y elevación suave */
-    .dream-card {
-      background: linear-gradient(180deg, rgba(22, 22, 30, 0.85) 0%, rgba(12, 12, 18, 0.95) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
+/* ─── ABOUT — DRAMATIC ─── */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;position:relative}
+.about-text .about-label{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:4px;margin-bottom:20px;text-transform:uppercase;opacity:.6}
+.about-text h2{font-family:var(--font-display);font-size:clamp(28px,3vw,44px);font-weight:500;letter-spacing:-.03em;line-height:1.06;margin-bottom:20px;text-transform:uppercase}
+.about-text h2 .light{font-weight:200}
+.about-text h2 .accent{color:var(--accent);font-weight:600}
+.about-text p{color:var(--text2);font-size:14px;line-height:1.8;margin-bottom:16px;font-weight:300;max-width:480px}
+.about-text p strong{color:var(--text)}
+.about-links{display:flex;gap:10px;margin-top:32px;flex-wrap:wrap}
+.about-links a{display:flex;align-items:center;gap:8px;padding:10px 20px;border:1px solid var(--border);border-radius:100px;font-size:11px;color:var(--text2);text-decoration:none;transition:all .4s var(--ease-power);letter-spacing:.5px;text-transform:uppercase;font-weight:400}
+.about-links a:hover{border-color:var(--accent-dim);color:var(--text);background:rgba(214,0,1,.04)}
+.about-links a .link-arrow{transition:transform .3s var(--ease-power)}
+.about-links a:hover .link-arrow{transform:translate(2px,-2px)}
+.about-visual{position:relative;min-height:400px}
+.about-mega{position:absolute;font-size:clamp(160px,18vw,320px);font-weight:900;color:rgba(214,0,1,.06);line-height:1;top:-40px;right:-20px;pointer-events:none;z-index:0;letter-spacing:-.06em;user-select:none}
+.about-mega-stroke{position:absolute;font-size:clamp(160px,18vw,320px);font-weight:900;color:transparent;-webkit-text-stroke:2px rgba(214,0,1,.08);line-height:1;top:-20px;right:10px;pointer-events:none;z-index:0;letter-spacing:-.06em;user-select:none}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);position:relative;z-index:1}
+.stat{padding:40px 28px;background:var(--bg);text-align:center;transition:all .5s var(--ease-power);position:relative}
+.stat:hover{background:var(--card)}
+.stat:hover .stat-num{color:var(--accent)}
+.stat-num{font-family:var(--font-display);font-size:clamp(32px,3vw,44px);font-weight:700;letter-spacing:-.03em;margin-bottom:6px;color:var(--text);line-height:1;transition:color .4s var(--ease-power)}
+.stat-label{font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase;font-weight:300}
 
-    .dream-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(167, 139, 250, 0.45);
-      box-shadow: 0 20px 45px -15px rgba(124, 58, 237, 0.28);
-    }
+/* ─── CONTACT — EDITORIAL ─── */
+.contact-section{border-top:1px solid var(--border);position:relative}
+.contact-section::before{content:'';position:absolute;top:-1px;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),transparent 70%)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.contact-info h3{font-family:var(--font-display);font-size:20px;font-weight:500;margin-bottom:16px;text-transform:uppercase;letter-spacing:-.01em}
+.contact-info h3 span{color:var(--accent)}
+.contact-info p{color:var(--text2);font-size:14px;line-height:1.7;font-weight:300;margin-bottom:32px;max-width:380px}
+.contact-list{display:flex;flex-direction:column;gap:6px}
+.contact-item{display:flex;align-items:center;gap:14px;padding:14px 20px;border:1px solid var(--border);border-radius:4px;text-decoration:none;color:var(--text);transition:all .4s var(--ease-power);font-size:13px;position:relative;overflow:hidden}
+.contact-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--accent);transform:scaleY(0);transition:transform .5s var(--ease-power)}
+.contact-item:hover::before{transform:scaleY(1)}
+.contact-item:hover{border-color:var(--border-hover);background:var(--card);transform:translateX(4px)}
+.contact-item .ci-icon{font-size:14px;color:var(--text2);width:20px;flex-shrink:0}
+.contact-item .ci-arrow{margin-left:auto;font-size:11px;color:var(--text3);transition:transform .3s var(--ease-power)}
+.contact-item:hover .ci-arrow{transform:translateX(4px);color:var(--accent)}
+.contact-form{display:flex;flex-direction:column;gap:10px}
+.contact-form .form-head{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:4px;text-transform:uppercase;margin-bottom:4px;opacity:.6}
+.contact-form input,.contact-form textarea{padding:16px 20px;background:var(--card);border:1px solid var(--border);border-radius:2px;color:var(--text);font-size:13px;outline:none;transition:all .4s var(--ease-power);font-family:var(--font-display);font-weight:300}
+.contact-form input:focus,.contact-form textarea:focus{border-color:var(--accent-dim);background:rgba(214,0,1,.03);box-shadow:0 0 20px rgba(214,0,1,.05)}
+.contact-form textarea{resize:vertical;min-height:120px}
+.contact-form button{padding:16px 32px;background:var(--accent);color:#fff;border:none;border-radius:2px;font-size:11px;font-weight:600;cursor:pointer;transition:all .4s var(--ease-power);font-family:var(--font-display);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.contact-form button:hover{opacity:.9;box-shadow:0 0 30px rgba(214,0,1,.25)}
+.contact-form button:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
+#form-feedback{font-size:12px;padding:10px 0;display:none;font-weight:300;font-family:var(--font-mono);letter-spacing:0}
 
-    /* Botón de filtro activo */
-    .filter-pill.active {
-      background: #ffffff;
-      color: #070709;
-      border-color: #ffffff;
-      font-weight: 700;
-    }
+/* ─── FOOTER ─── */
+footer{padding:48px 24px;border-top:1px solid var(--border);position:relative}
+footer::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:1px;background:var(--accent);opacity:.4}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.footer-left{display:flex;flex-direction:column;gap:6px}
+.footer-brand{font-family:var(--font-display);font-size:14px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text)}
+.footer-brand span{color:var(--accent)}
+.footer-mono{font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:2px;text-transform:uppercase}
+.footer-right{display:flex;gap:16px;flex-wrap:wrap}
+.footer-right a{color:var(--text2);font-size:11px;text-decoration:none;transition:color .4s var(--ease-power);letter-spacing:1px;text-transform:uppercase;font-weight:400;position:relative}
+.footer-right a::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transition:transform .4s var(--ease-power)}
+.footer-right a:hover::after{transform:scaleX(1)}
+.footer-right a:hover{color:var(--text)}
+.footer-time{font-family:var(--font-mono);font-size:10px;color:var(--accent);letter-spacing:2px}
 
-    /* Contenedor responsivo para el iframe de Behance */
-    .behance-frame-wrapper {
-      position: relative;
-      width: 100%;
-      height: 75vh;
-      max-height: 740px;
-      background: #0b0b10;
-    }
+/* ─── SHOWREEL CURATED RESPONSIVE ─── */
+@media(max-width:900px){ .showreel-grid{grid-template-columns:1fr!important} #proceso .section-inner>div{grid-template-columns:1fr!important} }
+html.js-ready .cursor-wrap{display:block}
+@media(max-width:900px){
+  .hero-split{grid-template-columns:1fr}
+  .hero-left{padding:140px 24px 100px}
+  .hero-left::after{display:none}
+  .hero-right{display:none}
+  .services-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr 1fr}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .about-visual{min-height:auto}
+  .about-mega,.about-mega-stroke{font-size:120px;top:-10px}
+  .timeline-line-main,.timeline-line-fill,.service-dot{display:none}
+  .service-item{flex-direction:column!important;margin-bottom:40px}
+  .service-item .service-spacer{display:none}
+  .service-card{width:100%}
+  .nav-links a:not(.nav-cta){display:none}
+  .cursor-wrap{display:none!important}
+  body{cursor:auto}
+  .showreel-inner{gap:24px}
+}
+@media(max-width:640px){
+  .section{padding:80px 16px}
+  .section-projects{padding:80px 0 0}
+  .section-projects .section-inner{padding:0 16px}
+  .hero-left{padding:120px 16px 80px}
+  .hero-left h1{font-size:34px}
+  .projects-grid{grid-template-columns:1fr}
+  .service-card{padding:28px 24px}
+  nav{top:16px;width:calc(100% - 32px)}
+  .nav-links a.nav-cta{display:none}
+  .nav-hamburger{display:block}
+  .stats{grid-template-columns:1fr 1fr}
+  .footer-inner{flex-direction:column;align-items:flex-start}
+  .stat{padding:28px 20px}
+  .stat-num{font-size:30px}
+  .showreel-section{height:200px}
+  .showreel-play{width:48px;height:48px;font-size:16px}
+  .showreel-play-wrap{width:60px;height:60px}
+  .showreel-play-ring{width:60px;height:60px}
+  .about-mega,.about-mega-stroke{font-size:80px;top:0}
+}
 
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #070709;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(167, 139, 250, 0.3);
-      border-radius: 9999px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(167, 139, 250, 0.6);
-    }
-  </style>
+/* ─── REVEAL UTILITY ─── */
+[data-reveal]{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease-power),transform 1s var(--ease-power)}
+[data-reveal].is-visible{opacity:1;transform:translateY(0)}
+[data-reveal-scale]{opacity:0;transform:scale(.92);transition:opacity 1s var(--ease-power),transform 1s var(--ease-power)}
+[data-reveal-scale].is-visible{opacity:1;transform:scale(1)}
+
+/* ─── SECTION DIVIDER — CLEAN ─── */
+.section-divider{width:100%;height:40px;position:relative;overflow:hidden;background:transparent;border:none;outline:none}
+</style>
 </head>
-<body class="antialiased selection:bg-violet-600 selection:text-white relative">
+<body>
+<div class="cursor-wrap" id="cursorWrap" aria-hidden="true">
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-bubble" id="cursorBubble"><span id="cursorText">View</span></div>
+</div>
 
-  <!-- Luces de ambiente sutiles -->
-  <div class="ambient-glow -top-40 -left-40"></div>
-  <div class="ambient-glow top-1/3 -right-48"></div>
+<a href="#main" class="skip-link" style="position:absolute;top:-100px;left:16px;z-index:1000;padding:10px 18px;background:var(--text);color:var(--bg);border-radius:4px;font-weight:500;font-size:12px;text-decoration:none">Ir al contenido</a>
 
-  <!-- NAVBAR LIMPIA -->
-  <header class="fixed top-0 inset-x-0 z-40 border-b border-white/5 bg-[#070709]/80 backdrop-blur-xl">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-violet-600 to-cyan-500 flex items-center justify-center font-display font-bold text-white shadow-lg shadow-violet-600/25 group-hover:scale-105 transition">
-          D
+<nav role="navigation" aria-label="Navegaci&oacute;n principal">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Oscar <span>Lugo</span></a>
+    <div class="nav-links">
+      <a href="#showreel">Showreel<span class="nav-hover-line"></span></a>
+      <a href="#trabajos">Trabajos<span class="nav-hover-line"></span></a>
+      <a href="#servicios">Servicios<span class="nav-hover-line"></span></a>
+      <a href="sobre-mi.html">Sobre mí<span class="nav-hover-line"></span></a>
+      <a href="recursos/index.html">Recursos<span class="nav-hover-line"></span></a>
+      <a href="#contacto" class="nav-cta">Contacto</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" aria-label="Men&uacute;">☰</button>
+  </div>
+</nav>
+
+<div class="mobile-overlay" id="mobileOverlay">
+  <a href="#showreel-link">Showreel</a>
+  <a href="#trabajos">Trabajos</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#about">Sobre m&iacute;</a>
+  <a href="#contacto" class="nav-cta">Contacto</a>
+</div>
+
+<main id="main">
+  <section class="hero" id="hero">
+    <div class="hero-grain"></div>
+    <div class="hero-split">
+      <div class="hero-left">
+        <div class="hero-label" data-split>Bogot&aacute;, Colombia — Remoto LATAM</div>
+        <h1 id="heroTitle">
+          <span class="line"><span>Video que hace</span></span>
+          <span class="line"><span>crecer tu <span class="accent">marca</span></span></span>
+        </h1>
+        <p>Editor de video para <strong style="color:var(--text);font-weight:500">marcas, creadores y negocios</strong> que necesitan Reels y contenido que retiene, genera alcance y ayuda a vender. <span style="color:var(--text2)">Premiere + After Effects + IA</span> con entrega rápida y narrativa estratégica. Highway 43 / Dreamscape.</p>
+        <div class="hero-actions">
+          <a href="#trabajos" class="btn btn-primary">Ver trabajos</a>
+          <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20tu%20portfolio%20y%20quiero%20cotizar" target="_blank" class="btn btn-outline"><span>WhatsApp directo</span></a>
         </div>
-        <div>
-          <span class="font-display font-bold tracking-wider text-base block leading-none">DREAMSCAPE</span>
-          <span class="text-[10px] text-zinc-400 tracking-widest uppercase">Audiovisual Studio</span>
+        <div class="hero-proof" style="margin-top:22px;display:flex;gap:14px;flex-wrap:wrap;font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--text3)">
+          <span style="display:flex;align-items:center;gap:6px"><span style="width:6px;height:6px;background:var(--accent);border-radius:50%;display:inline-block"></span>Respuesta &lt;24h</span>
+          <span>• Entrega 48–72h</span>
+          <span>• 30+ proyectos</span>
         </div>
-      </a>
-
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
-        <a href="#portfolio" class="hover:text-white transition">Portafolio</a>
-        <a href="#servicios" class="hover:text-white transition">Servicios</a>
-        <a href="#proceso" class="hover:text-white transition">Proceso</a>
-        <a href="sobre-mi.html" class="hover:text-white transition">Sobre Mí</a>
-        <a href="recursos/" class="hover:text-white transition">Artículos</a>
-        <a href="https://www.behance.net/highway43" target="_blank" rel="noopener" class="hover:text-violet-400 transition flex items-center gap-1 font-semibold text-zinc-200">
-          Behance ↗
-        </a>
-      </nav>
-
-      <div class="hidden sm:flex items-center gap-3">
-        <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20tu%20portafolio%20en%20Dreamscape%20y%20quiero%20cotizar%20un%20proyecto"
-           target="_blank" rel="noopener"
-           class="px-5 py-2.5 rounded-full text-xs sm:text-sm font-semibold bg-white text-black hover:bg-violet-500 hover:text-white transition shadow-md">
-          Cotizar Proyecto →
-        </a>
       </div>
-
-      <!-- Botón móvil hamburguesa -->
-      <button id="mobile-toggle" class="md:hidden text-zinc-300 hover:text-white p-2" aria-label="Abrir Menú">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Menú móvil desplegable -->
-    <div id="mobile-nav" class="hidden md:hidden bg-[#0c0c14]/95 border-b border-white/10 px-6 py-5 space-y-3">
-      <a href="#portfolio" class="block text-zinc-300 hover:text-white py-1">Portafolio</a>
-      <a href="#servicios" class="block text-zinc-300 hover:text-white py-1">Servicios</a>
-      <a href="#proceso" class="block text-zinc-300 hover:text-white py-1">Proceso</a>
-      <a href="sobre-mi.html" class="block text-zinc-300 hover:text-white py-1">Sobre Mí</a>
-      <a href="recursos/" class="block text-zinc-300 hover:text-white py-1">Artículos</a>
-      <a href="https://www.behance.net/highway43" target="_blank" class="block text-violet-400 font-semibold py-1">Behance Oficial ↗</a>
-      <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20tu%20portafolio%20en%20Dreamscape%20y%20quiero%20cotizar%20un%20proyecto"
-         target="_blank" class="block w-full text-center py-2.5 rounded-full bg-violet-600 text-white font-bold text-xs mt-2">
-        Cotizar por WhatsApp →
-      </a>
-    </div>
-  </header>
-
-  <!-- HERO: ESTÉTICA LIMPIA + CONVERSIÓN DIRECTA -->
-  <section class="relative z-10 pt-36 pb-20 px-6 max-w-7xl mx-auto">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-xs font-semibold mb-6">
-        <span class="w-2 h-2 rounded-full bg-violet-400 animate-pulse"></span>
-        Edición de Alto Impacto • Color Grading • Flujos con IA
-      </div>
-
-      <h1 class="font-display text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] mb-6">
-        Transformamos tus ideas en <span class="bg-gradient-to-r from-violet-400 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">videos que retienen y venden.</span>
-      </h1>
-
-      <p class="text-zinc-400 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed mb-10">
-        Producción y postproducción audiovisual para marcas y creadores. Especialistas en ritmo narrativo, formato vertical 9:16 de alta retención y acabado cinematográfico.
-      </p>
-
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <a href="#portfolio" class="px-8 py-4 rounded-full font-semibold bg-violet-600 hover:bg-violet-500 text-white shadow-xl shadow-violet-600/25 transition">
-          Ver Portafolio en Vivo ↓
-        </a>
-        <a href="https://www.behance.net/highway43" target="_blank" rel="noopener"
-           class="px-7 py-4 rounded-full font-semibold border border-white/15 bg-white/5 hover:bg-white/10 text-zinc-200 transition flex items-center gap-2">
-          <span>Ver perfil oficial en Behance</span>
-          <span class="text-xs text-violet-400">↗</span>
-        </a>
+      <div class="hero-right">
+        <div class="hero-visual">
+          <div class="hero-visual-line"></div>
+          <div class="hero-right-card" style="position:absolute;bottom:32px;left:32px;right:32px;background:var(--card);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--border);border-radius:4px;padding:18px 20px;display:flex;justify-content:space-between;gap:16px;z-index:2;transition:all .5s var(--ease-power)" data-reveal>
+            <div><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--accent);margin-bottom:4px">HIGHWAY 43</div><div style="font-size:12px;color:var(--text2);line-height:1.5;font-weight:300">Edición precisa + storytelling que funciona, no solo que se ve bien.</div></div>
+            <div style="text-align:right;flex-shrink:0"><div style="font-size:22px;font-weight:700;letter-spacing:-.03em">4+<span style="font-size:10px;font-weight:300;color:var(--text3)"> AÑOS</span></div><div style="font-family:var(--font-mono);font-size:10px;color:var(--text3);letter-spacing:1px">BOGOTÁ · REMOTO</div></div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- Métricas limpias y directas -->
-    <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-      <div class="dream-card rounded-2xl p-5 text-center">
-        <p class="font-display text-2xl sm:text-3xl font-bold text-white">+4 Años</p>
-        <p class="text-xs text-zinc-400 mt-1">Experiencia en Post</p>
-      </div>
-      <div class="dream-card rounded-2xl p-5 text-center">
-        <p class="font-display text-2xl sm:text-3xl font-bold text-violet-400">+65%</p>
-        <p class="text-xs text-zinc-400 mt-1">Retención en Primeros 3s</p>
-      </div>
-      <div class="dream-card rounded-2xl p-5 text-center">
-        <p class="font-display text-2xl sm:text-3xl font-bold text-white">+30</p>
-        <p class="text-xs text-zinc-400 mt-1">Proyectos Entregados</p>
-      </div>
-      <div class="dream-card rounded-2xl p-5 text-center">
-        <p class="font-display text-2xl sm:text-3xl font-bold text-cyan-400">&lt;24h</p>
-        <p class="text-xs text-zinc-400 mt-1">Entrega Primer Corte</p>
+    <div class="hero-scroll" aria-hidden="true">SCROLL<span class="hero-scroll-line"></span></div>
+    <div class="hero-marquee" aria-hidden="true">
+      <div class="hero-marquee-inner">
+        <span>Video Editor — Bogot&aacute;, Colombia — Disponible para freelance</span>
+        <span>Video Editor — Bogot&aacute;, Colombia — Disponible para freelance</span>
+        <span>Video Editor — Bogot&aacute;, Colombia — Disponible para freelance</span>
+        <span>Video Editor — Bogot&aacute;, Colombia — Disponible para freelance</span>
       </div>
     </div>
   </section>
 
-  <!-- SECCIÓN PORTAFOLIO CONECTADA A BEHANCE -->
-  <section id="portfolio" class="relative z-10 py-20 px-6 max-w-7xl mx-auto">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+  <div class="section-divider" id="showreel-link"></div>
+
+  <section class="section section-projects" id="showreel" style="padding:100px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:linear-gradient(90deg,rgba(214,0,1,.04),transparent 50%,rgba(214,0,1,.03))">
+    <div class="section-inner" style="padding:0 24px">
+      <div class="section-header" data-reveal style="margin-bottom:32px">
+        <div class="section-label">Showreel — Selección curada</div>
+        <h2>3 piezas clave <span class="light">para empezar</span></h2>
+        <p>Showreel completo en edición. Mientras tanto, estas 3 piezas muestran el rango: ritmo, storytelling y sistema visual. Mismo estilo que el resto del portfolio.</p>
+      </div>
+      <div class="projects-grid" data-reveal style="margin-top:0;grid-template-columns:repeat(3,1fr)">
+        <a href="https://www.behance.net/gallery/246797387/Showreel-2026-Video-Editor-para-Marcas-y-Social-Media" target="_blank" class="project-card" style="text-decoration:none;color:inherit">
+          <div class="project-thumb"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/6e67cc246797387.Y3JvcCw5MjAsNzIwLDAsMA.png" alt="Showreel 2026 - compilado de mejores trabajos" loading="lazy"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;box-shadow:0 8px 24px rgba(214,0,1,.4);z-index:1">▶</span></div>
+          <div class="project-card-body"><h4>Showreel 2026 · 60s</h4><span class="project-card-cat">Video · Compilado</span><div class="project-card-result">Compilado de ritmo y narrativa — apertura para clientes nuevos.</div></div>
+        </a>
+        <a href="https://www.behance.net/gallery/201723559/Reels-de-Alto-Impacto-Edicion-para-Instagram-y-TikTok" target="_blank" class="project-card" style="text-decoration:none;color:inherit">
+          <div class="project-thumb"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/b52bc2201723559.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png" alt="Reels de Alto Impacto - edición para Instagram y TikTok" loading="lazy"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;z-index:1">▶</span></div>
+          <div class="project-card-body"><h4>Reels Alto Impacto</h4><span class="project-card-cat">Video · Orgánico</span><div class="project-card-result">Ganchos 2s + subtítulos palabra por palabra. Formato replicable.</div></div>
+        </a>
+        <a href="https://www.behance.net/gallery/193273925/Diseno-para-Redes-Sociales-Piezas-Visuales-para-Marca" target="_blank" class="project-card" style="text-decoration:none;color:inherit">
+          <div class="project-thumb"><img src="https://mir-s3-cdn-cf.behance.net/projects/max_808/ae9088193273925.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png" alt="Diseño para redes sociales - piezas visuales coordinadas" loading="lazy"><span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;border-radius:50%;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px;z-index:1">▶</span></div>
+          <div class="project-card-body"><h4>Diseño Redes</h4><span class="project-card-cat">Diseño · Sistema</span><div class="project-card-result">Feed coordinado — carruseles y plantillas con sistema visual.</div></div>
+        </a>
+      </div>
+      <div style="text-align:center;margin-top:20px"><a href="https://www.behance.net/highway43" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border:1px solid var(--border);border-radius:100px;color:var(--text2);text-decoration:none;font-size:10px;letter-spacing:1px;text-transform:uppercase">Ver todo en Behance →</a></div>
+    </div>
+  </section>
+
+  <section class="section section-projects" id="trabajos">
+    <div class="section-inner">
+      <div class="section-header" data-reveal>
+        <div class="section-label">(Portfolio — 6 seleccionados)</div>
+        <h2>Proyectos <span class="light">seleccionados</span></h2>
+        <p>Trabajos con contexto: objetivo, rol y resultado. Cada uno se puede abrir como mini caso sin salir de la home.</p>
+      </div>
+    </div>
+    <div class="projects-grid" id="projectsGrid"></div>
+    <div style="text-align:center;margin-top:32px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+      <a href="https://www.behance.net/highway43" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border:1px solid var(--border);border-radius:100px;color:var(--text2);text-decoration:none;font-size:10px;font-weight:400;letter-spacing:1px;text-transform:uppercase;transition:all .4s var(--ease-power)">Ver todos en Behance <span style="font-size:14px">→</span></a>
+      <a href="#contacto" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--accent);color:#fff;border-radius:100px;text-decoration:none;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase">¿Proyecto similar? Hablemos</a>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section class="section" id="servicios">
+    <div class="section-inner">
+      <div class="section-header" data-reveal>
+        <div class="section-label">(Servicios)</div>
+        <h2>Lo que puedo hacer <span class="light">por tu marca</span></h2>
+        <p>Desde un reel viral hasta una identidad visual completa.</p>
+      </div>
+      <div class="timeline-wrap">
+        <div class="timeline-line-main"></div>
+        <div class="timeline-line-fill" id="timelineFill"></div>
+
+        <div class="service-item" data-service>
+          <div class="service-spacer"></div>
+          <div class="service-card">
+            <div class="service-num">01 — REELS & SHORT-FORM</div>
+            <h3>Edici&oacute;n de Reel</h3>
+            <p>Para marcas y creadores que necesitan retener y crecer en Instagram / TikTok. Ritmo, ganchos de 2s, subtítulos y storytelling con tendencias.</p>
+            <ul style="margin:0 0 16px 16px;font-size:12px;color:var(--text2);line-height:1.7;font-weight:300"><li>Qué incluye: corte, subtítulos dinámicos, portada, 1 revisión</li><li>Para quién: marcas, infoproductores, creators</li><li>Entrega: 48–72h · Formato 9:16 optimizado</li></ul>
+            <span class="service-price">Desde $40 USD <span class="cop">/ $168,000 COP</span></span>
+          </div>
+          <div class="service-dot"></div>
+        </div>
+
+        <div class="service-item" data-service>
+          <div class="service-spacer"></div>
+          <div class="service-card">
+            <div class="service-num">02 — BRANDING</div>
+            <h3>Identidad Visual</h3>
+            <p>Logotipo, paleta, tipografía y sistema visual completo para que tu marca se vea coherente y memorable en todo punto de contacto.</p>
+            <ul style="margin:0 0 16px 16px;font-size:12px;color:var(--text2);line-height:1.7;font-weight:300"><li>Qué incluye: logo + variantes, paleta, tipografía, mini manual</li><li>Para quién: emprendimientos y marcas en relanzamiento</li><li>Entrega: 5–7 días · Archivos editables</li></ul>
+            <span class="service-price">Desde $100 USD <span class="cop">/ $420,000 COP</span></span>
+          </div>
+          <div class="service-dot"></div>
+        </div>
+
+        <div class="service-item" data-service>
+          <div class="service-spacer"></div>
+          <div class="service-card">
+            <div class="service-num">03 — CONTENIDO MENSUAL</div>
+            <h3>Pack Mensual Redes</h3>
+            <p>Contenido recurrente sin que tengas que perseguir a nadie. Reels + carruseles + historias con línea editorial coordinada.</p>
+            <ul style="margin:0 0 16px 16px;font-size:12px;color:var(--text2);line-height:1.7;font-weight:300"><li>Qué incluye: 8–12 piezas/mes, calendario, copies base</li><li>Para quién: negocios que quieren constancia</li><li>Plan: mensual, sin permanencia · Revisión semanal</li></ul>
+            <span class="service-price">Desde $150 USD/mes <span class="cop">/ $630,000 COP/mes</span></span>
+          </div>
+          <div class="service-dot"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section class="section" id="about">
+    <div class="section-inner">
+      <div class="about-grid">
+        <div class="about-text" data-reveal>
+          <div class="about-label">(Sobre m&iacute; — Highway 43)</div>
+          <h2>Oscar Lugo &mdash; <span class="light">Highway</span><span class="accent">43</span></h2>
+          <p>Editor de video y creador de contenido en <strong>Bogotá, Colombia</strong> (remoto LATAM). Desde 2018 trabajo con <strong>marcas, agencias y proyectos educativos</strong> para crear piezas que no solo se ven bien, sino que <strong>funcionan</strong>: retienen, explican y ayudan a vender.</p>
+          <p>Mi enfoque es <strong>edición precisa + narrativa estratégica</strong>. Trabajo en <strong>Premiere + After Effects</strong> y uso <strong>IA</strong> para acelerar sin sacrificar criterio. Entregas en 48–72h, una revisión incluida y comunicación directa por WhatsApp.</p>
+          <p style="font-size:12px;color:var(--text3)">Clientes: emprendimientos, marcas personales y agencias que necesitan constancia en Reels sin perder calidad. Si buscas humo, no soy tu editor. Si buscas alguien que entienda tu negocio y te dé piezas listas para publicar, hablemos.</p>
+          <div class="about-links">
+            <a href="sobre-mi.html">Sobre mí completo →</a>
+            <a href="https://www.behance.net/highway43" target="_blank">Behance <span class="link-arrow">↗</span></a>
+            <a href="https://www.linkedin.com/in/oscar-lugo-8984b21bb/" target="_blank">LinkedIn <span class="link-arrow">↗</span></a>
+            <a href="mailto:latamdreamscape@gmail.com">Email <span class="link-arrow">↗</span></a>
+          </div>
+        </div>
+        <div class="about-visual" data-reveal>
+          <div class="about-mega">43</div>
+          <div class="about-mega-stroke">43</div>
+          <div class="stats">
+            <div class="stat"><div class="stat-num">4+</div><div class="stat-label">A&ntilde;os</div></div>
+            <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Proyectos</div></div>
+            <div class="stat"><div class="stat-num">12</div><div class="stat-label">En Behance</div></div>
+            <div class="stat"><div class="stat-num">S&iacute;</div><div class="stat-label">Freelance</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <section class="section contact-section" id="contacto">
+    <div class="section-inner">
+      <div class="section-header" data-reveal>
+        <div class="section-label">(Contacto)</div>
+        <h2>Trabajemos <span class="light">juntos</span></h2>
+        <p>¿Tenés un proyecto en mente? Contame en 2 líneas qué necesitas y te armo una propuesta sin compromiso.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info" data-reveal>
+          <h3><span>Conectemos</span></h3>
+          <p>Respondo en <strong style="color:var(--text)">menos de 24 horas</strong>. Después de escribirme: te respondo con preguntas clave → propuesta + tiempos → agendamos call de 15 min si hace falta.</p>
+          <div class="contact-list">
+            <a href="mailto:latamdreamscape@gmail.com" class="contact-item"><span class="ci-icon">✉</span>latamdreamscape@gmail.com<span class="ci-arrow">→</span></a>
+            <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20tu%20portfolio" target="_blank" class="contact-item"><span class="ci-icon">💬</span>+57 301 182 2651<span class="ci-arrow">→</span></a>
+            <a href="https://www.linkedin.com/in/oscar-lugo-8984b21bb/" target="_blank" class="contact-item"><span class="ci-icon">in</span>LinkedIn<span class="ci-arrow">→</span></a>
+            <a href="https://www.behance.net/highway43" target="_blank" class="contact-item"><span class="ci-icon">Be</span>Behance<span class="ci-arrow">→</span></a>
+          </div>
+          <p style="font-size:11px;color:var(--text3);margin-top:16px;line-height:1.6">¿Prefieres WhatsApp? Es la vía más rápida. Menciona: tipo de proyecto + deadline.</p>
+        </div>
+        <form class="contact-form" id="contactForm" action="https://formspree.io/f/xjkyenov" method="POST" data-reveal novalidate>
+          <div class="form-head">Enviar mensaje — respuesta &lt;24h</div>
+          <label for="cf-name" style="position:absolute;left:-9999px">Tu nombre</label>
+          <input id="cf-name" type="text" name="name" placeholder="Tu nombre" required autocomplete="name">
+          <label for="cf-email" style="position:absolute;left:-9999px">Tu email</label>
+          <input id="cf-email" type="email" name="email" placeholder="Tu email" required autocomplete="email">
+          <label for="cf-project" style="position:absolute;left:-9999px">Tipo de proyecto</label>
+          <input id="cf-project" type="text" name="project" placeholder="Tipo de proyecto (Reel / Branding / Pack redes)" autocomplete="off">
+          <label for="cf-message" style="position:absolute;left:-9999px">Mensaje</label>
+          <textarea id="cf-message" name="message" placeholder="Contame en 2–3 líneas: qué necesitas, para qué plataforma y cuándo lo necesitas..." required></textarea>
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+          <button type="submit">Enviar mensaje</button>
+          <div id="form-feedback" role="status" aria-live="polite"></div>
+          <p style="font-size:10px;color:var(--text3);margin-top:4px">Al enviar aceptas ser contactado para responder a tu solicitud. Ver <a href="privacidad.html" style="color:var(--accent)">privacidad</a>.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO + FAQ — misma estética editorial, sin romper -->
+  <section class="section" id="proceso" style="padding:100px 24px;border-top:1px solid var(--border)">
+    <div class="section-inner" style="max-width:1100px;margin:0 auto">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
+        <div data-reveal>
+          <div class="section-label" style="margin-bottom:12px">Proceso — 3 pasos</div>
+          <h3 style="font-family:var(--font-display);font-size:clamp(22px,2.5vw,32px);font-weight:600;letter-spacing:-.04em;text-transform:uppercase;margin-bottom:16px;line-height:1">Simple, rápido y <span style="color:var(--accent)">sin vueltas</span></h3>
+          <p style="color:var(--text2);font-size:13px;line-height:1.7;font-weight:300;margin-bottom:24px;max-width:440px">Mismo flujo que uso con todos los clientes. Sin reuniones eternas.</p>
+          <div style="display:flex;flex-direction:column;gap:1px;background:var(--border)">
+            <div style="display:flex;gap:16px;padding:18px 20px;background:var(--bg)"><span style="width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-family:var(--font-mono)">1</span><div><strong style="font-size:13px;letter-spacing:-.01em">Brief de 15 min</strong><p style="font-size:12px;color:var(--text2);margin:4px 0 0;font-weight:300">Objetivo, referentes y deadline. Te propongo ruta y precio cerrado.</p></div></div>
+            <div style="display:flex;gap:16px;padding:18px 20px;background:var(--bg)"><span style="width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-family:var(--font-mono)">2</span><div><strong style="font-size:13px;letter-spacing:-.01em">Edición</strong><p style="font-size:12px;color:var(--text2);margin:4px 0 0;font-weight:300">Corte, ritmo, subtítulos y color. Primera entrega en 48–72h.</p></div></div>
+            <div style="display:flex;gap:16px;padding:18px 20px;background:var(--bg)"><span style="width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;font-family:var(--font-mono)">3</span><div><strong style="font-size:13px;letter-spacing:-.01em">Entrega</strong><p style="font-size:12px;color:var(--text2);margin:4px 0 0;font-weight:300">Revisión incluida, archivos finales listos para publicar. Soporte por WhatsApp.</p></div></div>
+          </div>
+        </div>
+        <div data-reveal class="contact-form" style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:28px">
+          <div class="section-label" style="margin-bottom:12px">FAQ — Rápido</div>
+          <details style="padding:14px 0;border-bottom:1px solid var(--border)"><summary style="cursor:pointer;font-size:13px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)">¿Cuánto tardas? <span style="color:var(--accent);font-size:16px">+</span></summary><p style="font-size:12px;color:var(--text2);margin:10px 0 0;font-weight:300">Reels: 48–72h. Identidad: 5–7 días. Pack mensual: entregas semanales.</p></details>
+          <details style="padding:14px 0;border-bottom:1px solid var(--border)"><summary style="cursor:pointer;font-size:13px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)">¿Qué necesito enviarte? <span style="color:var(--accent);font-size:16px">+</span></summary><p style="font-size:12px;color:var(--text2);margin:10px 0 0;font-weight:300">Bruto en vertical/horizontal, logo si tienes, y 2–3 referentes.</p></details>
+          <details style="padding:14px 0;border-bottom:1px solid var(--border)"><summary style="cursor:pointer;font-size:13px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)">¿Incluye revisiones? <span style="color:var(--accent);font-size:16px">+</span></summary><p style="font-size:12px;color:var(--text2);margin:10px 0 0;font-weight:300">Sí, 1 revisión incluida por pieza. Extras se cotizan según alcance.</p></details>
+          <details style="padding:14px 0"><summary style="cursor:pointer;font-size:13px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--text)">¿Cómo pago? <span style="color:var(--accent);font-size:16px">+</span></summary><p style="font-size:12px;color:var(--text2);margin:10px 0 0;font-weight:300">50% al inicio, 50% al entregar. PayPal / Nequi / transferencia. Factura disponible.</p></details>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner" style="flex-direction:column;align-items:stretch;gap:32px">
+    <div style="display:grid;grid-template-columns:1.2fr .8fr .8fr .8fr;gap:32px">
       <div>
-        <span class="text-xs font-bold uppercase tracking-widest text-violet-400">Behance Sync • @highway43</span>
-        <h2 class="font-display text-3xl sm:text-5xl font-bold mt-2">Portafolio Seleccionado</h2>
-        <p class="text-zinc-400 text-sm mt-2 max-w-xl">
-          Explora los proyectos reales incrustados desde Behance. Haz clic en cualquier tarjeta para abrir la pieza en grande o ver el proyecto completo.
-        </p>
+        <span class="footer-brand">Oscar <span>Lugo</span> &mdash; Highway<span>43</span></span>
+        <p style="font-size:11px;color:var(--text3);line-height:1.6;margin-top:8px;max-width:280px">Editor de video en Bogotá. Reels, branding y contenido mensual para marcas y creadores. Parte de Dreamscape.</p>
       </div>
-
-      <!-- Filtros limpios -->
-      <div class="flex flex-wrap gap-2" id="portfolio-filters">
-        <button data-filter="all" class="filter-pill active px-4 py-2 rounded-full text-xs border border-white/10 bg-white/5 text-zinc-300 transition">Todos</button>
-        <button data-filter="reels" class="filter-pill px-4 py-2 rounded-full text-xs border border-white/10 bg-white/5 text-zinc-300 transition">Reels & 9:16</button>
-        <button data-filter="comercial" class="filter-pill px-4 py-2 rounded-full text-xs border border-white/10 bg-white/5 text-zinc-300 transition">Comercial & Color</button>
-        <button data-filter="vfx" class="filter-pill px-4 py-2 rounded-full text-xs border border-white/10 bg-white/5 text-zinc-300 transition">Motion & Arte</button>
-      </div>
+      <div><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--text);margin-bottom:12px">NAVEGACIÓN</div><div style="display:flex;flex-direction:column;gap:6px"><a href="#trabajos">Trabajos</a><a href="#servicios">Servicios</a><a href="sobre-mi.html">Sobre mí</a><a href="recursos/index.html">Recursos</a></div></div>
+      <div><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--text);margin-bottom:12px">LEGAL</div><div style="display:flex;flex-direction:column;gap:6px"><a href="privacidad.html">Privacidad</a><a href="cookies.html">Cookies</a><a href="terminos.html">Términos</a><a href="#contacto">Contacto</a></div></div>
+      <div><div style="font-family:var(--font-mono);font-size:10px;letter-spacing:2px;color:var(--text);margin-bottom:12px">CONECTA</div><div style="display:flex;flex-direction:column;gap:6px"><a href="https://www.behance.net/highway43" target="_blank">Behance</a><a href="https://www.linkedin.com/in/oscar-lugo-8984b21bb/" target="_blank">LinkedIn</a><a href="https://wa.me/573011822651" target="_blank">WhatsApp</a><a href="mailto:latamdreamscape@gmail.com">Email</a></div></div>
     </div>
-
-    <!-- MODO: Embeds Directos y Tarjetas que abren el Embed real de Behance -->
-    <div id="behance-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-      <!-- Se llena automáticamente con los proyectos reales de Behance -->
-    </div>
-
-    <!-- Banner inferior para ver todo tu Behance sin salir del flujo -->
-    <div class="mt-12 dream-card rounded-3xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-      <div>
-        <h3 class="font-display text-xl font-bold">¿Quieres ver el archivo completo de videos en Behance?</h3>
-        <p class="text-sm text-zinc-400 mt-1">Todos mis reels, comerciales y muestras de edición están actualizados en tiempo real en mi perfil oficial.</p>
-      </div>
-      <a href="https://www.behance.net/highway43" target="_blank" rel="noopener"
-         class="shrink-0 px-6 py-3.5 rounded-full bg-white text-black font-semibold text-sm hover:bg-violet-400 hover:text-white transition shadow-lg">
-        Abrir Behance (@highway43) ↗
-      </a>
-    </div>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section id="servicios" class="relative z-10 py-20 px-6 max-w-7xl mx-auto border-t border-white/5">
-    <div class="text-center max-w-2xl mx-auto mb-14">
-      <span class="text-xs font-bold uppercase tracking-widest text-violet-400">Soluciones Audiovisuales</span>
-      <h2 class="font-display text-3xl sm:text-5xl font-bold mt-2">Lo que hacemos por tu marca</h2>
-      <p class="text-sm text-zinc-400 mt-2">Un enfoque balanceado entre diseño estético y conversión psicológica.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="dream-card rounded-3xl p-8">
-        <div class="w-11 h-11 rounded-2xl bg-violet-500/15 border border-violet-500/30 flex items-center justify-center text-violet-400 font-bold mb-6 font-display">
-          01
-        </div>
-        <h3 class="font-display text-xl font-bold mb-3">Edición Vertical de Retención (9:16)</h3>
-        <p class="text-sm text-zinc-400 leading-relaxed mb-6">
-          Reels, TikToks y Shorts editados con ganchos visuales en los primeros 3 segundos, subtítulos dinámicos, B-roll y diseño sonoro envolvente.
-        </p>
-        <ul class="space-y-2 text-xs text-zinc-300">
-          <li class="flex items-center gap-2"><span class="text-violet-400">✓</span> Ritmo pensado para retención y algoritmo</li>
-          <li class="flex items-center gap-2"><span class="text-violet-400">✓</span> Motion graphics y kinetic captions</li>
-          <li class="flex items-center gap-2"><span class="text-violet-400">✓</span> Mezcla de SFX y música en tendencia</li>
-        </ul>
-      </div>
-
-      <div class="dream-card rounded-3xl p-8">
-        <div class="w-11 h-11 rounded-2xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-400 font-bold mb-6 font-display">
-          02
-        </div>
-        <h3 class="font-display text-xl font-bold mb-3">Edición Long-Form & Comercial</h3>
-        <p class="text-sm text-zinc-400 leading-relaxed mb-6">
-          Videos para YouTube, VSLs de venta y spots publicitarios con narrativa clara, corrección de color en DaVinci Resolve y acabado cinematográfico.
-        </p>
-        <ul class="space-y-2 text-xs text-zinc-300">
-          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Storytelling y pacing documental/comercial</li>
-          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Etalonaje y corrección de color profesional</li>
-          <li class="flex items-center gap-2"><span class="text-cyan-400">✓</span> Limpieza y masterización de voz</li>
-        </ul>
-      </div>
-
-      <div class="dream-card rounded-3xl p-8">
-        <div class="w-11 h-11 rounded-2xl bg-fuchsia-500/15 border border-fuchsia-500/30 flex items-center justify-center text-fuchsia-400 font-bold mb-6 font-display">
-          03
-        </div>
-        <h3 class="font-display text-xl font-bold mb-3">VFX & Pipelines con IA</h3>
-        <p class="text-sm text-zinc-400 leading-relaxed mb-6">
-          Integración de herramientas generativas, efectos visuales y flujos ágiles para producir más contenido en menos tiempo sin sacrificar calidad.
-        </p>
-        <ul class="space-y-2 text-xs text-zinc-300">
-          <li class="flex items-center gap-2"><span class="text-fuchsia-400">✓</span> B-roll generativo y rotoscopia limpia</li>
-          <li class="flex items-center gap-2"><span class="text-fuchsia-400">✓</span> Adaptación multiformato rápida</li>
-          <li class="flex items-center gap-2"><span class="text-fuchsia-400">✓</span> Entregas continuas para creadores y agencias</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECCIÓN PROCESO -->
-  <section id="proceso" class="relative z-10 py-20 px-6 max-w-7xl mx-auto border-t border-white/5">
-    <div class="text-center max-w-2xl mx-auto mb-14">
-      <span class="text-xs font-bold uppercase tracking-widest text-cyan-400">Metodología de Trabajo</span>
-      <h2 class="font-display text-3xl sm:text-5xl font-bold mt-2">Flujo Simple y Efectivo</h2>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-      <div class="dream-card rounded-2xl p-6">
-        <span class="text-xs font-bold text-violet-400 uppercase tracking-widest">Fase 01</span>
-        <h4 class="font-display text-lg font-bold text-white mt-2 mb-2">Recepción & Hook</h4>
-        <p class="text-xs text-zinc-400 leading-relaxed">Envío de material en Drive. Selección del fragmento de mayor impacto para los primeros 3 segundos.</p>
-      </div>
-      <div class="dream-card rounded-2xl p-6">
-        <span class="text-xs font-bold text-cyan-400 uppercase tracking-widest">Fase 02</span>
-        <h4 class="font-display text-lg font-bold text-white mt-2 mb-2">Corte Rítmico</h4>
-        <p class="text-xs text-zinc-400 leading-relaxed">Eliminación de silencios, selección de B-roll contextual y animación de subtítulos con identidad visual.</p>
-      </div>
-      <div class="dream-card rounded-2xl p-6">
-        <span class="text-xs font-bold text-fuchsia-400 uppercase tracking-widest">Fase 03</span>
-        <h4 class="font-display text-lg font-bold text-white mt-2 mb-2">Color & Sound</h4>
-        <p class="text-xs text-zinc-400 leading-relaxed">Mezcla sonora con SFX diegéticos y etalonaje en DaVinci Resolve para lograr aspecto cinematográfico.</p>
-      </div>
-      <div class="dream-card rounded-2xl p-6">
-        <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest">Fase 04</span>
-        <h4 class="font-display text-lg font-bold text-white mt-2 mb-2">Entrega & Ajustes</h4>
-        <p class="text-xs text-zinc-400 leading-relaxed">Revisión ágil, export en máxima resolución para plataformas sociales y feedback directo.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA DE CONTACTO FINAL -->
-  <section class="relative z-10 py-20 px-6 max-w-5xl mx-auto text-center border-t border-white/5">
-    <div class="dream-card rounded-3xl p-10 md:p-14 border border-violet-500/30">
-      <span class="text-xs font-bold uppercase tracking-widest text-violet-400">¿Tienes un proyecto en mente?</span>
-      <h2 class="font-display text-3xl sm:text-5xl font-bold mt-3 mb-6">Empecemos a crear contenido de alto nivel</h2>
-      <p class="text-zinc-400 text-sm sm:text-base max-w-xl mx-auto mb-8">
-        Hablemos de tus objetivos de video, packs mensuales o edición comercial. Respuesta garantizada en menos de 24 horas.
-      </p>
-
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20tu%20portafolio%20en%20Dreamscape%20y%20quiero%20cotizar%20un%20proyecto"
-           target="_blank" rel="noopener"
-           class="px-8 py-4 rounded-full bg-violet-600 hover:bg-violet-500 text-white font-bold text-sm shadow-xl shadow-violet-600/30 transition">
-          Escribir a WhatsApp (+57 301 182 2651) →
-        </a>
-        <a href="mailto:latamdreamscape@gmail.com"
-           class="px-7 py-4 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-white font-semibold text-sm transition">
-          latamdreamscape@gmail.com
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- MODAL PARA VER EL PROYECTO DE BEHANCE INCRUSTADO EN GRANDE -->
-  <div id="behance-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/95 backdrop-blur-xl p-4 sm:p-6">
-    <div class="relative w-full max-w-5xl rounded-3xl bg-[#101016] border border-white/15 overflow-hidden shadow-2xl">
-      <!-- Barra superior del modal -->
-      <div class="px-6 py-4 border-b border-white/10 flex items-center justify-between bg-[#0b0b10]">
-        <div>
-          <span id="modal-category" class="text-[11px] font-bold uppercase tracking-wider text-violet-400"></span>
-          <h3 id="modal-title" class="font-display text-lg font-bold text-white"></h3>
-        </div>
-        <div class="flex items-center gap-3">
-          <a id="modal-behance-link" href="https://www.behance.net/highway43" target="_blank" rel="noopener"
-             class="px-4 py-2 rounded-full text-xs font-semibold bg-white/10 hover:bg-white/20 text-white transition">
-            Abrir en Behance ↗
-          </a>
-          <a href="https://wa.me/573011822651?text=Hola%20Oscar,%20vi%20este%20proyecto%20en%20tu%20portafolio%20y%20quiero%20cotizar%20algo%20similar"
-             target="_blank" rel="noopener"
-             class="px-4 py-2 rounded-full text-xs font-semibold bg-violet-600 hover:bg-violet-500 text-white transition">
-            Cotizar similar →
-          </a>
-          <button onclick="closeBehanceModal()" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/15 text-zinc-300 text-xl flex items-center justify-center transition">
-            &times;
-          </button>
-        </div>
-      </div>
-
-      <!-- Iframe oficial de Behance -->
-      <div class="behance-frame-wrapper" id="modal-iframe-container">
-        <!-- Se inyecta dinámicamente al abrir -->
-      </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding-top:16px;border-top:1px solid var(--border)">
+      <span class="footer-mono">&copy; 2026 Oscar Lugo — Highway 43 · Bogotá, Colombia</span>
+      <span style="font-family:var(--font-mono);font-size:10px;color:var(--text3)">Hecho con criterio, no con plantilla. · <a href="privacidad.html" style="color:var(--text3)">Privacidad</a></span>
     </div>
   </div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer class="border-t border-white/10 py-12 px-6 bg-[#050507]">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-zinc-500">
-      <div class="flex items-center gap-3">
-        <span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span>
-        <span class="font-display font-bold text-zinc-300 tracking-wider">DREAMSCAPE PRODUCTIONS</span>
-        <span>© 2026 Oscar Lugo • Bogotá, Colombia</span>
-      </div>
+<script defer data-domain="oscarlugocar-lang.github.io/portfolio" src="https://plausible.io/js/script.js"></script>
+<script>
+// ─── PROJECTS — GRID (6 con micro-caso, conserva identidad + añade valor AdSense) ───
+const projects = [
+  { title:"Showreel 2026", cat:"Video · Compilado", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/6e67cc246797387.Y3JvcCw5MjAsNzIwLDAsMA.png", url:"https://www.behance.net/gallery/246797387/Showreel-2026-Video-Editor-para-Marcas-y-Social-Media", result:"<strong>Objetivo:</strong> mostrar rango en 60s. <strong>Rol:</strong> edición + ritmo. <strong>Resultado:</strong> reel de apertura para clientes nuevos." },
+  { title:"Reels de Alto Impacto", cat:"Video · TikTok / IG", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/b52bc2201723559.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/gallery/201723559/Reels-de-Alto-Impacto-Edicion-para-Instagram-y-TikTok", result:"<strong>Objetivo:</strong> alcance orgánico. <strong>Rol:</strong> ganchos 2s + subtítulos. <strong>Resultado:</strong> formato replicable para marca." },
+  { title:"Reel Publicitario", cat:"Video · Ads", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/d3dc17201723443.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/gallery/201723443/Reel-Publicitario-para-Redes-Sociales-Marca-y-Alcance", result:"<strong>Objetivo:</strong> conversión. <strong>Rol:</strong> guion + corte para paid. <strong>Resultado:</strong> pieza lista para Meta Ads." },
+  { title:"Diseño para Redes", cat:"Diseño · Sistema", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/ae9088193273925.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/gallery/193273925/Diseno-para-Redes-Sociales-Piezas-Visuales-para-Marca", result:"<strong>Objetivo:</strong> coherencia visual. <strong>Rol:</strong> carruseles + plantillas. <strong>Resultado:</strong> feed coordinado." },
+  { title:"Identidad Highway 43", cat:"Branding · Dirección", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/ae9088193273925.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/highway43", result:"<strong>Objetivo:</strong> marca personal sólida. <strong>Rol:</strong> logo + paleta + tipografía. <strong>Resultado:</strong> sistema Highway 43." },
+  { title:"Pack Contenido Mensual", cat:"Contenido · Retainer", img:"https://mir-s3-cdn-cf.behance.net/projects/max_808/b52bc2201723559.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png", url:"https://www.behance.net/highway43", result:"<strong>Objetivo:</strong> constancia sin fricción. <strong>Rol:</strong> 8–12 piezas/mes. <strong>Resultado:</strong> calendario + copies base." },
+];
+var grid=document.getElementById('projectsGrid');
+projects.forEach(function(p){
+  var el=document.createElement('div');el.className='project-card';
+  el.innerHTML='<div class="project-thumb"><img src="'+p.img+'" alt="'+p.title+'" loading="lazy"></div><div class="project-card-body"><h4>'+p.title+'</h4><span class="project-card-cat">'+p.cat+'</span><div class="project-card-result">'+p.result+'</div></div>';
+  el.addEventListener('click',function(){window.open(p.url,'_blank')});
+  grid.appendChild(el);
+});
 
-      <div class="flex flex-wrap gap-5">
-        <a href="sobre-mi.html" class="hover:text-zinc-300 transition">Sobre Mí</a>
-        <a href="recursos/" class="hover:text-zinc-300 transition">Recursos</a>
-        <a href="privacidad.html" class="hover:text-zinc-300 transition">Privacidad</a>
-        <a href="terminos.html" class="hover:text-zinc-300 transition">Términos</a>
-        <a href="cookies.html" class="hover:text-zinc-300 transition">Cookies</a>
-      </div>
+// ─── LENIS SMOOTH SCROLL (más fluido, se desactiva si la página es corta) ───
+var lenis;
+var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(window.innerWidth>900 && !prefersReduced && document.body.scrollHeight > window.innerHeight + 200){
+  lenis = new Lenis({duration:0.85,easing:function(t){return 1 - Math.pow(1-t,3)},wheelMultiplier:0.9,smoothWheel:true,lerp:0.08});
+  lenis.on('scroll',ScrollTrigger.update);
+  gsap.ticker.add(function(t){lenis.raf(t*1000)});
+}
 
-      <div class="flex items-center gap-4 text-zinc-400">
-        <a href="https://www.behance.net/highway43" target="_blank" rel="noopener" class="hover:text-violet-400 transition">Behance</a>
-        <a href="https://github.com/oscarlugocar-lang" target="_blank" rel="noopener" class="hover:text-white transition">GitHub</a>
-        <a href="https://wa.me/573011822651" target="_blank" rel="noopener" class="hover:text-emerald-400 transition">WhatsApp</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- PROYECTOS REALES DE BEHANCE: @highway43 -->
-  <script>
-    const PROYECTOS_BEHANCE = [
-      {
-        behanceId: "246797387",
-        titulo: "Showreel 2026 — Video Editor para Marcas y Social Media",
-        categoria: "comercial",
-        etiqueta: "Showreel Oficial • 4K • Video Editor",
-        descripcion: "Edición rítmica, dirección de pacing, color grading y sound design inmersivo para marcas y creadores.",
-        cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/6e67cc246797387.Y3JvcCw5MjAsNzIwLDAsMA.png",
-        directEmbed: true
-      },
-      {
-        behanceId: "201723559",
-        titulo: "Reels de Alto Impacto — Edición para Instagram y TikTok",
-        categoria: "reels",
-        etiqueta: "9:16 Vertical • Retención Extrema",
-        descripcion: "Hooks dinámicos cada 2.5s, kinetic captions, B-roll contextual y ritmo calibrado para evitar el swipe.",
-        cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/b52bc2201723559.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png",
-        directEmbed: true
-      },
-      {
-        behanceId: "201723443",
-        titulo: "Reel Publicitario para Redes Sociales — Marca y Alcance",
-        categoria: "comercial",
-        etiqueta: "Spot Comercial • Branding",
-        descripcion: "Producción audiovisual enfocada en posicionamiento comercial, recordación y conversión en redes sociales.",
-        cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/d3dc17201723443.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png",
-        directEmbed: true
-      },
-      {
-        behanceId: "193091129",
-        titulo: "Edición de Reel Promocional — Visibilidad de Marca",
-        categoria: "reels",
-        etiqueta: "Reel Promocional • Conversión",
-        descripcion: "Estructura narrativa ágil y llamado a la acción diseñado para optimizar el alcance orgánico y la venta.",
-        cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/f82e42193091129.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png",
-        directEmbed: false
-      },
-      {
-        behanceId: "193086305",
-        titulo: "Reel 2024 — Highlights y Edición Audiovisual",
-        categoria: "vfx",
-        etiqueta: "VFX • Motion • Pacing",
-        descripcion: "Montaje cinemático con motion graphics integrados, corrección cromática y diseño sonoro envolvente.",
-        cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/99b7dc193086305.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png",
-        directEmbed: false
-      },
-      {
-        behanceId: "193273925",
-        titulo: "Diseño para Redes Sociales — Piezas Visuales para Marca",
-        categoria: "vfx",
-        etiqueta: "Motion Branding • Social Media",
-        descripcion: "Desarrollo de identidad visual, carruseles y guías gráficas para mantener coherencia estética en canales digitales.",
-        cover: "https://mir-s3-cdn-cf.behance.net/projects/max_808/ae9088193273925.Y3JvcCwxODQxLDE0NDAsMzYwLDA.png",
-        directEmbed: false
-      }
-    ];
-
-    const grid = document.getElementById('behance-grid');
-
-    function renderPortfolio(filter = 'all') {
-      grid.innerHTML = '';
-      const items = PROYECTOS_BEHANCE.filter(p => filter === 'all' || p.categoria === filter);
-
-      items.forEach(p => {
-        const hasRealId = /^\d+$/.test(p.behanceId);
-        const embedUrl = `https://www.behance.net/embed/project/${p.behanceId}?ilo0=1`;
-        const projectUrl = hasRealId
-          ? `https://www.behance.net/gallery/${p.behanceId}/project`
-          : `https://www.behance.net/highway43`;
-
-        const card = document.createElement('article');
-        card.className = 'dream-card rounded-3xl overflow-hidden flex flex-col justify-between';
-
-        // Si directEmbed es true, incrusta el visor de Behance; de lo contrario, muestra la miniatura de Behance
-        const mediaBlock = (hasRealId && p.directEmbed)
-          ? `<div class="aspect-[4/3] w-full bg-black overflow-hidden relative">
-               <iframe src="${embedUrl}" class="w-full h-full border-0" allowfullscreen lazyload frameborder="0" allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-             </div>`
-          : `<div class="relative aspect-video overflow-hidden group cursor-pointer" onclick="openBehanceModal('${p.behanceId}', '${p.titulo}', '${p.etiqueta}')">
-               <img src="${p.cover}" alt="${p.titulo}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-               <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition flex items-center justify-center">
-                 <span class="px-4 py-2 rounded-full bg-violet-600/90 text-white text-xs font-bold shadow-lg">
-                   ▶ Ver en Grande
-                 </span>
-               </div>
-             </div>`;
-
-        card.innerHTML = `
-          ${mediaBlock}
-          <div class="p-6">
-            <span class="text-[11px] font-bold uppercase tracking-wider text-violet-400">${p.etiqueta}</span>
-            <h3 class="font-display text-xl font-bold text-white mt-1 mb-2 leading-snug">${p.titulo}</h3>
-            <p class="text-xs text-zinc-400 leading-relaxed mb-5">${p.descripcion}</p>
-            <div class="flex items-center justify-between pt-4 border-t border-white/10">
-              <button onclick="openBehanceModal('${p.behanceId}', '${p.titulo}', '${p.etiqueta}')"
-                      class="text-xs font-semibold text-white hover:text-violet-400 transition flex items-center gap-1">
-                <span>Ampliar modal</span> <span>→</span>
-              </button>
-              <a href="${projectUrl}" target="_blank" rel="noopener" class="text-xs text-zinc-400 hover:text-white transition flex items-center gap-0.5">
-                <span>Behance</span> <span>↗</span>
-              </a>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function openBehanceModal(behanceId, title, category) {
-      const hasRealId = /^\d+$/.test(behanceId);
-      if (!hasRealId) {
-        window.open('https://www.behance.net/highway43', '_blank');
-        return;
-      }
-      document.getElementById('modal-title').textContent = title;
-      document.getElementById('modal-category').textContent = category;
-      document.getElementById('modal-behance-link').href = `https://www.behance.net/gallery/${behanceId}/project`;
-      document.getElementById('modal-iframe-container').innerHTML = `
-        <iframe src="https://www.behance.net/embed/project/${behanceId}?ilo0=1"
-                class="w-full h-full border-0" allowfullscreen lazyload frameborder="0"
-                allow="clipboard-write" refererPolicy="strict-origin-when-cross-origin"></iframe>
-      `;
-      document.getElementById('behance-modal').classList.replace('hidden', 'flex');
-    }
-
-    function closeBehanceModal() {
-      document.getElementById('modal-iframe-container').innerHTML = '';
-      document.getElementById('behance-modal').classList.replace('flex', 'hidden');
-    }
-
-    // Cerrar modal con tecla Escape y click fuera
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeBehanceModal();
+// ─── CUSTOM CURSOR (fix: no bloquea salida del navegador, se oculta al salir) ───
+(function(){
+  if(window.innerWidth<=900 || window.matchMedia('(hover: none)').matches) return;
+  var dot=document.getElementById('cursorDot');
+  var bubble=document.getElementById('cursorBubble');
+  var wrap=document.getElementById('cursorWrap');
+  if(!dot||!wrap) return;
+  var mx=window.innerWidth/2,my=window.innerHeight/2,dotX=mx,dotY=my, isOutside=true;
+  function showCursor(){ dot.style.opacity='1'; bubble.style.opacity='1'; isOutside=false; }
+  function hideCursor(){ dot.style.opacity='0'; bubble.style.opacity='0'; wrap.removeAttribute('data-cursor'); dot.classList.remove('is-lg'); isOutside=true; }
+  document.addEventListener('mousemove',function(e){ mx=e.clientX;my=e.clientY; if(isOutside) showCursor(); });
+  document.addEventListener('mouseleave', hideCursor);
+  document.addEventListener('mouseenter', showCursor);
+  // Escape con teclado también restaura cursor nativo
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape') hideCursor(); });
+  gsap.ticker.add(function(){
+    if(isOutside) return;
+    dotX+=(mx-dotX)*.18;
+    dotY+=(my-dotY)*.18;
+    dot.style.left=dotX+'px';dot.style.top=dotY+'px';
+    bubble.style.left=mx+'px';bubble.style.top=(my-22)+'px';
+  });
+  var hoverTargets=document.querySelectorAll('a,button,.project-card,.contact-item,.service-card');
+  hoverTargets.forEach(function(el){
+    el.addEventListener('mouseenter',function(){
+      if(el.classList.contains('project-card')){wrap.setAttribute('data-cursor','active')}
+      else{dot.classList.add('is-lg')}
     });
-    document.getElementById('behance-modal').addEventListener('click', (e) => {
-      if (e.target.id === 'behance-modal') closeBehanceModal();
+    el.addEventListener('mouseleave',function(){
+      wrap.removeAttribute('data-cursor');
+      dot.classList.remove('is-lg');
     });
+  });
+  // Inicialmente oculto hasta primer movimiento
+  hideCursor();
+})();
 
-    // Menú móvil
-    const mobileBtn = document.getElementById('mobile-toggle');
-    const mobileNav = document.getElementById('mobile-nav');
-    if (mobileBtn && mobileNav) {
-      mobileBtn.addEventListener('click', () => {
-        mobileNav.classList.toggle('hidden');
-      });
-      mobileNav.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => mobileNav.classList.add('hidden'));
-      });
-    }
+// ─── GSAP — HERO ───
+var heroTimeline=gsap.timeline();
+heroTimeline
+  .from('.hero-left h1 .line span',{y:'110%',opacity:0,duration:1.4,stagger:0.14,ease:'power3.out',delay:0.2})
+  .from('.hero-label',{opacity:0,y:16,duration:.8,ease:'power2.out'},'-=0.8')
+  .from('.hero-left p',{opacity:0,y:20,duration:.8,ease:'power2.out'},'-=0.5')
+  .from('.hero-actions',{opacity:0,y:20,duration:.8,ease:'power2.out'},'-=0.4')
+  .from('.hero-scroll',{opacity:0,duration:.8,ease:'power2.out'},'-=0.3')
+  .from('.hero-right',{opacity:0,x:80,duration:1.4,ease:'power3.out',delay:0.1},'-=1')
+  .from('.hero-visual-line',{scaleY:0,duration:1,ease:'power3.out'},'-=0.6');
 
-    // Activar filtros
-    document.querySelectorAll('#portfolio-filters button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('#portfolio-filters button').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        renderPortfolio(btn.dataset.filter);
-      });
-    });
+// ─── GSAP — TIMELINE ───
+ScrollTrigger.create({
+  trigger:'.timeline-wrap',
+  start:'top 40%',
+  end:'bottom 20%',
+  invalidateOnRefresh:true,
+  onEnter:function(){
+    gsap.to('#timelineFill',{scaleY:1,duration:2.5,ease:'power3.out',clearProps:'transformOrigin'});
+  },
+  once:true
+});
+var serviceCards=document.querySelectorAll('[data-service]');
+serviceCards.forEach(function(el,i){
+  ScrollTrigger.create({
+    trigger:el,
+    start:'top 75%',
+    onEnter:function(){
+      var dir=i%2===0?-60:60;
+      gsap.fromTo(el.querySelector('.service-card'),{opacity:0,x:dir},{opacity:1,x:0,duration:1.2,ease:'power3.out'});
+      gsap.fromTo(el.querySelector('.service-dot'),{scale:0,opacity:0},{scale:1,opacity:1,duration:.6,ease:'back.out(2)',delay:.6});
+    },
+    once:true
+  });
+});
 
-    renderPortfolio();
-  </script>
+// ─── GSAP — SCROLL REVEALS ───
+gsap.utils.toArray('[data-reveal]').forEach(function(el){
+  ScrollTrigger.create({
+    trigger:el,
+    start:'top 85%',
+    onEnter:function(){el.classList.add('is-visible')},
+    once:true
+  });
+});
+gsap.utils.toArray('[data-reveal-scale]').forEach(function(el){
+  ScrollTrigger.create({
+    trigger:el,
+    start:'top 85%',
+    onEnter:function(){el.classList.add('is-visible')},
+    once:true
+  });
+});
+
+// ─── MOBILE NAV ───
+var hamburger=document.getElementById('hamburger');
+var overlay=document.getElementById('mobileOverlay');
+hamburger.addEventListener('click',function(){
+  overlay.classList.toggle('open');
+  hamburger.textContent=overlay.classList.contains('open')?'✕':'☰';
+});
+overlay.querySelectorAll('a').forEach(function(a){
+  a.addEventListener('click',function(){
+    overlay.classList.remove('open');
+    hamburger.textContent='☰';
+  });
+});
+
+// ─── CONTACT FORM ───
+document.getElementById('contactForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  var fb=document.getElementById('form-feedback');
+  var btn=this.querySelector('button');
+  btn.disabled=true;
+  btn.textContent='Enviando...';
+  try{
+    var r=await fetch(this.action,{method:'POST',body:new FormData(this),headers:{Accept:'application/json'}});
+    if(r.ok){
+      fb.style.display='block';fb.style.color='var(--text)';
+      fb.textContent='✓ Mensaje enviado. Te respondo pronto.';
+      this.reset();
+    }else throw Error();
+  }catch{
+    fb.style.display='block';fb.style.color='var(--text3)';
+    fb.textContent='✗ Error. Escribime directo a WhatsApp.';
+  }finally{
+    btn.disabled=false;btn.textContent='Enviar mensaje';
+  }
+});
+
+// ─── NAV SCROLL ───
+var navInner=document.querySelector('.nav-inner');
+window.addEventListener('scroll',function(){
+  var s=window.scrollY;
+  navInner.style.borderColor=s>60?'rgba(214,0,1,.25)':'rgba(255,255,255,.06)';
+},{passive:true});
+
+document.documentElement.classList.add('js-ready');
+// ─── REFRESH ───
+window.addEventListener('load',function(){
+  if(lenis)lenis.raf(0);
+  ScrollTrigger.refresh();
+});
+</script>
 </body>
 </html>
